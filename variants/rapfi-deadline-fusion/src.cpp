@@ -4244,11 +4244,24 @@ int AI::quickWinCheck() {
 
 	int self_C_count = p4Count[self][C_BLOCK4_FLEX3];
 	if (self_C_count >= 1) {
-		if (p4Count[oppo][B_FLEX4] == 0 && p4Count[oppo][C_BLOCK4_FLEX3] == 0 && p4Count[oppo][D_BLOCK4_PLUS] == 0 && p4Count[oppo][E_BLOCK4] == 0)
-			return WIN_MAX - ply - 4;
+		// The four-three shortcut used to fire on the pattern alone.  A four whose
+		// gap makes six is not a four here, so the block it is supposed to force
+		// does not exist and the win never arrives: the same freestyle assumption
+		// that had B_FLEX4 announcing double fours that were not there.  Every
+		// path now plays the point first and requires a real five threat.
+		bool oppoHasFour = p4Count[oppo][B_FLEX4] > 0 || p4Count[oppo][C_BLOCK4_FLEX3] > 0
+			|| p4Count[oppo][D_BLOCK4_PLUS] > 0 || p4Count[oppo][E_BLOCK4] > 0;
 		FOR_EVERY_CAND_POS(p) {    // ��43���ͷ����Ŀ�����֤(��̬�ж�)
 			if (cell(p).pattern4[self] == C_BLOCK4_FLEX3) {
 				makeMove<VC>(p);
+				if (p4Count[self][A_FIVE] == 0) {   // the "four" cannot make five
+					undoMove<VC>();
+					continue;
+				}
+				if (!oppoHasFour) {
+					undoMove<VC>();
+					return WIN_MAX - ply - 4;
+				}
 				Pos defMove = getCostPosAgainstB4(p, self);
 				if (cell(defMove).pattern4[oppo] < E_BLOCK4) {
 					undoMove<VC>();
