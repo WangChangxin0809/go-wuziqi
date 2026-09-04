@@ -481,6 +481,10 @@ static unsigned long long contestBookHash(const char * plane, int length) {
 // position instead of only the principal variation.
 static std::vector<int> contestRootExclude;   // row * 15 + col
 static int contestMaxDepth = 0;               // 0 = no cap
+// Budget for the root threat search (VCT).  Both are overridable so that the
+// two halves of an A/B run can be built from one source.
+static long VCT_ROOT_BUDGET_MS = 170;
+static long VCT_ROOT_NODE_BUDGET = 400000;
 static bool contestStats = false;
 
 // Reads the two analysis-only environment variables.  Absent variables leave the
@@ -498,6 +502,14 @@ static void contestReadEnv() {
 	if (const char * depth = std::getenv("GOMOKU_MAX_DEPTH")) {
 		int d = std::atoi(depth);
 		if (d > 0) contestMaxDepth = d;
+	}
+	if (const char * vctMs = std::getenv("GOMOKU_VCT_MS")) {
+		long ms = std::atol(vctMs);
+		if (ms >= 0) VCT_ROOT_BUDGET_MS = ms;
+	}
+	if (const char * vctNodes = std::getenv("GOMOKU_VCT_NODES")) {
+		long n = std::atol(vctNodes);
+		if (n >= 0) VCT_ROOT_NODE_BUDGET = n;
 	}
 	if (std::getenv("GOMOKU_STATS")) contestStats = true;
 	if (const char * excluded = std::getenv("GOMOKU_EXCLUDE")) {
@@ -1165,6 +1177,16 @@ private:
 	static const int MAX_VCF_BRANCH = 10;
 	static const int MAX_VCF_PLY = 36;
 
+	// VCT (victory by continuous threats) limits.  A threat search branches far
+	// wider than a VCF, so every one of these is a hard cap: an attack that
+	// finds nothing has to cost a small fixed slice of the move's second.
+	static const int MAX_VCT_MOVES = 64;      // attacking candidates collected
+	static const int MAX_VCT_BRANCH = 12;     // attacking candidates searched
+	static const int MAX_VCT_DEFENCE = 24;    // defending replies to one threat
+	static const int MAX_VCT_FIVE = 4;        // five points remembered per point
+	static const int MAX_VCT_OPEN4 = 8;       // open four points per threat
+	static const int VCT_ROOT_MAX_DEPTH = 9;  // attacking moves in one line
+
 	// ���������������پ���
 	static const int CONTINUES_NEIGHBOR = 2;       // ���ŷ�(ͬ��)������
 	static const int CONTINUES_DISTANCE = 4;       // ���ŷ�(ͬ��)������
@@ -1190,6 +1212,10 @@ private:
 	bool terminateAI;
 	int maxPlyReached;
 	int VCFMaxPly, VCTMaxPly;
+	long vctNodeBudget;    // nodes the current threat search may still spend
+	long vctDeadline;      // wall clock the current threat search must stop at
+	bool vctAborted;       // a budget ran out, so "no win" proves nothing
+	Pos vctBestMove;       // winning attack found by the root threat search
 	int BestMoveChangeCount;
 
 	// ����ͳ�Ʊ���
@@ -1225,6 +1251,10 @@ private:
 	Move alphabeta_root(int depth, int alpha, int beta);
 	template <NodeType NT> int alphabeta(float depth, int alpha, int beta, bool cutNode);
 	template <bool Root = true> int quickVCFSearch();
+	int quickVCTSearch(int depthLeft, bool root);
+	int genMoves_VCT(Move * out, int maxOut);
+	int vctFivePoints(Piece piece, Pos * out, int maxOut);
+	Pos contestVCTRoot(long budgetMs, long nodeBudget);
 
 	/////////////////////////////////////////////////////////////
 
@@ -3379,6 +3409,24 @@ Pos AI::turnMove() {
 		if (legal != NullPos) contestPublish(CoordX(legal), CoordY(legal));
 	}
 
+	// Look for a victory by continuous threats before the main search starts.
+	// A forced win five or six moves out is beyond the depth one second buys,
+	// but it is shallow for a threat search, and finding one ends the move.
+	{
+		long spend = MIN(VCT_ROOT_BUDGET_MS, MAX(0L, timeForTurn() - timeUsed()) / 4);
+		Pos vct = contestVCTRoot(spend, VCT_ROOT_NODE_BUDGET);
+		if (vct != NullPos && board->isEmpty(vct) && contestLegalMove(*board, vct, SELF)) {
+			contestPublish(CoordX(vct), CoordY(vct));
+			// Keep the stats line in the shape the analysis tools expect, and name
+			// the threat search so a claimed mate can be traced back to it.
+			if (contestStats)
+				std::fprintf(stderr, "depth=0 value=%d node=%d expanded=%d ms=%ld vct=%d,%d\n",
+					WIN_MAX, node, nodeExpended, timeUsed(),
+					int(CoordX(vct)), int(CoordY(vct)));
+			return vct;
+		}
+	}
+
 	best = fullSearch();
 	if (!board->isEmpty(best) || !contestLegalMove(*board, best, SELF))
 		best = legal;
@@ -4059,6 +4107,266 @@ int AI::quickVCFSearch() {
 
 template int AI::quickVCFSearch<true>();
 template int AI::quickVCFSearch<false>();
+
+///////////////////////////////////////////////////////////////////////////////
+// VCT: victory by continuous threats.
+//
+// A VCF wins with fours alone.  A VCT lets the attacker play open threes as
+// well, so the defender still has to answer every single move and the line
+// stays forced.  That is the one classical device this engine was missing, and
+// at the six or seven plies one second buys it reaches wins alphabeta cannot.
+//
+// Nothing below asks the pattern tables what a threat is.  Those tables come
+// from freestyle, where five *or more* wins, so a gap whose fill would make six
+// still reads as a four in them; here an overline wins for nobody and such a
+// "four" threatens nothing.  Every four and every open four is instead verified
+// by playing the point and counting the five squares that survive the rules.
+// p4Count[side][A_FIVE] is already rule-corrected -- a forbidden black five is
+// marked FORBID and a white five that would be an overline is marked NONE -- so
+// counting A_FIVE cells after a move is exact.
+//
+// Why the defending reply sets are complete, which is the whole question of
+// whether a reported mate is real:
+//
+//   * After a verified four with one five point, the only answers are that
+//     point and a five of the defender's own.  The defender cannot have one: a
+//     five for them was read before the attacker moved, and a stone of the
+//     attacker's colour never creates a five for the defender.
+//   * After a verified open three the defender must stop every open four or
+//     play a four of their own.  A defending stone never changes how many of
+//     the attacker's stones stand in a row, so once it is down the five points
+//     of an open four q are exactly the old set minus the square it took: q
+//     survives unless the defender plays q itself or leaves one point standing.
+//     That makes "does this stop q" an exact test rather than a table lookup,
+//     and since a white stone can only relax black's bans, an attacking point
+//     that was legal stays legal.
+//   * Any other defending move loses to the very continuation this search has
+//     already verified, so leaving it out cannot invent a mate.
+//
+// A budget that runs out sets vctAborted, and an aborted search only ever
+// returns 0: a win is reported only when every defence in the line was searched.
+///////////////////////////////////////////////////////////////////////////////
+
+// Squares where `piece` completes an exact five, at most maxOut of them.
+int AI::vctFivePoints(Piece piece, Pos * out, int maxOut) {
+	if (p4Count[piece][A_FIVE] == 0) return 0;
+	int n = 0;
+	FOR_EVERY_CAND_POS(p) {
+		if (cell(p).pattern4[piece] == A_FIVE) {
+			out[n] = p;
+			if (++n >= maxOut) break;
+		}
+	}
+	return n;
+}
+
+// Fours and open threes for the side to move, best first.  Anything weaker does
+// not force an answer and has no place in a threat sequence.  Whether these are
+// really fours and threes under the contest rules is settled later, by playing
+// them; this only has to be a superset, and a table that reads five out of six
+// can only ever be generous.
+int AI::genMoves_VCT(Move * out, int maxOut) {
+	const Piece self = SELF;
+	int n = 0;
+	FOR_EVERY_CAND_POS(p) {
+		if (n >= maxOut) break;
+		if (!CONTEST_LEGAL_CACHED(p, self)) continue;
+		Pattern4 p4 = cell(p).pattern4[self];
+		if (p4 < H_FLEX3) continue;
+		out[n++] = Move(p, int(p4) * 4096 + MIN(cell(p).getScore_VC(self), 4095));
+	}
+	std::sort(out, out + n, std::greater<Move>());
+	return n;
+}
+
+// The attacker is the side to move.  Returns a mate score for the attacker, or
+// 0 when no forced win was proved.
+int AI::quickVCTSearch(int depthLeft, bool root) {
+	const Piece att = SELF, def = OPPO;
+
+	node++;
+	if (--vctNodeBudget < 0) { vctAborted = true; return 0; }
+	if ((vctNodeBudget & 511) == 0 && (terminateAI || timeUsed() > vctDeadline)) {
+		vctAborted = true;
+		return 0;
+	}
+
+	if (p4Count[att][A_FIVE] >= 1) return WIN_MAX - ply;
+	if (p4Count[def][A_FIVE] >= 2) return 0;   // the attacker is the one who is lost
+
+	Move cands[MAX_VCT_MOVES];
+	int candCount;
+
+	if (p4Count[def][A_FIVE] == 1) {
+		// One square stops the defender's five, so it is the attacker's only move,
+		// and the attack survives only if that square is itself a threat.  A square
+		// black is banned from is not a move at all: the line is lost, not won.
+		Pos block = findPosByPattern4(def, A_FIVE);
+		if (!CONTEST_LEGAL_CACHED(block, att)) return 0;
+		cands[0] = Move(block, 0);
+		candCount = 1;
+	} else {
+		// A verified open four wins outright: two five points cannot both be covered.
+		if (p4Count[att][B_FLEX4] >= 1) {
+			Pos flex4Win = contestWinningFlex4(att);
+			if (flex4Win != NullPos) {
+				if (root) vctBestMove = flex4Win;
+				return WIN_MAX - ply - 2;
+			}
+		}
+		if (depthLeft <= 0) return 0;
+		candCount = genMoves_VCT(cands, MAX_VCT_MOVES);
+		if (candCount > MAX_VCT_BRANCH) candCount = MAX_VCT_BRANCH;
+	}
+	if (candCount == 0) return 0;
+	nodeExpended++;
+
+	Pos five[MAX_VCT_FIVE];
+	Pos flex4[MAX_VCT_OPEN4];
+	Pos openFour[MAX_VCT_OPEN4];
+	Pos ofFive[MAX_VCT_OPEN4][MAX_VCT_FIVE];
+	int ofFiveN[MAX_VCT_OPEN4];
+	Pos defence[MAX_VCT_DEFENCE];
+
+	int best = 0;
+	for (int i = 0; i < candCount; i++) {
+		const Pos move = cands[i].pos;
+		int ofCount = 0;
+
+		// What does the move actually threaten?  MuiltVC puts down a stone of the
+		// attacker's colour without handing over the turn, so the follow-up point
+		// can be tried in the same colour before the move is really made.
+		makeMove<MuiltVC>(move);
+		int fiveN = vctFivePoints(att, five, MAX_VCT_FIVE);
+		if (fiveN == 0 && p4Count[att][B_FLEX4] > 0) {
+			int flex4N = 0;
+			FOR_EVERY_CAND_POS(q) {
+				if (cell(q).pattern4[att] != B_FLEX4) continue;
+				flex4[flex4N] = q;
+				if (++flex4N >= MAX_VCT_OPEN4) break;
+			}
+			for (int k = 0; k < flex4N; k++) {
+				makeMove<MuiltVC>(flex4[k]);
+				int m = vctFivePoints(att, ofFive[ofCount], MAX_VCT_FIVE);
+				undoMove<MuiltVC>();
+				if (m >= 2) {
+					openFour[ofCount] = flex4[k];
+					ofFiveN[ofCount] = m;
+					ofCount++;
+				}
+			}
+		}
+		undoMove<MuiltVC>();
+
+		if (fiveN == 0 && ofCount == 0) continue;   // neither a four nor an open three
+
+		int value = 0;
+		makeMove<VC>(move);
+
+		if (fiveN >= 2) {
+			value = WIN_MAX - ply - 1;      // two five points, one move cannot cover both
+		} else {
+			int defCount = 0;
+			bool overflow = false;
+
+			if (fiveN == 1) {
+				if (CONTEST_LEGAL_CACHED(five[0], def)) defence[defCount++] = five[0];
+			} else {
+				// Everything that stops the first open four is either that point or,
+				// when it leaves exactly two five points, one of those two.  A move
+				// that stops every open four has to be somewhere in that short list.
+				Pos probe[1 + MAX_VCT_FIVE];
+				int probeN = 0;
+				probe[probeN++] = openFour[0];
+				if (ofFiveN[0] == 2) {
+					probe[probeN++] = ofFive[0][0];
+					probe[probeN++] = ofFive[0][1];
+				}
+				for (int k = 0; k < probeN; k++) {
+					Pos d = probe[k];
+					if (!board->isEmpty(d) || !CONTEST_LEGAL_CACHED(d, def)) continue;
+					bool stopsAll = true;
+					for (int j = 0; j < ofCount && stopsAll; j++) {
+						if (d == openFour[j]) continue;
+						int left = 0;
+						for (int m = 0; m < ofFiveN[j]; m++)
+							if (ofFive[j][m] != d) left++;
+						if (left >= 2) stopsAll = false;
+					}
+					if (stopsAll) defence[defCount++] = d;
+				}
+				// A four of the defender's own forces the attacker to answer and can
+				// buy exactly the tempo the defence needs, so it has to be searched
+				// too.  Only a four that really leaves an exact five square counts.
+				FOR_EVERY_CAND_POS(d) {
+					if (cell(d).pattern4[def] < E_BLOCK4) continue;
+					if (!CONTEST_LEGAL_CACHED(d, def)) continue;
+					bool seen = false;
+					for (int k = 0; k < defCount; k++) seen = seen || defence[k] == d;
+					if (seen) continue;
+					makeMove<MuiltVC>(d);
+					bool real = p4Count[def][A_FIVE] > 0;
+					undoMove<MuiltVC>();
+					if (!real) continue;
+					if (defCount >= MAX_VCT_DEFENCE) { overflow = true; break; }
+					defence[defCount++] = d;
+				}
+			}
+
+			if (overflow) {
+				value = 0;                      // too many answers to prove anything
+			} else if (defCount == 0) {
+				value = WIN_MAX - ply - 1;      // no legal answer exists
+			} else {
+				value = WIN_MAX;
+				for (int k = 0; k < defCount; k++) {
+					makeMove<VC>(defence[k]);
+					int reply = quickVCTSearch(depthLeft - 1, false);
+					undoMove<VC>();
+					if (reply < value) value = reply;
+					if (value == 0) break;
+				}
+			}
+		}
+
+		undoMove<VC>();
+
+		if (value > best) {
+			best = value;
+			if (root) vctBestMove = move;
+		}
+		if (best >= WIN_MIN || vctAborted) break;
+	}
+	return best;
+}
+
+// Root threat search.  Iterative deepening keeps a shallow forced win cheap and
+// gives the budget a natural place to stop; the node and time caps are shared
+// across all iterations, so a search that finds nothing costs a bounded slice
+// of the move.  Returns the winning attack, or NullPos.
+Pos AI::contestVCTRoot(long budgetMs, long nodeBudget) {
+	const Piece self = SELF;
+	// Without a four or an open three on the board there is no threat to start
+	// from, and that is the common case, so the early exit is worth its line.
+	if (p4Count[self][A_FIVE] == 0 && p4Count[self][B_FLEX4] == 0
+		&& p4Count[self][C_BLOCK4_FLEX3] == 0 && p4Count[self][D_BLOCK4_PLUS] == 0
+		&& p4Count[self][E_BLOCK4] == 0 && p4Count[self][F_FLEX3_2X] == 0
+		&& p4Count[self][G_FLEX3_PLUS] == 0 && p4Count[self][H_FLEX3] == 0)
+		return NullPos;
+
+	vctDeadline = MIN(timeUsed() + budgetMs, timeForTurnMax());
+	vctNodeBudget = nodeBudget;
+	vctAborted = false;
+
+	for (int depth = 2; depth <= VCT_ROOT_MAX_DEPTH; depth++) {
+		vctBestMove = NullPos;
+		int value = quickVCTSearch(depth, true);
+		if (value >= WIN_MIN && vctBestMove != NullPos && board->isEmpty(vctBestMove))
+			return vctBestMove;
+		if (vctAborted || terminateAI || timeUsed() > vctDeadline) break;
+	}
+	return NullPos;
+}
 
 WinState AI::genMove_Root(MoveList & moveList) {
 	switch (moveList.phase) {
