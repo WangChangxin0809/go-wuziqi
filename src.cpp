@@ -3527,7 +3527,12 @@ Move AI::alphabeta_root(int depth, int alpha, int beta) {
 	} else if (moveList.moveCount() == 1) {
 		terminateAI = true;
 		TTEntry * tte;
-		best.value = hashTable->probe(board->getZobristKey(), tte) ? tte->value(ply) : evaluate();
+		// evaluate() subtracts rawStaticEval[ply - 1], which at the root would be
+		// rawStaticEval[-1]: an out-of-bounds read that made the reported value
+		// jump around between runs of the same position.  A forced root move has
+		// no previous ply to compare against, and this value is only reported --
+		// terminateAI above ends the iteration, so it is never searched or stored.
+		best.value = hashTable->probe(board->getZobristKey(), tte) ? tte->value(ply) : 0;
 		best.pos = move->pos;
 		return best;
 	}
