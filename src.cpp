@@ -4054,6 +4054,8 @@ int AI::quickVCFSearch() {
 
 	if (p4Count[oppo][A_FIVE] > 0) {  // VCF�ڵ��ж���һ���Ƿ��ǳ���
 		Pos move = getCostPosAgainstB4(board->getLastMove(), oppo);
+		if (cell(move).pattern4[oppo] != A_FIVE)
+			move = findPosByPattern4(oppo, A_FIVE);
 		if (self == attackerPiece) {  // ������ǹ�����,��������
 			if (cell(move).pattern4[self] < E_BLOCK4) {  // ����¶Է��ĳ��ĵ��岻���ҵĳ���
 				updateMaxPlyReached(ply);
@@ -4110,7 +4112,22 @@ int AI::quickVCFSearch() {
 		
 		makeMove<VC>(attMove);
 
+		// The move list comes from pattern4, which is Rapfi's freestyle table: a
+		// gap whose fill would make six still reads as a four there.  Under
+		// exactly-five scoring such a move threatens nothing at all.
+		if (p4Count[self][A_FIVE] == 0) {
+			undoMove<VC>();
+			continue;
+		}
+
 		defMove = getCostPosAgainstB4(attMove, self);
+		// getCostPosAgainstB4 reads Rapfi's uncorrected tables, where a gap whose
+		// fill would make six still counts as the five point of a four.  Picking
+		// that square sends the defender to block a threat that does not exist
+		// and leaves the real five point open, which is a mate out of nothing.
+		// p4Count is corrected, so trust it for where the five actually is.
+		if (cell(defMove).pattern4[self] != A_FIVE)
+			defMove = findPosByPattern4(self, A_FIVE);
 		// Same ban, inside the four sequence: if black cannot legally cover the
 		// five point the sequence has already won and must not be searched on.
 		if (oppo == Black && cell(defMove).pattern4[Black] == FORBID) {
