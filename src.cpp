@@ -485,6 +485,16 @@ static int contestMaxDepth = 0;               // 0 = no cap
 // two halves of an A/B run can be built from one source.
 static long VCT_ROOT_BUDGET_MS = 170;
 static long VCT_ROOT_NODE_BUDGET = 400000;
+// Budget for the same search run from the opponent's side, against the move the
+// search is about to settle on.  It is spent out of the move's own budget, not
+// added to it: every probe stops at timeForTurnMax() as well, which is the wall
+// the main search already stops at, and the time a probe takes is time the
+// search does not get, because both read the same clock.  So it is paid for in
+// search depth and the longest a move can take does not move at all.
+static long VCT_DEF_BUDGET_MS = 260;
+static long VCT_DEF_NODE_BUDGET = 400000;
+static int VCT_DEF_MAX_DEPTH = 9;
+static int VCT_DEF_FROM_DEPTH = 3;
 static bool contestStats = false;
 
 // Reads the two analysis-only environment variables.  Absent variables leave the
@@ -510,6 +520,22 @@ static void contestReadEnv() {
 	if (const char * vctNodes = std::getenv("GOMOKU_VCT_NODES")) {
 		long n = std::atol(vctNodes);
 		if (n >= 0) VCT_ROOT_NODE_BUDGET = n;
+	}
+	if (const char * defMs = std::getenv("GOMOKU_VCTDEF_MS")) {
+		long ms = std::atol(defMs);
+		if (ms >= 0) VCT_DEF_BUDGET_MS = ms;
+	}
+	if (const char * defNodes = std::getenv("GOMOKU_VCTDEF_NODES")) {
+		long n = std::atol(defNodes);
+		if (n >= 0) VCT_DEF_NODE_BUDGET = n;
+	}
+	if (const char * defDepth = std::getenv("GOMOKU_VCTDEF_DEPTH")) {
+		int d = std::atoi(defDepth);
+		if (d >= 0) VCT_DEF_MAX_DEPTH = d;
+	}
+	if (const char * defFrom = std::getenv("GOMOKU_VCTDEF_FROM")) {
+		int d = std::atoi(defFrom);
+		if (d >= 2) VCT_DEF_FROM_DEPTH = d;
 	}
 	if (std::getenv("GOMOKU_STATS")) contestStats = true;
 	if (const char * excluded = std::getenv("GOMOKU_EXCLUDE")) {
@@ -1276,6 +1302,8 @@ private:
 	static const int MAX_VCT_FIVE = 4;        // five points remembered per point
 	static const int MAX_VCT_OPEN4 = 8;       // open four points per threat
 	static const int VCT_ROOT_MAX_DEPTH = 9;  // attacking moves in one line
+	static const int MAX_VCT_DEF_SAFE = 16;   // root moves remembered as not refuted
+	static const int MAX_VCT_DEF_REFUTE = 3;  // root moves struck off in one iteration
 
 	// ���������������پ���
 	static const int CONTINUES_NEIGHBOR = 2;       // ���ŷ�(ͬ��)������
@@ -1306,6 +1334,10 @@ private:
 	long vctDeadline;      // wall clock the current threat search must stop at
 	bool vctAborted;       // a budget ran out, so "no win" proves nothing
 	Pos vctBestMove;       // winning attack found by the root threat search
+	long vctDefReserve;    // ms of this move still open to the opponent's search
+	Pos vctDefSafe[MAX_VCT_DEF_SAFE];   // root moves already probed, not refuted
+	int vctDefSafeN;
+	int vctDefDepthHint;   // depth the last refutation needed, to start the next at
 	int BestMoveChangeCount;
 
 	// ����ͳ�Ʊ���
@@ -1345,6 +1377,8 @@ private:
 	int genMoves_VCT(Move * out, int maxOut);
 	int vctFivePoints(Piece piece, Pos * out, int maxOut);
 	Pos contestVCTRoot(long budgetMs, long nodeBudget);
+	void contestVCTDefendArm(long budgetMs);
+	bool contestVCTDefendMove(Pos p);
 
 	/////////////////////////////////////////////////////////////
 
@@ -3476,6 +3510,8 @@ Pos AI::turnMove() {
 		}
 	}
 
+	contestVCTDefendArm(VCT_DEF_BUDGET_MS);
+
 	best = fullSearch();
 	if (!board->isEmpty(best) || !contestLegalMove(*board, best, SELF))
 		best = legal;
@@ -3517,6 +3553,26 @@ Pos AI::fullSearch() {
 		else if (move.value == -INF)  // ���ʱ��֪����һ����������ֵ������һ���Ĵ���
 			move.value = bestMove.value; 
 		bestMove = move;
+
+		// Before settling on it, ask their threat search about it.  A move they
+		// have a proved win against is struck off (isLose, which alphabeta_root
+		// already reads) and the iteration run again, which is cheap: the hash
+		// table is already full of this depth.  The first iterations are skipped,
+		// their answer changes too often to be worth the reserve, and the reserve
+		// itself bounds all of this to a fixed slice of the move.
+		if (searchDepth >= VCT_DEF_FROM_DEPTH && !terminateAI
+			&& bestMove.value < WIN_MIN && bestMove.value > -WIN_MIN) {
+			for (int tries = 0; tries < MAX_VCT_DEF_REFUTE; tries++) {
+				if (!contestVCTDefendMove(bestMove.pos)) break;
+				isLose(bestMove.pos) = true;
+				Move alt = alphabeta_root(searchDepth, -INF, INF);
+				if (!board->isEmpty(alt.pos)) break;
+				if (alt.value == -INF) alt.value = bestMove.value;
+				bestMove = alt;
+				if (terminateAI) break;
+			}
+		}
+
 		if (board->isEmpty(bestMove.pos) && contestLegalMove(*board, bestMove.pos, SELF))
 			contestPublish(CoordX(bestMove.pos), CoordY(bestMove.pos));
 
@@ -3606,10 +3662,14 @@ Move AI::alphabeta_root(int depth, int alpha, int beta) {
 	TTEntry * tte;	// �����û���
 #ifdef Hash_Probe
 	if (hashTable->probe(board->getZobristKey(), tte)) {
-		if (tte->isValid(depth, alpha, beta, ply))
+		best.pos = tte->bestPos();
+		// A root move struck off since this entry was stored must not come back
+		// out of the hash table: the entry answers a question about a move list
+		// this one is no longer on.  Without this the search hands the same
+		// refuted move back for as long as the entry lives.
+		if (tte->isValid(depth, alpha, beta, ply)
+			&& !(board->isEmpty(best.pos) && isLose(best.pos)))
 			return tte->bestMove(ply);
-		else
-			best.pos = tte->bestPos();
 	}
 #endif
 
@@ -4432,6 +4492,93 @@ Pos AI::contestVCTRoot(long budgetMs, long nodeBudget) {
 		if (vctAborted || terminateAI || timeUsed() > vctDeadline) break;
 	}
 	return NullPos;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// The same threat search, run from the other side of the board.
+//
+// quickVCTSearch always attacks with the side to move, so playing the move the
+// search has settled on and then calling it turns it into the opponent's threat
+// search: "after this move of mine, do they have a forced win?"  The answer is
+// used the only two ways it can be:
+//
+//   * as a refutation -- a move they win against is struck off the root list
+//     (isLose(), which alphabeta_root already reads) and the iteration is run
+//     again, so the search picks something else however much it liked it;
+//   * as a correction to the score -- a position they have a proved win from is
+//     not worth the +9 the evaluation gave it, and striking the move takes that
+//     score out of the root value with it.
+//
+// The move asked about is the one the search itself chose, not the head of the
+// static move order.  In the position this was built for, the static order puts
+// the losing move eleventh while the search picks it from depth three on, so
+// scanning the static order would need eleven probes where this needs one.
+//
+// A proved win here is a proof in the same sense the attacking search's is: the
+// defender, which is us, is given every reply the lemmas leave open.  An aborted
+// search proves nothing and answers "not refuted", so a budget that runs out can
+// only ever cost a detection, never invent one.
+///////////////////////////////////////////////////////////////////////////////
+
+// Opens the reserve for this move, or leaves it shut when there is nothing to be
+// refuted by: without a four or an open three of theirs on the board there is no
+// threat sequence to find, and that is the common case.
+void AI::contestVCTDefendArm(long budgetMs) {
+	const Piece oppo = OPPO;
+	vctDefSafeN = 0;
+	vctDefReserve = 0;
+	vctDefDepthHint = 2;
+	if (budgetMs <= 0 || VCT_DEF_MAX_DEPTH <= 0) return;
+	if (p4Count[oppo][A_FIVE] == 0 && p4Count[oppo][B_FLEX4] == 0
+		&& p4Count[oppo][C_BLOCK4_FLEX3] == 0 && p4Count[oppo][D_BLOCK4_PLUS] == 0
+		&& p4Count[oppo][E_BLOCK4] == 0 && p4Count[oppo][F_FLEX3_2X] == 0
+		&& p4Count[oppo][G_FLEX3_PLUS] == 0 && p4Count[oppo][H_FLEX3] == 0)
+		return;
+	vctDefReserve = budgetMs;
+}
+
+// True when the opponent has a proved threat win after we play p.  Every probe
+// of the move draws on the one reserve, so all of this costs a bounded slice of
+// the move however many times it is asked, and each probe is capped by
+// timeForTurnMax() as well, which is the same wall the main search stops at.
+bool AI::contestVCTDefendMove(Pos p) {
+	if (vctDefReserve <= 0 || terminateAI) return false;
+	if (!board->isEmpty(p) || !contestLegalMove(*board, p, SELF)) return false;
+	if (cell(p).pattern4[SELF] == A_FIVE) return false;   // that one ends the game
+	for (int i = 0; i < vctDefSafeN; i++)
+		if (vctDefSafe[i] == p) return false;
+
+	long start = timeUsed();
+	vctDeadline = MIN(start + vctDefReserve, timeForTurnMax());
+	vctNodeBudget = VCT_DEF_NODE_BUDGET;
+	vctAborted = false;
+
+	makeMove<VC>(p);
+	int value = 0;
+	// Iterative deepening, two plies at a time and starting where the last
+	// refutation of this move was found: sibling root moves lose to much the same
+	// threat sequence, so the depth that worked once is the depth to try first.
+	// A search at depth d finds every win a shallower one would, so starting high
+	// can only cost time, never an answer.
+	int depth = vctDefDepthHint;
+	for (; depth <= VCT_DEF_MAX_DEPTH; depth += 2) {
+		value = quickVCTSearch(depth, false);
+		if (value >= WIN_MIN) break;
+		if (vctAborted || terminateAI || timeUsed() > vctDeadline) break;
+	}
+	undoMove<VC>();
+
+	vctDefReserve -= timeUsed() - start;
+	bool refuted = value >= WIN_MIN;
+	if (refuted) vctDefDepthHint = MAX(2, depth - 2);
+	if (!refuted) {
+		// Do not pay for the same answer again at the next depth.
+		if (vctDefSafeN < MAX_VCT_DEF_SAFE) vctDefSafe[vctDefSafeN++] = p;
+	} else if (contestStats) {
+		std::fprintf(stderr, "vctdef refuted=%d,%d ms=%ld left=%ld\n",
+			int(CoordX(p)), int(CoordY(p)), timeUsed(), vctDefReserve);
+	}
+	return refuted;
 }
 
 WinState AI::genMove_Root(MoveList & moveList) {
