@@ -1,0 +1,19 @@
+# Build outputs and local executables
+*.exe
+*.out
+bin
+bot
+final-check
+rapfi2018
+
+# Local runtime/test state
+__pycache__/
+.playwright/
+.playwright-cli/
+players/*/engine.exe
+players/
+
+# Downloaded upstream repositories keep their own Git metadata and are not
+# copied into this snapshot; src.cpp is the self-contained submission source.
+upstream-rapfi/
+upstream-rapfi2018/

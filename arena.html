@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Local BetaGomoku Arena</title>
+<style>
+body{font:14px system-ui,sans-serif;max-width:1100px;margin:24px auto;padding:0 18px;color:#222}
+button,select{font:14px system-ui;padding:6px 10px;margin:3px}#board{display:grid;grid-template-columns:repeat(15,24px);gap:1px;background:#8a6a3d;padding:7px;width:max-content;margin-top:12px}
+.cell{width:24px;height:24px;background:#dfba78;display:grid;place-items:center;font-size:18px}.black{color:#111}.white{color:#fff;text-shadow:0 0 2px #111}
+#log{white-space:pre-wrap;background:#f4f4f4;padding:10px;min-height:130px;max-height:430px;overflow:auto}.error{color:#a00}.ok{color:#073}
+</style>
+<h1>Local BetaGomoku Arena</h1>
+<p>本地复刻评测：GCC C++17、15×15、单步 1 秒、黑棋长连/四四禁手、恰好五连获胜。</p>
+<section>
+  <label>Player0（黑） <select id="p0"></select></label>
+  <label>Player1（白） <select id="p1"></select></label>
+  <button id="start">Start</button>
+  <button id="refresh">Refresh engines</button>
+</section>
+<section>
+  <input id="src" type="file" accept=".cpp"><button id="submit">Submit current src.cpp</button>
+  <span id="compile"></span>
+</section>
+<div id="board"></div><h3 id="result"></h3><pre id="log"></pre>
+<script>
+const p0=document.querySelector('#p0'),p1=document.querySelector('#p1'),log=document.querySelector('#log'),result=document.querySelector('#result');
+function draw(moves=[]){const b=Array.from({length:15},()=>Array(15).fill(-1));for(const m of moves)if(m.move)b[m.move[0]][m.move[1]]=m.side;document.querySelector('#board').innerHTML=b.flatMap((row,r)=>row.map((v,c)=>`<div class="cell ${v===0?'black':v===1?'white':''}">${v===0?'●':v===1?'○':''}</div>`)).join('')}
+async function refresh(){const x=await fetch('/api/players').then(r=>r.json());p0.innerHTML=p1.innerHTML=x.players.map(e=>`<option value="${e.uid}">${e.uid}</option>`).join('');if(x.players.length>1)p1.selectedIndex=1;}
+document.querySelector('#refresh').onclick=refresh;
+document.querySelector('#submit').onclick=async()=>{const f=document.querySelector('#src').files[0];if(!f)return;const d=new FormData();d.append('src',f);const x=await fetch('/api/submit',{method:'POST',body:d}).then(r=>r.json());document.querySelector('#compile').textContent=x.compile?.success?'Submission Success':(x.error||x.compile?.diagnose||'failed');await refresh()};
+document.querySelector('#start').onclick=async()=>{log.textContent='Running...\n';result.textContent='';draw();const x=await fetch('/api/game',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({p0:p0.value,p1:p1.value})}).then(r=>r.json());draw(x.moves);result.textContent=x.winner<0?'Draw':`Player${x.winner} (${x.moves.find(m=>m.side===x.winner)?.uid||''}) won — ${x.reason}`;log.textContent=x.moves.map(m=>`${String(m.ply).padStart(3)} ${m.uid} ${m.move?m.move.join(' '):m.error||''} ${m.time_ms??''} ms`).join('\n')};
+draw();refresh();
+</script>
