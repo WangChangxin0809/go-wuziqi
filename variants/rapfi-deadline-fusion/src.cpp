@@ -117,7 +117,12 @@ inline auto _abs(const T a) {
 #define MIN(a,b) _min(a,b)
 #define ABS(a) _abs(a)
 
-static std::mt19937_64 rapfiRandom(static_cast<unsigned long long>(time(nullptr)));
+// Seeded by the clock upstream, which in a per-move process means the same
+// position answers differently from one second to the next: the opening
+// database picks a random stored reply and the second move is a random
+// neighbour.  A fixed seed makes a game reproducible, which is what lets a
+// line be studied offline and then replayed move for move.
+static std::mt19937_64 rapfiRandom(0x9E3779B97F4A7C15ull);
 
 inline void toupper(string & str) {
 	for (size_t i = 0; i < str.size(); i++) {
@@ -468,6 +473,8 @@ static unsigned long long contestBookHash(const char * plane, int length) {
 // exists so the book generator can ask for the second and third best reply in a
 // position instead of only the principal variation.
 static std::vector<int> contestRootExclude;   // row * 15 + col
+static int contestMaxDepth = 0;               // 0 = no cap
+static bool contestStats = false;
 
 // Reads the two analysis-only environment variables.  Absent variables leave the
 // contest defaults untouched.
@@ -479,6 +486,13 @@ static void contestReadEnv() {
 			WATCHDOG_DEADLINE_MS = ms + WATCHDOG_MARGIN_MS;
 		}
 	}
+	// A depth cap makes a measurement independent of machine load: the same search
+	// is run either way, so only the wall time differs between two builds.
+	if (const char * depth = std::getenv("GOMOKU_MAX_DEPTH")) {
+		int d = std::atoi(depth);
+		if (d > 0) contestMaxDepth = d;
+	}
+	if (std::getenv("GOMOKU_STATS")) contestStats = true;
 	if (const char * excluded = std::getenv("GOMOKU_EXCLUDE")) {
 		int row = -1, col = -1;
 		const char * cursor = excluded;
@@ -3248,21 +3262,42 @@ static Pos contestBookMove(const Board & board) {
 	return board.isEmpty(move) ? move : NullPos;
 }
 
+// The incremental update already stamps FORBID onto every forbidden black point
+// and keeps it current, so inside move generation the ban is a field read rather
+// than a rescan of the four directions.  turnMove and the root keep calling
+// contestLegalMove directly: that happens once per move and doubles as a check
+// on the cache before the answer leaves the process.
+#define CONTEST_LEGAL_CACHED(p, side) ((side) != Black || cell(p).pattern4[Black] != FORBID)
+
 Pos AI::turnMove() {
 	startTime = 0;
 	terminateAI = false;
+
+	// Our own generated book comes first: its entries are the moves a search
+	// with seconds of thinking time played, which is depth this process cannot
+	// reach inside the contest's one second.  It has to be consulted before the
+	// early returns below, or the second move never reaches it: with one stone
+	// on the board Rapfi answers with a random neighbour and leaves.
+	Pos bookMove = contestBookMove(*board);
+	// GOMOKU_EXCLUDE has to reach the book as well.  Without this the analysis
+	// tools ask for the second choice in a position, get the book's first choice
+	// back, and silently study the line they were trying to leave.
+	if (bookMove != NullPos && contestLegalMove(*board, bookMove, SELF)
+		&& std::find(contestRootExclude.begin(), contestRootExclude.end(),
+			int(CoordX(bookMove)) * 15 + int(CoordY(bookMove))) == contestRootExclude.end())
+		return bookMove;
 
 	if (board->getMoveCount() == 0)
 		return POS(board->centerPos(), board->centerPos());
 	else if (board->getMoveCount() == 1) {
 		Pos p = board->getLastMove();
 		if (!board->isNearBoard(p, 5)) {
-			Pos b;
-			std::uniform_int_distribution<> dis(-1, 1);
-			do {
-				b = POS((CoordX(p)) + dis(rapfiRandom), CoordY(p) + dis(rapfiRandom));
-			} while (!board->isEmpty(b));
-			return b;
+			// Rapfi answered a lone central stone with a random neighbour, on the
+			// freestyle reasoning that they are all much the same.  Under this
+			// contest's bans they are not, and the shortcut also returned before
+			// the book and before GOMOKU_EXCLUDE, so the second move could neither
+			// be looked up nor enumerated.  Search it like any other position.
+			expendCand(p, 3, 5);
 		} else if (board->isNearBoard(p, 1)) {
 			expendCand(p, 3, 5);
 		} else if (board->isNearBoard(p, 2)) {
@@ -3273,17 +3308,14 @@ Pos AI::turnMove() {
 
 	Pos best;
 
-	// Our own generated book comes first: its entries are the moves a search
-	// with seconds of thinking time played, which is depth this process cannot
-	// reach inside the contest's one second.
-	Pos bookMove = contestBookMove(*board);
-	if (bookMove != NullPos && contestLegalMove(*board, bookMove, SELF))
-		return bookMove;
-
 #ifndef VERSION_YIXIN_BOARD
     if (useOpeningBook) {
 		best = databaseMove();
-		if (board->isEmpty(best))
+		// Rapfi's own move database is a second book and needs the same
+		// exclusion, or the analysis tools cannot get past it either.
+		if (board->isEmpty(best)
+			&& std::find(contestRootExclude.begin(), contestRootExclude.end(),
+				int(CoordX(best)) * 15 + int(CoordY(best))) == contestRootExclude.end())
 			return best;
 	}
 #endif
@@ -3345,7 +3377,8 @@ Pos AI::fullSearch() {
 	turnTime = timeForTurn();
 
 	moveLists[0].init_GenAllMoves();
-	for (searchDepth = 2; searchDepth <= maxSearchDepth; searchDepth++) {
+	int depthLimit = contestMaxDepth > 0 ? MIN(maxSearchDepth, contestMaxDepth) : maxSearchDepth;
+	for (searchDepth = 2; searchDepth <= depthLimit; searchDepth++) {
 		lastDepthTime = getTime();
 		lastNode = node;
 		lastNodeExpended = nodeExpended;
@@ -3408,6 +3441,10 @@ Pos AI::fullSearch() {
 #else
 	MESSAGEL("���·��: " << line);
 #endif
+
+	if (contestStats)
+		std::fprintf(stderr, "depth=%d value=%d node=%d expanded=%d ms=%ld\n",
+			searchDepth - 1, bestMove.value, node, nodeExpended, timeUsed());
 
 	bool hasLose = false;
 	FOR_EVERY_POSITION_POS(p) {
@@ -3941,6 +3978,14 @@ int AI::quickVCFSearch() {
 		makeMove<VC>(attMove);
 
 		defMove = getCostPosAgainstB4(attMove, self);
+		// Same ban, inside the four sequence: if black cannot legally cover the
+		// five point the sequence has already won and must not be searched on.
+		if (oppo == Black && cell(defMove).pattern4[Black] == FORBID) {
+			undoMove<VC>();
+			best.value = WIN_MAX - ply - 1;
+			best.pos = attMove;
+			break;
+		}
 		assert(cell(defMove).pattern4[self] == A_FIVE);
 		assert(p4Count[self][A_FIVE] > 1 || defMove == findPosByPattern4(self, A_FIVE));
 
@@ -3991,6 +4036,7 @@ WinState AI::genMove_Root(MoveList & moveList) {
 	case MoveList::GenAllMoves:
 	{
 		Piece self = SELF, oppo = OPPO;
+		bool lostToBan = false;
 		if (p4Count[self][A_FIVE] > 0) {
 			moveList.addMove(findPosByPattern4(self, A_FIVE), WIN_MAX);
 			return State_Win;
@@ -3998,8 +4044,16 @@ WinState AI::genMove_Root(MoveList & moveList) {
 			moveList.addMove(findPosByPattern4(oppo, A_FIVE), -WIN_MAX + 1);
 			return State_Lose;
 		} else if (p4Count[oppo][A_FIVE] == 1) {
-			moveList.addMove(findPosByPattern4(oppo, A_FIVE), 0);
-			return State_Unknown;
+			Pos block = findPosByPattern4(oppo, A_FIVE);
+			if (CONTEST_LEGAL_CACHED(block, self)) {
+				moveList.addMove(block, 0);
+				return State_Unknown;
+			}
+			// The one square that stops the five is banned for us.  The game is
+			// lost, but the answer still has to be a move we are allowed to play.
+			lostToBan = true;
+			genMoves(moveList);
+			if (moveList.moveCount() == 0) moveList.addMove(block, 0);
 		} else {
 			if (p4Count[self][B_FLEX4] > 0) {
 				moveList.addMove(findPosByPattern4(self, B_FLEX4), WIN_MAX - 2);
@@ -4021,7 +4075,7 @@ WinState AI::genMove_Root(MoveList & moveList) {
 		assert(moveList.moveCount() > 0);
 		sort(moveList.begin(), moveList.end(), std::greater<Move>());
 		moveList.phase = MoveList::AllMoves;
-		return State_Unknown;
+		return lostToBan ? State_Lose : State_Unknown;
 	}
 	default: 
 		assert(false);
@@ -4064,12 +4118,6 @@ bool AI::moveNext(MoveList & moveList, Pos & pos) {
 }
 
 // ����ȫ���ŷ�
-// The incremental update already stamps FORBID onto every forbidden black point
-// and keeps it current, so inside move generation the ban is a field read rather
-// than a rescan of the four directions.  turnMove and the root keep calling
-// contestLegalMove directly: that happens once per move and doubles as a check
-// on the cache before the answer leaves the process.
-#define CONTEST_LEGAL_CACHED(p, side) ((side) != Black || cell(p).pattern4[Black] != FORBID)
 
 void AI::genMoves(MoveList & moveList) {
 	Piece self = SELF;
@@ -4158,8 +4206,29 @@ int AI::quickWinCheck() {
 
 	if (p4Count[self][A_FIVE] >= 1) return WIN_MAX - ply;
 	if (p4Count[oppo][A_FIVE] >= 2) return -WIN_MAX + ply + 1;
-	if (p4Count[oppo][A_FIVE] == 1) return 0;
-	if (p4Count[self][B_FLEX4] >= 1) return WIN_MAX - ply - 2;
+	if (p4Count[oppo][A_FIVE] == 1) {
+		// A four leaves exactly one square that stops the five, and for black that
+		// square can itself be a four-four or an overline.  A block black is not
+		// allowed to play is a won four for white, so the search may steer into it
+		// rather than assume every four can be answered.  The scan only runs when
+		// black is to move and some ban exists, which keeps it off the hot path.
+		if (self == Black && p4Count[Black][FORBID] > 0
+			&& cell(findPosByPattern4(oppo, A_FIVE)).pattern4[Black] == FORBID)
+			return -WIN_MAX + ply + 1;
+		return 0;
+	}
+	if (p4Count[self][B_FLEX4] >= 1) {
+		// An open four wins because both of its five points cannot be covered at
+		// once; if black's are banned there is nothing to cover.  Verify by playing
+		// it and counting the five points that survive the ban.
+		bool unstoppable = true;
+		if (self == Black && p4Count[Black][FORBID] > 0) {
+			makeMove<VC>(findPosByPattern4(self, B_FLEX4));
+			unstoppable = p4Count[Black][A_FIVE] >= 2;
+			undoMove<VC>();
+		}
+		if (unstoppable) return WIN_MAX - ply - 2;
+	}
 
 	int self_C_count = p4Count[self][C_BLOCK4_FLEX3];
 	if (self_C_count >= 1) {

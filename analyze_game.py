@@ -10,7 +10,6 @@ rather have played given more time.
 from __future__ import annotations
 
 import argparse
-import io
 import json
 import re
 import subprocess
@@ -22,39 +21,31 @@ from gomoku_match import compile_source
 
 ROOT = Path(__file__).resolve().parent
 SIZE = 15
-# The root value lives in a local of fullSearch, so the analysis build copies it
-# into a global on the way out.  Only this scratch build prints it; src.cpp is
-# untouched and still writes nothing but the move.
-PATCH_FROM = "\treturn bestMove.pos;"
-PATCH_TO = ("\tstd::fprintf(stderr, \"value=%d depth=%d\\n\", bestMove.value, searchDepth);\n"
-            "\treturn bestMove.pos;")
+STATS = re.compile(r"depth=(-?\d+) value=(-?\d+) node=(\d+) expanded=(\d+) ms=(\d+)")
 
 
 def analysis_binary() -> Path:
-    source = io.open(ROOT / "src.cpp", encoding="latin-1").read()
-    if source.count(PATCH_FROM) != 1:
-        raise RuntimeError("fullSearch return point moved; update PATCH_FROM")
-    patched = ROOT / ".build-book" / "analysis.cpp"
-    patched.parent.mkdir(exist_ok=True)
-    io.open(patched, "w", encoding="latin-1").write(source.replace(PATCH_FROM, PATCH_TO, 1))
-    return compile_source(patched)
+    """GOMOKU_STATS makes the engine itself report the root search, so the
+    analysis runs the same binary the games run."""
+    return compile_source(ROOT / "src.cpp")
 
 
 def ask(binary: Path, board, side, budget_ms):
     import os
     text = f"{side}\n" + "\n".join(" ".join(str(v) for v in row) for row in board) + "\n"
     proc = subprocess.run([str(binary)], input=text, capture_output=True, text=True,
-                          env=dict(os.environ, GOMOKU_DEADLINE_MS=str(budget_ms)), timeout=120)
+                          env=dict(os.environ, GOMOKU_DEADLINE_MS=str(budget_ms),
+                                   GOMOKU_STATS="1"), timeout=120)
     move = tuple(int(v) for v in proc.stdout.split()[:2])
-    found = re.findall(r"value=(-?\d+) depth=(\d+)", proc.stderr)
+    found = STATS.findall(proc.stderr)
     if not found:
-        return move, None, None          # answered from the opening book, no search
-    value, depth = int(found[-1][0]), int(found[-1][1])
-    # fullSearch leaves bestMove.value untouched when it bails out of a hopeless
-    # position, so anything past the mate range is a sentinel, not a score.
-    if abs(value) > 30000:
-        value = -30000 if value < 0 else 30000
-    return move, value, depth
+        return move, None, None, False   # answered from the opening book, no search
+    depth, value, node, expanded, _ = (int(v) for v in found[-1])
+    # With one legal reply the root returns a static evaluation instead of a
+    # search result, and that number is not on the mate scale.  Reading it as a
+    # verdict is how a forced block once looked like a resignation.
+    forced = expanded == 0 or node <= 1
+    return move, value, depth, forced
 
 
 def parse_moves(text: str) -> list[tuple[int, int]]:
@@ -92,8 +83,8 @@ def main() -> int:
         if side != args.side:
             board[r][c] = side
             continue
-        move, value, depth = ask(binary, board, side, args.budget_ms)
-        long_move, long_value, _ = ask(binary, board, side, args.long_ms)
+        move, value, depth, forced = ask(binary, board, side, args.budget_ms)
+        long_move, long_value, _, _ = ask(binary, board, side, args.long_ms)
         note = []
         if move != (r, c):
             note.append(f"实战走了 {r},{c}")
@@ -102,6 +93,8 @@ def main() -> int:
         if value is None:
             shown, note_extra = "书", "开局库直出"
             note.insert(0, note_extra)
+        elif forced:
+            shown = "唯一应手"
         elif value <= -29000:
             shown = "必败"
             note.append("引擎已判负")

@@ -24,3 +24,6 @@ upstream-rapfi-release/
 
 # Opening book build cache
 .build-book/
+
+# 对手应手缓存：由 hunt.py 边跑边写，体积会持续增长
+cache-*.json
