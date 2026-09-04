@@ -18,6 +18,8 @@
 - `round7-book.json`：130 条开局库在 12 组开局下的 24 局回归，12:12，无退化。
 - `round8-killer-sweep-{4,8,16}.json`：Killer moves 三个加成的 58 局对照，全部 50-52%，方向作废。
 - `round9-forbidden-fix.json`：四四禁手判定对齐网页裁判后的 58 局回归，30:27:1。
+- `round10-overline-fix.json`：长连不计五连修复后的 58 局回归，29:28:1。
+- `round11-budget-half.json`、`round11-budget-third.json`：棋力对预算的敏感度，58% / 67%。
 
 JSON 保留每一步的选手、坐标、墙钟耗时、终局原因和远端状态，方便后续脚本重新统计，
 不只依赖 README 中的结论。
