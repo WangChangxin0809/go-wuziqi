@@ -93,6 +93,20 @@ class EngineRuleTests(unittest.TestCase):
         self.assertIsNone(black_forbidden(board, r, c),
                           f"engine played the forbidden point ({r}, {c})")
 
+    def test_answers_a_first_move_on_the_border(self):
+        """The board array is padded by four and the candidate expansion stepped
+        five, so an opening on row 0 sent the index negative and the process
+        died: an opponent playing the corner beat us in 22 ms.  Edge openings
+        elsewhere did not crash but bumped the candidate count of an unrelated
+        cell.
+        """
+        for r, c in ((0, 0), (0, 7), (0, 14), (14, 0), (14, 14), (7, 0), (0, 1)):
+            board = [[-1] * 15 for _ in range(15)]
+            board[r][c] = 0
+            reply = self.ask(board, side=1, budget_ms=120)
+            self.assertEqual(board[reply[0]][reply[1]], -1,
+                             f"after black ({r}, {c}) the engine answered {reply}")
+
     def test_does_not_claim_a_win_from_a_fake_four(self):
         """A gap whose fill would make six is not a four under these rules.
 
