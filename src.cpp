@@ -791,6 +791,10 @@ public:
 	inline Pos getLastMove() const;
 
 	inline U64 getZobristKey() const { return zobristKey; }
+	// The key the position would have if the side to move played here.
+	inline U64 getZobristKeyAfter(Pos pos) const {
+		return zobristKey ^ zobrist[playerToMove][pos];
+	}
 	inline UInt8 size() const { return boardSize; }
 	inline UInt8 centerPos() const { return center; }
 	inline int startPos() const { return boardStartPos; }
@@ -845,55 +849,56 @@ inline void Board::switchSide() {
 // deduplicated by its exact set of four stones, so one open four is not
 // mistakenly counted twice merely because it has two winning endpoints.
 static bool contestForbiddenBlack(const Board &board, Pos move) {
-	auto stone = [&](Pos p, Pos extra = NullPos) {
-		return p == move || p == extra || board.get(p) == Black;
-	};
-	auto run = [&](Pos center, int dir, Pos extra = NullPos) {
-		int n = 1;
-		for (int sign : {-1, 1})
-			for (int k = 1; ; ++k) {
-				Pos p = Pos(int(center) + sign * k * D[dir]);
-				if (!board.isInBoard(p) || !stone(p, extra)) break;
-				++n;
-			}
-		return n;
-	};
-	for (int d = 0; d < 4; ++d)
-		if (run(move, d) > 5) return true;
-	// A move that completes an exact five is NOT exempt from the four-four ban.
-	// The website checks the ban before it checks for a win (judge order in
-	// arena_server.play_game and gomoku_match, and SITE_API.md), so a black
-	// point that makes five in one direction while forming two fours in others
-	// is an immediate loss, not a victory.  Treating it as a win made the search
-	// actively seek out that exact losing move.
-
-	U64 seen[40] = {};
-	int seenCount = 0;
+	// Everything this rule can see lies within five points of `move`: an overline
+	// is settled by at most five stones to either side, and a four is a
+	// five-window through `move` plus the one point just outside the run it would
+	// complete.  So each direction becomes two eleven-bit masks over
+	// move-5..move+5, `black` (the move counts as black) and `blocked` (white or
+	// off the board).  Everything past the first blocker is marked blocked, which
+	// is exact: a window or run that reaches past a blocker contains it and is
+	// rejected either way.
+	int foundDir = -1;
+	unsigned foundMask = 0;
 	for (int d = 0; d < 4; ++d) {
-		for (int start = -4; start <= 0; ++start) {
-			int stones = 0, empties = 0;
-			Pos gap = NullPos;
-			U64 signature = U64(d + 1) << 40;
-			bool blocked = false;
-			for (int k = 0; k < 5; ++k) {
-				Pos p = Pos(int(move) + (start + k) * D[d]);
-				if (!board.isInBoard(p) || board.get(p) == White) {
-					blocked = true; break;
-				}
-				if (stone(p)) {
-					signature |= U64(p) << (10 * stones++);
-				} else {
-					++empties; gap = p;
-				}
+		unsigned black = 1u << 5, blocked = 0;
+		const int step = D[d];
+		for (int sign = -1; sign <= 1; sign += 2) {
+			int q = int(move);
+			for (int k = 1; k <= 5; ++k) {
+				q += sign * step;
+				Piece piece = board.isInBoard(Pos(q)) ? board.get(Pos(q)) : Wrong;
+				if (piece == Black) { black |= 1u << (5 + sign * k); continue; }
+				if (piece == Empty) continue;
+				blocked |= sign < 0 ? ((1u << (6 - k)) - 1)
+				                    : (0x7FFu & ~((1u << (5 + k)) - 1));
+				break;
 			}
-			if (blocked || stones != 4 || empties != 1 || run(gap, d, gap) != 5)
-				continue;
-			bool duplicate = false;
-			for (int i = 0; i < seenCount; ++i) duplicate |= seen[i] == signature;
-			if (!duplicate) seen[seenCount++] = signature;
+		}
+
+		// The long ban: six black in a row through the move.  Bit i of `six` is
+		// set when bits i..i+5 are all black, and such a run holds bit 5 exactly
+		// when i is 5 or less.
+		unsigned six = black & (black >> 1) & (black >> 2)
+		             & (black >> 3) & (black >> 4) & (black >> 5);
+		if (six & 0x3F) return true;
+
+		// The four-four ban.  A four is a five-window through the move holding
+		// four stones and one gap whose fill makes a run of exactly five, so
+		// neither point beside the window may be black.  A four is identified by
+		// its four stones, which is why one open four -- two windows over the same
+		// stones -- counts once and is not a four-four.
+		for (int base = 1; base <= 5; ++base) {
+			if ((blocked >> base) & 31) continue;
+			unsigned gaps = 31u & ~(black >> base);
+			if (gaps == 0 || (gaps & (gaps - 1)) != 0) continue;
+			if (((black >> (base - 1)) | (black >> (base + 5))) & 1) continue;
+			unsigned mask = black & (31u << base);
+			if (foundDir >= 0 && (foundDir != d || foundMask != mask)) return true;
+			foundDir = d;
+			foundMask = mask;
 		}
 	}
-	return seenCount >= 2;
+	return false;
 }
 
 // True when placing `side` at `move` completes a run of exactly five somewhere.
@@ -1097,6 +1102,9 @@ protected:
 	// object still fits comfortably on the stack.
 	static const int UNDO_LEVELS = 256;
 	static Cell undoCells[UNDO_LEVELS][UNDO_SLOTS];
+	// The point each saved cell came from, so undoMove does not have to work out
+	// which slots are live by walking the board again.
+	static Pos undoPos[UNDO_LEVELS][UNDO_SLOTS];
 	// The two running aggregates that are not stored in the cells.  Copying all
 	// 104 bytes of them costs thirteen 8-byte moves, against the 4 p4Count
 	// read-modify-writes plus one eval read-modify-write per touched cell that
@@ -1105,6 +1113,7 @@ protected:
 	struct Aggregates {
 		int eval[2];
 		int p4Count[2][12];
+		int n;   // how many slots this level filled
 	};
 	static Aggregates undoAggregates[UNDO_LEVELS];
 	int undoLevel;
@@ -1112,6 +1121,36 @@ protected:
 	Board * board;
 	Cell cells[Board::MaxBoardSizeSqr];
 	UInt8 cands[Board::MaxBoardSizeSqr];
+	// The candidate neighbourhood is 32 points around the move, and every make
+	// and every undo walked it one byte at a time.  Laid out on the padded board
+	// those 32 points sit in seven groups of at most seven consecutive bytes, so
+	// seven eight-byte read-modify-writes cover the lot.  D = {1, 31, 32, 33} on
+	// a 32-wide board, so the groups start at pos-99, pos-66, pos-34, pos-3,
+	// pos+30, pos+62 and pos+93.  A counter never exceeds 32, so adding one to
+	// each byte lane of a word can never carry into its neighbour, and a
+	// decrement only ever touches lanes an increment put there, so it can never
+	// borrow.
+	static const int CAND_GROUPS = 7;
+	static const int CAND_OFF[CAND_GROUPS];
+	static const U64 CAND_LANES[CAND_GROUPS];
+
+	template <bool Add>
+	inline void updateCandCount(Pos pos) {
+#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+		for (int g = 0; g < CAND_GROUPS; g++) {
+			U64 w;
+			UInt8 * at = cands + int(pos) + CAND_OFF[g];
+			memcpy(&w, at, sizeof(w));
+			w = Add ? w + CAND_LANES[g] : w - CAND_LANES[g];
+			memcpy(at, &w, sizeof(w));
+		}
+#else
+		for (int k = 0; k < 32; k++) {
+			if (Add) cands[pos + RANGE_LARGE[k]]++;
+			else     cands[pos + RANGE_LARGE[k]]--;
+		}
+#endif
+	}
 	bool loses[Board::MaxBoardSizeSqr];
 
 	int eval[2], evalLower[2];
@@ -1154,8 +1193,8 @@ private:
 	template <MoveType MT>
 	void updateCell(Pos p, int dir, UInt8 kBlack, UInt8 kWhite, int sh, UShort keep,
 		Cell * slot);
-	template <MoveType MT> void updateLine(Pos pos, int dir, Piece self, Cell * slot);
-	template <MoveType MT> void undoLine(Pos pos, int dir, const Cell * slot);
+	template <MoveType MT> void updateLine(Pos pos, int dir, Piece self,
+		Cell * & slot, Pos * & pslot);
 	void refreshPattern4(Pos p);
 public:
 	
@@ -1183,35 +1222,42 @@ enum NodeType { NonPV = 0, PV = 1 };
 enum GenLevel { InNone, InLine, InArea, InFullBoard };
 
 struct MoveList {
-	static const int MAX_MOVES = 128;
+	// A generator adds at most one move per empty point of a 15x15 board, plus a
+	// handful of forced replies at the root.
+	static const int MAX_MOVES = 256;
 	enum Phase : UInt8 { HashMove, GenAllMoves, AllMoves };
 
-	typedef vector<Move>::iterator MoveIterator;
+	typedef Move * MoveIterator;
 
-	vector<Move> moves;
+	Move moves[MAX_MOVES];
+	size_t cnt;
 	Pos hashMove;
 	Phase phase;
 	size_t n;
 
 	MoveList() {
-		moves.reserve(MAX_MOVES);
 		init();
 	}
 	inline void init(const Pos & hashMove_ = NullPos) {
-		moves.clear();
+		cnt = 0;
 		phase = HashMove;
 		hashMove = hashMove_;
 		n = 0;
 	}
 	inline void init_GenAllMoves() {
-		moves.clear();
+		cnt = 0;
 		phase = GenAllMoves;
 		n = 0;
 	}
-	inline void addMove(Pos p, int value) { moves.emplace_back(p, value); }
-	inline size_t moveCount() { return moves.size(); }
-	inline MoveIterator begin() { return moves.begin(); }
-	inline MoveIterator end() { return moves.end(); }
+	inline void addMove(Pos p, int value) {
+		assert(cnt < MAX_MOVES);
+		moves[cnt].pos = p;
+		moves[cnt].value = value;
+		cnt++;
+	}
+	inline size_t moveCount() { return cnt; }
+	inline MoveIterator begin() { return moves; }
+	inline MoveIterator end() { return moves + cnt; }
 };
 
 struct Line {
@@ -1275,6 +1321,10 @@ private:
 
 	static const int EXTENSION_NUM_BASE = 20;  // ����Ļ�׼��,Խ������Խ��
 	float depthReductionBase = 1.f / logf((float)EXTENSION_NUM_BASE);
+	// logf of every branch count that can occur, filled with the same calls at
+	// startup so the results are the identical floats.
+	static const int LOGF_NB = 1024;
+	static float LOGF[LOGF_NB];
 
 	static const int IID_MIN_DEPTH = 8;
 	int IIDMinDepth = IID_MIN_DEPTH;
@@ -1566,6 +1616,10 @@ public:
 	inline UInt8 getGeneration() { return generation; }
 
 	bool probe(U64 key, TTEntry* & tte);
+	// Start the fetch of the cluster a later probe will read.  A hint only.
+	inline void prefetch(U64 key) const {
+		__builtin_prefetch(&hashTable[key & hashSizeMask]);
+	}
 };
 
 
@@ -2327,7 +2381,19 @@ PatternCode Evaluator::PCODE[65536];
 
 Pattern4 Evaluator::PATTERN4[3876];
 U64 Evaluator::PINFO[3876];
+const int Evaluator::CAND_OFF[Evaluator::CAND_GROUPS] =
+	{ -99, -66, -34, -3, 30, 62, 93 };
+const U64 Evaluator::CAND_LANES[Evaluator::CAND_GROUPS] = {
+	0x0001000001000001ULL, // -99, -96, -93
+	0x0000000101010101ULL, // -66 .. -62
+	0x0000000101010101ULL, // -34 .. -30
+	0x0001010100010101ULL, // -3 .. +3, skipping the move
+	0x0000000101010101ULL, // +30 .. +34
+	0x0000000101010101ULL, // +62 .. +66
+	0x0001000001000001ULL, // +93, +96, +99
+};
 Evaluator::Cell Evaluator::undoCells[Evaluator::UNDO_LEVELS][Evaluator::UNDO_SLOTS];
+Pos Evaluator::undoPos[Evaluator::UNDO_LEVELS][Evaluator::UNDO_SLOTS];
 Evaluator::Aggregates Evaluator::undoAggregates[Evaluator::UNDO_LEVELS];
 
 void Evaluator::buildPatternInfo() {
@@ -2393,37 +2459,26 @@ __attribute__((always_inline)) inline void Evaluator::updateCell(Pos p, int dir,
 }
 
 template <Evaluator::MoveType MT>
-__attribute__((always_inline)) inline void Evaluator::updateLine(Pos pos, int dir, Piece self, Cell * slot) {
+__attribute__((always_inline)) inline void Evaluator::updateLine(Pos pos, int dir, Piece self,
+		Cell * & slot, Pos * & pslot) {
 	const int sh = Cell::patShift(dir);
 	const UShort keep = UShort(~(0xF << sh));
 	const int d = D[dir];
 	const UInt8 blackMask = self == Black ? UInt8(0xFF) : UInt8(0);
 	Pos p = pos - d * 4;
-	int i = 0;
-	for (UInt8 k = 1; k < (1 << 4); k <<= 1, i++) {
-		if (board->isEmpty(p))
-			updateCell<MT>(p, dir, UInt8(k & blackMask), UInt8(k & ~blackMask), sh, keep, slot + i);
+	for (UInt8 k = 1; k < (1 << 4); k <<= 1) {
+		if (board->isEmpty(p)) {
+			*pslot++ = p;
+			updateCell<MT>(p, dir, UInt8(k & blackMask), UInt8(k & ~blackMask), sh, keep, slot++);
+		}
 		p += d;
 	}
-	for (UInt8 k = 1 << 4; k != 0; k <<= 1, i++) {
+	for (UInt8 k = 1 << 4; k != 0; k <<= 1) {
 		p += d;
-		if (board->isEmpty(p))
-			updateCell<MT>(p, dir, UInt8(k & blackMask), UInt8(k & ~blackMask), sh, keep, slot + i);
-	}
-}
-
-template <Evaluator::MoveType MT>
-__attribute__((always_inline)) inline void Evaluator::undoLine(Pos pos, int dir, const Cell * slot) {
-	const int d = D[dir];
-	Pos p = pos - d * 4;
-	int i = 0;
-	for (int j = 0; j < 4; j++, i++) {
-		if (board->isEmpty(p)) cell(p) = slot[i];
-		p += d;
-	}
-	for (int j = 0; j < 4; j++, i++) {
-		p += d;
-		if (board->isEmpty(p)) cell(p) = slot[i];
+		if (board->isEmpty(p)) {
+			*pslot++ = p;
+			updateCell<MT>(p, dir, UInt8(k & blackMask), UInt8(k & ~blackMask), sh, keep, slot++);
+		}
 	}
 }
 
@@ -2456,9 +2511,11 @@ void Evaluator::makeMove(Pos pos) {
 		ply++;
 	}
 
-	Cell * snap = undoCells[undoLevel++];
+	const int level = undoLevel++;
+	Cell * snap = undoCells[level];
+	Pos * psnap = undoPos[level];
 	for (int dir = 0; dir < 4; dir++)
-		updateLine<MT>(pos, dir, self, snap + dir * UNDO_DIR_SLOTS);
+		updateLine<MT>(pos, dir, self, snap, psnap);
 	// The original freestyle key stores four cells per side. Refresh the
 	// fifth-away endpoints explicitly so a newly-created six is not cached as
 	// an exact five.  Nothing here saw a stone change, so the pattern code and
@@ -2471,9 +2528,11 @@ void Evaluator::makeMove(Pos pos) {
 		Pos p = Pos(raw);
 		if (!board->isInBoard(p) || !board->isEmpty(p)) continue;
 		if (!cell(p).overridable) continue;
-		snap[4 * UNDO_DIR_SLOTS + i * 2 + j] = cell(p);
+		*psnap++ = p;
+		*snap++ = cell(p);
 		refreshPattern4(p);
 	}
+	agg.n = int(psnap - undoPos[level]);
 
 	Cell * c = &cell(pos);
 	if (MT == MoveType::Normal) {
@@ -2494,8 +2553,7 @@ void Evaluator::makeMove(Pos pos) {
 		cand(pos + RANGE_MIDDLE[k])++;
 #endif
 #ifdef GENERATION_LARGE
-    for (int k = 0; k < 32; k++)
-	    cand(pos + RANGE_LARGE[k])++;
+	updateCandCount<true>(pos);
 #endif
 }
 
@@ -2513,23 +2571,16 @@ void Evaluator::undoMove() {
 		board->undo();
 		ply--;
 	}
-	const Cell * snap = undoCells[--undoLevel];
-	const Aggregates & agg = undoAggregates[undoLevel];
+	const int level = --undoLevel;
+	const Cell * snap = undoCells[level];
+	const Pos * psnap = undoPos[level];
+	const Aggregates & agg = undoAggregates[level];
 	eval[0] = agg.eval[0]; eval[1] = agg.eval[1];
 	memcpy(p4Count, agg.p4Count, sizeof(p4Count));
-	// `overridable` is derived from the pattern code, which the fifth-away
-	// refresh does not change, and the direction walk cannot reach these cells
-	// (1..4 steps versus 5), so this test sees exactly what makeMove saw.
-	for (int i = 0; i < 4; ++i) for (int j = 0; j < 2; ++j) {
-		int raw = int(pos) + (j ? 5 : -5) * D[i];
-		if (raw < 0 || raw >= Board::MaxBoardSizeSqr) continue;
-		Pos p = Pos(raw);
-		if (!board->isInBoard(p) || !board->isEmpty(p)) continue;
-		if (!cell(p).overridable) continue;
-		cell(p) = snap[4 * UNDO_DIR_SLOTS + i * 2 + j];
-	}
-	for (int dir = 0; dir < 4; dir++)
-		undoLine<MT>(pos, dir, snap + dir * UNDO_DIR_SLOTS);
+	// Every cell makeMove changed is on the stack with the point it came from,
+	// so putting the position back is one copy per cell and nothing else.
+	for (int k = agg.n; --k >= 0; )
+		cells[psnap[k]] = snap[k];
 	assert(checkP4Count());
 
 #ifdef GENERATION_MIN
@@ -2541,8 +2592,7 @@ void Evaluator::undoMove() {
 		cand(pos + RANGE_MIDDLE[k])--;
 #endif
 #ifdef GENERATION_LARGE
-	for (int k = 0; k < 32; k++)
-		cand(pos + RANGE_LARGE[k])--;
+	updateCandCount<false>(pos);
 #endif
 }
 
@@ -3340,6 +3390,8 @@ bool HashTable::probe(U64 key, TTEntry* & tte) {
 #include <fstream>
 
 AI::AI(Board * board) : Evaluator(board) {
+	for (int i = 0; i < LOGF_NB; i++) LOGF[i] = logf((float)i);
+
 	hashTable = new HashTable();
 }
 
@@ -4002,6 +4054,7 @@ MoveLoops:
 	#endif
 
 		// Step 14. �³��ŷ�(Make move)
+		hashTable->prefetch(board->getZobristKeyAfter(move));
 		makeMove(move);
 
 		bool doFullDepthSearch = !PvNode || branch > 1;
@@ -4662,7 +4715,7 @@ bool AI::moveNext(MoveList & moveList, Pos & pos) {
 			}
 			assert(moveList.moveCount() > 0);
 			sort(moveList.begin(), moveList.end(), std::greater<Move>());
-			pos = moveList.moves.front().pos;
+			pos = moveList.moves[0].pos;
 		}
 		return true;
 	}
@@ -4920,6 +4973,8 @@ int AI::quickDefenceCheck() {
 	return 0;
 }
 
+float AI::LOGF[AI::LOGF_NB];
+
 float AI::getDepthReduction() {
 	Piece self = SELF, oppo = OPPO;
 
@@ -4932,15 +4987,21 @@ float AI::getDepthReduction() {
 		if (oppo_B_Count > 0) {
 			branchCount = oppo_B_Count == 1 ? 3 : oppo_B_Count * 2;
 		} else {
+			// The same points FOR_EVERY_CAND_POS would visit, but the test is a
+			// predicate to add rather than a branch to mispredict.
+			const CandArea & a = board->candArea();
 			branchCount = 0;
-			FOR_EVERY_CAND_POS(p) {
-				branchCount++;
+			for (int x = a.x0; x <= (int)a.x1; x++) {
+				Pos p = POS(UInt8(x), a.y0);
+				for (int y = a.y0; y <= (int)a.y1; y++, p++)
+					branchCount += int(board->isEmpty(p)) & int(isCand(p));
 			}
 		}
 	}
 	assert(branchCount > 0);
 
-	return logf((float)branchCount /*+ 1e-3f*/) * depthReductionBase;
+	return (branchCount < LOGF_NB ? LOGF[branchCount]
+	                              : logf((float)branchCount)) * depthReductionBase;
 }
 
 void AI::fetchPVLineInTT(Line & line, Pos firstMove, int maxDepth) {
