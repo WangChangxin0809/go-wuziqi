@@ -911,7 +911,7 @@ static inline bool contestLegalMove(const Board &board, Pos p, Piece side) {
 #define FOR_EVERY_CAND_POS(pos) \
     for (UInt8 _x = board->candArea().x0, y0 = board->candArea().y0, yl = board->candArea().y1 - y0, _y = yl; _x <= board->candArea().x1; _x++, _y = yl) \
         for (Pos pos = POS(_x, y0); _y < Board::MaxBoardSize; _y--, pos++) \
-            if (board->isEmpty(pos) && cell(pos).isCand()) \
+            if (board->isEmpty(pos) && isCand(pos)) \
 
 #define FOR_EVERY_PIECE_POS(pos) \
 	for (int i = 0; i < board->getMoveCount() ? pos = board->getHistoryMove(i), true : false; i++) \
@@ -953,8 +953,17 @@ private:
 	// for debug
 	bool checkP4Count();
 
-	static Pattern PATTERN[256][256];  // 65536 = 256 * 256 = 4 ^ 8
-	static PatternCode PCODE[16][16][16][16];  // 65536 = 16 ^ 4
+	// PATTERN2[k1][k2] packs both colours' patterns for one direction into one
+	// byte: the low nibble is the pattern of the side whose key is k1, the high
+	// nibble the pattern of the side whose key is k2.  The old table needed two
+	// lookups at unrelated addresses (PATTERN[k1][k2] and PATTERN[k2][k1]) to
+	// learn the same thing; this is the same 64 KB and half the accesses.
+	static UInt8 PATTERN2[256][256];  // 65536 = 256 * 256 = 4 ^ 8
+	// Flat, because PCODE[a][b][c][d] was already at flat index
+	// a<<12 | b<<8 | c<<4 | d, which is exactly how Cell::pat packs the four
+	// direction patterns.  The packed word is the index; nothing has to be
+	// reassembled from bytes on every cell update.
+	static PatternCode PCODE[65536];  // 65536 = 16 ^ 4
 	
 	// 3876 �Ǵ�16�ֵ���������ѡ�����ظ���4�����͵������
 	static Pattern4 PATTERN4[3876];
@@ -963,57 +972,121 @@ protected:
 	static short Score[3876];
 	static short Value[3876];
 
+	// Score[code], Value[code] and PATTERN4[code] are always wanted together and
+	// were three arrays, so every touched cell paid three address computations
+	// and three scattered loads per colour.  Packed into one 64-bit word per
+	// code they are a single load: score | value << 16 | pattern4 << 32.
+	static U64 PINFO[3876];
+	static inline short pinfoScore(U64 v) { return (short)(UShort)v; }
+	static inline short pinfoValue(U64 v) { return (short)(UShort)(v >> 16); }
+	static inline Pattern4 pinfoP4(U64 v) { return Pattern4((UInt8)(v >> 32)); }
+	static void buildPatternInfo();
+
 	struct Cell {
 		UInt8 key[4][2]; // 4������� Black Key �� White Key
-		Pattern pattern[2][4];
+		// The four direction patterns of one colour, one per nibble, most
+		// significant first: p0<<12 | p1<<8 | p2<<4 | p3.  Storing them packed
+		// instead of as Pattern pattern[2][4] means the pattern code is a single
+		// 16-bit load used directly as the PCODE index, rather than four byte
+		// loads plus three shifts and three adds per colour per touched cell.
+		UShort pat[2];
 		short score[2];
 		short eval[2];
 		Pattern4 pattern4[2];
-		// pattern4 before the contest rules downgrade it (A_FIVE -> NONE for an
-		// overline, B_FLEX4/A_FIVE -> FORBID for black).  The tables depend only
-		// on this cell's own key, so a move five points away leaves it alone and
-		// the endpoint refresh below can restore it instead of recomputing it.
-		Pattern4 rawP4[2];
-		UInt8 cand;
-		bool isLose;
+		// Non-zero when the table's own Pattern4 for this cell is one the contest
+		// rules can still override: B_FLEX4 or better for black (four-four and
+		// overline bans) or A_FIVE for white (a five that may be an overline).
+		// A cell whose stone pattern did not change can only change pattern4 if
+		// this is set, which is what lets the fifth-away refresh skip 99% of its
+		// work.  It cannot be derived from pattern4 itself, because an overridden
+		// white A_FIVE is stored as NONE and is then indistinguishable from a
+		// cell that is genuinely NONE.
+		UInt8 overridable;
+		UInt8 padding_;
+
+		static inline int patShift(int dir) { return 12 - 4 * dir; }
+		inline Pattern pattern(Piece piece, int dir) const {
+			return Pattern((pat[piece] >> patShift(dir)) & 0xF);
+		}
 
 		inline void clearPattern4() {
 			pattern4[White] = pattern4[Black] = NONE;
-			rawP4[White] = rawP4[Black] = NONE;
+			overridable = 0;
 		}
 		inline void clearEval() {
 			eval[Black] = eval[White] = 0;
 		}
-		inline void updatePattern(int i) {
-			pattern[Black][i] = PATTERN[key[i][Black]][key[i][White]];
-			pattern[White][i] = PATTERN[key[i][White]][key[i][Black]];
+		inline void updatePattern(UInt8 keyBlack, UInt8 keyWhite, int sh, UShort keep) {
+			const UInt8 both = PATTERN2[keyBlack][keyWhite];
+			pat[Black] = UShort((pat[Black] & keep) | (UShort(both & 0xF) << sh));
+			pat[White] = UShort((pat[White] & keep) | (UShort(both >> 4) << sh));
 		}
-		inline PatternCode getPatternCode(Piece piece) {
-			return PCODE[pattern[piece][0]][pattern[piece][1]][pattern[piece][2]][pattern[piece][3]];
+		inline void updatePattern(int i) {
+			updatePattern(key[i][Black], key[i][White], patShift(i),
+				UShort(~(0xF << patShift(i))));
+		}
+		inline PatternCode getPatternCode(Piece piece) const {
+			return PCODE[pat[piece]];
+		}
+		static inline UInt8 isOverridable(Pattern4 rawBlack, Pattern4 rawWhite) {
+			return UInt8(rawBlack >= B_FLEX4 || rawWhite == A_FIVE);
 		}
 		inline void updatePattern4(PatternCode codeBlack, PatternCode codeWhite) {
-			rawP4[Black] = pattern4[Black] = PATTERN4[codeBlack];
-			rawP4[White] = pattern4[White] = PATTERN4[codeWhite];
+			pattern4[Black] = pinfoP4(PINFO[codeBlack]);
+			pattern4[White] = pinfoP4(PINFO[codeWhite]);
+			overridable = isOverridable(pattern4[Black], pattern4[White]);
 		}
 		inline void updatePattern4(Piece piece) {
-			rawP4[piece] = pattern4[piece] = PATTERN4[getPatternCode(piece)];
+			pattern4[piece] = pinfoP4(PINFO[getPatternCode(piece)]);
 		}
 		inline void updateScore(PatternCode codeBlack, PatternCode codeWhite) {
-			score[Black] = Score[codeBlack];
-			score[White] = Score[codeWhite];
+			score[Black] = pinfoScore(PINFO[codeBlack]);
+			score[White] = pinfoScore(PINFO[codeWhite]);
 		}
 		inline void updateEval(PatternCode codeBlack, PatternCode codeWhite) {
-			eval[Black] = Value[codeBlack]; 
-			eval[White] = Value[codeWhite];
+			eval[Black] = pinfoValue(PINFO[codeBlack]);
+			eval[White] = pinfoValue(PINFO[codeWhite]);
 		}
 		inline int getScore(Piece player) { return (int)score[Black] + score[White] + score[player]; }
 		inline int getScore() { return (int)score[Black] + score[White]; }
 		inline int getScore_VC(Piece player) { return (int)score[player]; }
-		inline bool isCand() { return cand > 0; }
 	};
+
+	// Undo by snapshot.  undoMove used to run the whole incremental update a
+	// second time in reverse, which costs as much as making the move; instead
+	// makeMove copies each Cell it is about to change into a per-level buffer and
+	// undoMove copies them back.  The restored bytes are the bytes that were
+	// there, so the state after an undo is identical by construction rather than
+	// by the update happening to be exactly invertible.
+	//
+	// The slots are addressed positionally, with no bookkeeping: the walk visits
+	// the same cells on the way back as on the way out.  It never touches the
+	// played point itself -- only its neighbours at 1..4 and 5 steps -- so the
+	// stone that makeMove placed (and undoMove removed) cannot change any walked
+	// cell's emptiness, and `board->isEmpty(p)` answers the same both times.
+	static const int UNDO_DIR_SLOTS = 8;                   // 4 each side
+	static const int UNDO_SLOTS = 4 * UNDO_DIR_SLOTS + 8;  // + the fifth-away ends
+	// A move consumes an empty point, so make/undo can never nest deeper than the
+	// 225 points of the board.  Static rather than a member so the one Evaluator
+	// object still fits comfortably on the stack.
+	static const int UNDO_LEVELS = 256;
+	static Cell undoCells[UNDO_LEVELS][UNDO_SLOTS];
+	// The two running aggregates that are not stored in the cells.  Copying all
+	// 104 bytes of them costs thirteen 8-byte moves, against the 4 p4Count
+	// read-modify-writes plus one eval read-modify-write per touched cell that
+	// undoing them one cell at a time needs -- about ninety dependent memory
+	// operations for the twenty-odd cells a move touches.
+	struct Aggregates {
+		int eval[2];
+		int p4Count[2][12];
+	};
+	static Aggregates undoAggregates[UNDO_LEVELS];
+	int undoLevel;
 
 	Board * board;
 	Cell cells[Board::MaxBoardSizeSqr];
+	UInt8 cands[Board::MaxBoardSizeSqr];
+	bool loses[Board::MaxBoardSizeSqr];
 
 	int eval[2], evalLower[2];
 	int p4Count[2][12];
@@ -1021,6 +1094,9 @@ protected:
 
 	inline Cell & cell(Pos p) { assert(p < Board::MaxBoardSizeSqr); return cells[p]; }
 	inline Cell & cell(int x, int y) { return cell(POS(x, y)); }
+	inline UInt8 & cand(Pos p) { return cands[p]; }
+	inline bool isCand(Pos p) const { return cands[p] > 0; }
+	inline bool & isLose(Pos p) { return loses[p]; }
 
 	Pos findPosByPattern4(Piece piece, Pattern4 p4);
 	
@@ -1042,6 +1118,20 @@ public:
 
 	template <MoveType MT = Normal> void makeMove(Pos pos);
 	template <MoveType MT = Normal> void undoMove();
+
+private:
+	// The incremental update of one touched cell in one direction, and the walk
+	// over the eight cells of one direction.  Dir is a template parameter so the
+	// nibble position inside Cell::pat and the step D[Dir] are compile-time
+	// constants: as a runtime loop variable they cost a variable shift and about
+	// seven extra instructions on every one of the ~21 cells a move touches.
+	template <MoveType MT>
+	void updateCell(Pos p, int dir, UInt8 kBlack, UInt8 kWhite, int sh, UShort keep,
+		Cell * slot);
+	template <MoveType MT> void updateLine(Pos pos, int dir, Piece self, Cell * slot);
+	template <MoveType MT> void undoLine(Pos pos, int dir, const Cell * slot);
+	void refreshPattern4(Pos p);
+public:
 	
 	template <bool Make> inline void switchSide() {
 		board->switchSide();
@@ -2198,19 +2288,133 @@ void Board::expendCandArea(Pos pos, int expendWidth) {
 /* ===== Evaluator.cpp ===== */
 #include <sstream>
 #include <iomanip>
-Pattern Evaluator::PATTERN[256][256];
-PatternCode Evaluator::PCODE[16][16][16][16];
+UInt8 Evaluator::PATTERN2[256][256];
+PatternCode Evaluator::PCODE[65536];
 
 Pattern4 Evaluator::PATTERN4[3876];
+U64 Evaluator::PINFO[3876];
+Evaluator::Cell Evaluator::undoCells[Evaluator::UNDO_LEVELS][Evaluator::UNDO_SLOTS];
+Evaluator::Aggregates Evaluator::undoAggregates[Evaluator::UNDO_LEVELS];
+
+void Evaluator::buildPatternInfo() {
+	for (int i = 0; i < 3876; i++)
+		PINFO[i] = U64((UShort)Score[i])
+			| (U64((UShort)Value[i]) << 16)
+			| (U64((UInt8)PATTERN4[i]) << 32);
+}
 
 Evaluator::Evaluator(Board * board) : board(board) {
 	init();
 	newGame();
 }
 
+
+// GCC will not inline this on its own -- it is over its size limit -- and an
+// out-of-line call for each of the ~21 cells a move touches costs about 4%.
+template <Evaluator::MoveType MT>
+__attribute__((always_inline)) inline void Evaluator::updateCell(Pos p, int dir, UInt8 kBlack, UInt8 kWhite,
+		int sh, UShort keep, Cell * slot) {
+	Cell * c = &cell(p);
+	*slot = *c;
+	// Exactly one of kBlack/kWhite is the moved side's bit and the other is zero,
+	// so this writes the same two bytes the indexed form did.  Doing it through
+	// registers matters: the old `key[dir][self] |= k` was immediately followed by
+	// reloading both key bytes to index PATTERN2, and that store-to-load pair sits
+	// at the head of the dependency chain of every touched cell.
+	UInt8 keyBlack = c->key[dir][Black];
+	UInt8 keyWhite = c->key[dir][White];
+	keyBlack |= kBlack; keyWhite |= kWhite;
+	c->key[dir][Black] = keyBlack;
+	c->key[dir][White] = keyWhite;
+
+	c->updatePattern(keyBlack, keyWhite, sh, keep);
+
+	const U64 infoBlack = PINFO[c->getPatternCode(Black)];
+	const U64 infoWhite = PINFO[c->getPatternCode(White)];
+
+	c->score[Black] = pinfoScore(infoBlack);
+	c->score[White] = pinfoScore(infoWhite);
+
+	if (MT == MoveType::Normal) {
+		eval[Black] -= c->eval[Black]; eval[White] -= c->eval[White];
+		c->eval[Black] = pinfoValue(infoBlack);
+		c->eval[White] = pinfoValue(infoWhite);
+		eval[Black] += c->eval[Black]; eval[White] += c->eval[White];
+	}
+
+	p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
+	c->pattern4[Black] = pinfoP4(infoBlack);
+	c->pattern4[White] = pinfoP4(infoWhite);
+	c->overridable = Cell::isOverridable(c->pattern4[Black], c->pattern4[White]);
+	if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
+		c->pattern4[White] = NONE;
+	// Both bans need either two fours in different directions or a run of five
+	// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
+	// weaker cannot be forbidden.  This scan is the most expensive work in the
+	// incremental update and it used to run on every empty cell touched by every
+	// move; gating it on the pattern raises search throughput about 4x.
+	if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
+		c->pattern4[Black] = FORBID;
+	p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
+}
+
+template <Evaluator::MoveType MT>
+__attribute__((always_inline)) inline void Evaluator::updateLine(Pos pos, int dir, Piece self, Cell * slot) {
+	const int sh = Cell::patShift(dir);
+	const UShort keep = UShort(~(0xF << sh));
+	const int d = D[dir];
+	const UInt8 blackMask = self == Black ? UInt8(0xFF) : UInt8(0);
+	Pos p = pos - d * 4;
+	int i = 0;
+	for (UInt8 k = 1; k < (1 << 4); k <<= 1, i++) {
+		if (board->isEmpty(p))
+			updateCell<MT>(p, dir, UInt8(k & blackMask), UInt8(k & ~blackMask), sh, keep, slot + i);
+		p += d;
+	}
+	for (UInt8 k = 1 << 4; k != 0; k <<= 1, i++) {
+		p += d;
+		if (board->isEmpty(p))
+			updateCell<MT>(p, dir, UInt8(k & blackMask), UInt8(k & ~blackMask), sh, keep, slot + i);
+	}
+}
+
+template <Evaluator::MoveType MT>
+__attribute__((always_inline)) inline void Evaluator::undoLine(Pos pos, int dir, const Cell * slot) {
+	const int d = D[dir];
+	Pos p = pos - d * 4;
+	int i = 0;
+	for (int j = 0; j < 4; j++, i++) {
+		if (board->isEmpty(p)) cell(p) = slot[i];
+		p += d;
+	}
+	for (int j = 0; j < 4; j++, i++) {
+		p += d;
+		if (board->isEmpty(p)) cell(p) = slot[i];
+	}
+}
+
+// The original freestyle key stores four cells per side. Refresh the
+// fifth-away endpoints explicitly so a newly-created six is not cached as
+// an exact five.
+void Evaluator::refreshPattern4(Pos p) {
+	Cell * c = &cell(p);
+	p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
+	PatternCode pCodeBlack = c->getPatternCode(Black);
+	PatternCode pCodeWhite = c->getPatternCode(White);
+	c->updatePattern4(pCodeBlack, pCodeWhite);
+	if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
+		c->pattern4[White] = NONE;
+	if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
+		c->pattern4[Black] = FORBID;
+	p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
+}
+
 template <Evaluator::MoveType MT>
 void Evaluator::makeMove(Pos pos) {
 	Piece self = SELF;
+	Aggregates & agg = undoAggregates[undoLevel];
+	agg.eval[0] = eval[0]; agg.eval[1] = eval[1];
+	memcpy(agg.p4Count, p4Count, sizeof(p4Count));
 	if (MT == MoveType::MuiltVC) {
 		board->muiltMove(pos);
 	} else {
@@ -2218,107 +2422,26 @@ void Evaluator::makeMove(Pos pos) {
 		ply++;
 	}
 
-	Pos p;
-	Cell * c;
-	PatternCode pCodeBlack, pCodeWhite;
-	for (int i = 0; i < 4; i++) {
-		p = pos - D[i] * 4;
-		for (UInt8 k = 1; k < (1 << 4); k <<= 1) {
-			if (board->isEmpty(p)) {
-				c = &cell(p);
-				c->key[i][self] |= k;
-
-				c->updatePattern(i);
-				
-				pCodeBlack = c->getPatternCode(Black);
-				pCodeWhite = c->getPatternCode(White);
-
-				c->updateScore(pCodeBlack, pCodeWhite);
-
-				if (MT == MoveType::Normal) {
-					eval[Black] -= c->eval[Black]; eval[White] -= c->eval[White];
-					c->updateEval(pCodeBlack, pCodeWhite);
-					eval[Black] += c->eval[Black]; eval[White] += c->eval[White];
-				}
-
-				p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
-				c->updatePattern4(pCodeBlack, pCodeWhite);
-				if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
-					c->pattern4[White] = NONE;
-				// Both bans need either two fours in different directions or a run of five
-				// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
-				// weaker cannot be forbidden.  This scan is the most expensive work in the
-				// incremental update and it used to run on every empty cell touched by every
-				// move; gating it on the pattern raises search throughput about 4x.
-				if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
-					c->pattern4[Black] = FORBID;
-				p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
-			}
-			p += D[i];
-		}
-		for (UInt8 k = 1 << 4; k != 0; k <<= 1) {
-			p += D[i];
-			if (board->isEmpty(p)) {
-				c = &cell(p);
-				c->key[i][self] |= k;
-
-				c->updatePattern(i);
-
-				pCodeBlack = c->getPatternCode(Black);
-				pCodeWhite = c->getPatternCode(White);
-
-				c->updateScore(pCodeBlack, pCodeWhite);
-
-				if (MT == MoveType::Normal) {
-					eval[Black] -= c->eval[Black]; eval[White] -= c->eval[White];
-					c->updateEval(pCodeBlack, pCodeWhite);
-					eval[Black] += c->eval[Black]; eval[White] += c->eval[White];
-				}
-
-				p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
-				c->updatePattern4(pCodeBlack, pCodeWhite);
-				if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
-					c->pattern4[White] = NONE;
-				// Both bans need either two fours in different directions or a run of five
-				// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
-				// weaker cannot be forbidden.  This scan is the most expensive work in the
-				// incremental update and it used to run on every empty cell touched by every
-				// move; gating it on the pattern raises search throughput about 4x.
-				if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
-					c->pattern4[Black] = FORBID;
-				p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
-			}
-		}
-	}
+	Cell * snap = undoCells[undoLevel++];
+	for (int dir = 0; dir < 4; dir++)
+		updateLine<MT>(pos, dir, self, snap + dir * UNDO_DIR_SLOTS);
 	// The original freestyle key stores four cells per side. Refresh the
 	// fifth-away endpoints explicitly so a newly-created six is not cached as
-	// an exact five.
-	for (int i = 0; i < 4; ++i) for (int sign : {-1, 1}) {
-		int raw = int(pos) + sign * 5 * D[i];
+	// an exact five.  Nothing here saw a stone change, so the pattern code and
+	// therefore the table's Pattern4 are the same as before; only a contest
+	// override can differ, and only for the cells `overridable` marks.  Measured
+	// over the search, 98.7% of the cells this loop visits are not marked.
+	for (int i = 0; i < 4; ++i) for (int j = 0; j < 2; ++j) {
+		int raw = int(pos) + (j ? 5 : -5) * D[i];
 		if (raw < 0 || raw >= Board::MaxBoardSizeSqr) continue;
-		p = Pos(raw);
+		Pos p = Pos(raw);
 		if (!board->isInBoard(p) || !board->isEmpty(p)) continue;
-		c = &cell(p);
-		// The key of a cell five points away is untouched, so the tables would
-		// hand back rawP4 again and only the two rule corrections can move.
-		// Neither can fire here, so the cell already holds the right answer.
-		if (c->rawP4[White] != A_FIVE && c->rawP4[Black] < B_FLEX4) continue;
-		p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
-		c->pattern4[Black] = c->rawP4[Black];
-		c->pattern4[White] = c->rawP4[White];
-		if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
-			c->pattern4[White] = NONE;
-		// Both bans need either two fours in different directions or a run of five
-		// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
-		// weaker cannot be forbidden.  This scan is the most expensive work in the
-		// incremental update and it used to run on every empty cell touched by every
-		// move; gating it on the pattern raises search throughput about 4x.
-		if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
-			c->pattern4[Black] = FORBID;
-		p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
+		if (!cell(p).overridable) continue;
+		snap[4 * UNDO_DIR_SLOTS + i * 2 + j] = cell(p);
+		refreshPattern4(p);
 	}
 
-	c = &cell(pos);
+	Cell * c = &cell(pos);
 	if (MT == MoveType::Normal) {
 		eval[Black] -= c->eval[Black]; 
 		eval[White] -= c->eval[White];
@@ -2330,15 +2453,15 @@ void Evaluator::makeMove(Pos pos) {
 
 #ifdef GENERATION_MIN
 	for (int k = 0; k < 16; k++)
-		cell(pos + RANGE_MIN[k]).cand++;
+		cand(pos + RANGE_MIN[k])++;
 #endif
 #ifdef GENERATION_MIDDLE
 	for (int k = 0; k < 24; k++)
-		cell(pos + RANGE_MIDDLE[k]).cand++;
+		cand(pos + RANGE_MIDDLE[k])++;
 #endif
 #ifdef GENERATION_LARGE
     for (int k = 0; k < 32; k++)
-	    cell(pos + RANGE_LARGE[k]).cand++;
+	    cand(pos + RANGE_LARGE[k])++;
 #endif
 }
 
@@ -2349,130 +2472,43 @@ template void Evaluator::makeMove<Evaluator::MuiltVC>(Pos pos);
 template <Evaluator::MoveType MT>
 void Evaluator::undoMove() {
 	assert(board->getMoveCount() > 0);
-	PatternCode pCodeBlack, pCodeWhite;
-	Pos p, pos = board->getLastMove();
+	Pos pos = board->getLastMove();
 	if (MT == MoveType::MuiltVC) {
 		board->muiltUndo();
 	} else {
 		board->undo();
 		ply--;
 	}
-	Piece self = SELF;
-
-	Cell * c = &cell(pos);
-	if (MT == MoveType::Normal) {
-		eval[Black] += c->eval[Black]; 
-		eval[White] += c->eval[White];
-	}
-	p4Count[Black][c->pattern4[Black]]++;
-	p4Count[White][c->pattern4[White]]++;
-	
-	for (int i = 0; i < 4; i++) {
-		p = pos - 4 * D[i];
-		for (UInt8 k = 1; k < (1 << 4); k <<= 1) {
-			if (board->isEmpty(p)) {
-				c = &cell(p);
-				c->key[i][self] ^= k;
-
-				c->updatePattern(i);
-
-				pCodeBlack = c->getPatternCode(Black);
-				pCodeWhite = c->getPatternCode(White);
-
-				c->updateScore(pCodeBlack, pCodeWhite);
-
-				if (MT == MoveType::Normal) {
-					eval[Black] -= c->eval[Black]; eval[White] -= c->eval[White];
-					c->updateEval(pCodeBlack, pCodeWhite);
-					eval[Black] += c->eval[Black]; eval[White] += c->eval[White];
-				}
-
-				p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
-				c->updatePattern4(pCodeBlack, pCodeWhite);
-				if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
-					c->pattern4[White] = NONE;
-				// Both bans need either two fours in different directions or a run of five
-				// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
-				// weaker cannot be forbidden.  This scan is the most expensive work in the
-				// incremental update and it used to run on every empty cell touched by every
-				// move; gating it on the pattern raises search throughput about 4x.
-				if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
-					c->pattern4[Black] = FORBID;
-				p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
-			}
-			p += D[i];
-		}
-		for (UInt8 k = 1 << 4; k != 0; k <<= 1) {
-			p += D[i];
-			if (board->isEmpty(p)) {
-				c = &cell(p);
-				c->key[i][self] ^= k;
-
-				c->updatePattern(i);
-
-				pCodeBlack = c->getPatternCode(Black);
-				pCodeWhite = c->getPatternCode(White);
-
-				c->updateScore(pCodeBlack, pCodeWhite);
-
-				if (MT == MoveType::Normal) {
-					eval[Black] -= c->eval[Black]; eval[White] -= c->eval[White];
-					c->updateEval(pCodeBlack, pCodeWhite);
-					eval[Black] += c->eval[Black]; eval[White] += c->eval[White];
-				}
-
-				p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
-				c->updatePattern4(pCodeBlack, pCodeWhite);
-				if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
-					c->pattern4[White] = NONE;
-				// Both bans need either two fours in different directions or a run of five
-				// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
-				// weaker cannot be forbidden.  This scan is the most expensive work in the
-				// incremental update and it used to run on every empty cell touched by every
-				// move; gating it on the pattern raises search throughput about 4x.
-				if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
-					c->pattern4[Black] = FORBID;
-				p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
-			}
-		}
-	}
-	for (int i = 0; i < 4; ++i) for (int sign : {-1, 1}) {
-		int raw = int(pos) + sign * 5 * D[i];
+	const Cell * snap = undoCells[--undoLevel];
+	const Aggregates & agg = undoAggregates[undoLevel];
+	eval[0] = agg.eval[0]; eval[1] = agg.eval[1];
+	memcpy(p4Count, agg.p4Count, sizeof(p4Count));
+	// `overridable` is derived from the pattern code, which the fifth-away
+	// refresh does not change, and the direction walk cannot reach these cells
+	// (1..4 steps versus 5), so this test sees exactly what makeMove saw.
+	for (int i = 0; i < 4; ++i) for (int j = 0; j < 2; ++j) {
+		int raw = int(pos) + (j ? 5 : -5) * D[i];
 		if (raw < 0 || raw >= Board::MaxBoardSizeSqr) continue;
-		p = Pos(raw);
+		Pos p = Pos(raw);
 		if (!board->isInBoard(p) || !board->isEmpty(p)) continue;
-		c = &cell(p);
-		// The key of a cell five points away is untouched, so the tables would
-		// hand back rawP4 again and only the two rule corrections can move.
-		// Neither can fire here, so the cell already holds the right answer.
-		if (c->rawP4[White] != A_FIVE && c->rawP4[Black] < B_FLEX4) continue;
-		p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
-		c->pattern4[Black] = c->rawP4[Black];
-		c->pattern4[White] = c->rawP4[White];
-		if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
-			c->pattern4[White] = NONE;
-		// Both bans need either two fours in different directions or a run of five
-		// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
-		// weaker cannot be forbidden.  This scan is the most expensive work in the
-		// incremental update and it used to run on every empty cell touched by every
-		// move; gating it on the pattern raises search throughput about 4x.
-		if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
-			c->pattern4[Black] = FORBID;
-		p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
+		if (!cell(p).overridable) continue;
+		cell(p) = snap[4 * UNDO_DIR_SLOTS + i * 2 + j];
 	}
+	for (int dir = 0; dir < 4; dir++)
+		undoLine<MT>(pos, dir, snap + dir * UNDO_DIR_SLOTS);
 	assert(checkP4Count());
 
 #ifdef GENERATION_MIN
 	for (int k = 0; k < 16; k++)
-		cell(pos + RANGE_MIN[k]).cand--;
+		cand(pos + RANGE_MIN[k])--;
 #endif
 #ifdef GENERATION_MIDDLE
 	for (int k = 0; k < 24; k++)
-		cell(pos + RANGE_MIDDLE[k]).cand--;
+		cand(pos + RANGE_MIDDLE[k])--;
 #endif
 #ifdef GENERATION_LARGE
 	for (int k = 0; k < 32; k++)
-		cell(pos + RANGE_LARGE[k]).cand--;
+		cand(pos + RANGE_LARGE[k])--;
 #endif
 }
 
@@ -2498,9 +2534,12 @@ bool Evaluator::checkP4Count() {
 void Evaluator::newGame() {
 	board->clear();
 	ply = 0;
+	undoLevel = 0;
 	eval[0] = eval[1] = 0;
 	evalLower[0] = evalLower[1] = 0;
 	memset(cells, 0, sizeof(cells));
+	memset(cands, 0, sizeof(cands));
+	memset(loses, 0, sizeof(loses));
 	memset(p4Count, 0, sizeof(p4Count));
 
 	FOR_EVERY_POSITION_POS(p) {
@@ -2518,8 +2557,8 @@ void Evaluator::newGame() {
 			}
 			c.key[i][White] = c.key[i][Black] = key;
 			c.updatePattern(i);
-			assert(c.pattern[Black][i] <= F1);
-			assert(c.pattern[White][i] <= F1);
+			assert(c.pattern(Black, i) <= F1);
+			assert(c.pattern(White, i) <= F1);
 		}
 		PatternCode pCodeBlack = c.getPatternCode(Black);
 		PatternCode pCodeWhite = c.getPatternCode(White);
@@ -2577,15 +2616,25 @@ void Evaluator::init() {
 
 					int pcode = d * (N * N * N) + c * (N * N) + b * N + a;
 					pcode = v[pcode];
-					PCODE[i][j][m][n] = pcode;
+					PCODE[(i << 12) | (j << 8) | (m << 4) | n] = pcode;
 					PATTERN4[pcode] = getPattern4(Pattern(a), Pattern(b), Pattern(c), Pattern(d));
 				}
 
-	for (int key1 = 0; key1 < 256; key1++) {
-		for (int key2 = 0; key2 < 256; key2++) {
-			PATTERN[key1][key2] = getPattern(key1, key2);
+	// Built in place in two passes so no separate 64 KB PATTERN table has to
+	// exist: first every entry holds its own colour's pattern in the low nibble,
+	// then each mirrored pair exchanges nibbles.
+	for (int key1 = 0; key1 < 256; key1++)
+		for (int key2 = 0; key2 < 256; key2++)
+			PATTERN2[key1][key2] = UInt8(getPattern(UInt8(key1), UInt8(key2)));
+	for (int key1 = 0; key1 < 256; key1++)
+		for (int key2 = key1; key2 < 256; key2++) {
+			UInt8 a = UInt8(PATTERN2[key1][key2] & 0xF);
+			UInt8 b = UInt8(PATTERN2[key2][key1] & 0xF);
+			PATTERN2[key1][key2] = UInt8(a | (b << 4));
+			PATTERN2[key2][key1] = UInt8(b | (a << 4));
 		}
-	}
+
+	buildPatternInfo();
 }
 
 Pattern Evaluator::getPattern(UInt8 key1, UInt8 key2) {
@@ -2782,7 +2831,7 @@ Pos Evaluator::getCostPosAgainstB4(Pos posB4, Piece piece) {
 	int dir;
 	Cell & c = cell(posB4);
 	for (dir = 0; dir < 4; dir++) {
-		if (c.pattern[piece][dir] >= B4)
+		if (c.pattern(piece, dir) >= B4)
 			break;
 		assert(dir < 3);
 	}
@@ -2795,7 +2844,7 @@ Pos Evaluator::getCostPosAgainstB4(Pos posB4, Piece piece) {
 		p = board->get(pos);
 		if (p == piece) continue;
 		else if (p == Empty) {
-			if (cell(pos).pattern[piece][dir] == F5)
+			if (cell(pos).pattern(piece, dir) == F5)
 				return pos;
 		}
 		break;
@@ -2806,7 +2855,7 @@ Pos Evaluator::getCostPosAgainstB4(Pos posB4, Piece piece) {
 		p = board->get(pos);
 		if (p == piece) continue;
 		else if (p == Empty) {
-			if (cell(pos).pattern[piece][dir] == F5) {
+			if (cell(pos).pattern(piece, dir) == F5) {
 				return pos;
 			}
 		}
@@ -2831,7 +2880,7 @@ void Evaluator::getCostPosAgainstF3(Pos posB, Piece piece, vector<Move> & list) 
 	Cell & c = cell(posB);
 	list.emplace_back(posB, c.getScore_VC(piece));
 	for (dir = 0; dir < 4; dir++) {
-		if (c.pattern[piece][dir] == F4) {
+		if (c.pattern(piece, dir) == F4) {
 			flex3 = true;
 			break;
 		}
@@ -2846,7 +2895,7 @@ void Evaluator::getCostPosAgainstF3(Pos posB, Piece piece, vector<Move> & list) 
 			p = board->get(pos);
 			if (p == piece) continue;
 			else if (p == Empty) {
-				Pattern pattern = cell(pos).pattern[piece][dir];
+				Pattern pattern = cell(pos).pattern(piece, dir);
 				if (pattern >= F4) {
 					list.emplace_back(pos, cell(pos).getScore_VC(piece));
 					continue;
@@ -2861,7 +2910,7 @@ void Evaluator::getCostPosAgainstF3(Pos posB, Piece piece, vector<Move> & list) 
 			p = board->get(pos);
 			if (p == piece) continue;
 			else if (p == Empty) {
-				Pattern pattern = cell(pos).pattern[piece][dir];
+				Pattern pattern = cell(pos).pattern(piece, dir);
 				if (pattern >= F4) {
 					list.emplace_back(pos, cell(pos).getScore_VC(piece));
 					continue;
@@ -2874,7 +2923,7 @@ void Evaluator::getCostPosAgainstF3(Pos posB, Piece piece, vector<Move> & list) 
 		if (posL && j >= 1) list.emplace_back(posL, cell(posL).getScore_VC(piece));
 	} else {
 		for (dir = 0; dir < 4; dir++) {
-			if (c.pattern[piece][dir] < B4) continue;
+			if (c.pattern(piece, dir) < B4) continue;
 
 			Pos pos = posB;
 			Piece p;
@@ -2883,7 +2932,7 @@ void Evaluator::getCostPosAgainstF3(Pos posB, Piece piece, vector<Move> & list) 
 				p = board->get(pos);
 				if (p == piece) continue;
 				else if (p == Empty) {
-					if (cell(pos).pattern[piece][dir] >= B4) {
+					if (cell(pos).pattern(piece, dir) >= B4) {
 						list.emplace_back(pos, cell(pos).getScore_VC(piece));
 						goto NoCheck_another_direction;
 					}
@@ -2896,7 +2945,7 @@ void Evaluator::getCostPosAgainstF3(Pos posB, Piece piece, vector<Move> & list) 
 				p = board->get(pos);
 				if (p == piece) continue;
 				else if (p == Empty) {
-					if (cell(pos).pattern[piece][dir] >= B4)
+					if (cell(pos).pattern(piece, dir) >= B4)
 						list.emplace_back(pos, cell(pos).getScore_VC(piece));
 				}
 				break;
@@ -2917,7 +2966,7 @@ void Evaluator::getAllCostPosAgainstF3(Pos posB, Piece piece, set<Pos> & set) {
 	Cell & c = cell(posB);
 	set.insert(posB);
 	for (dir = 0; dir < 4; dir++) {
-		if (c.pattern[piece][dir] == F4) {
+		if (c.pattern(piece, dir) == F4) {
 			flex3 = true;
 
 			Piece p;
@@ -2928,7 +2977,7 @@ void Evaluator::getAllCostPosAgainstF3(Pos posB, Piece piece, set<Pos> & set) {
 				p = board->get(pos);
 				if (p == piece) continue;
 				else if (p == Empty) {
-					Pattern pattern = cell(pos).pattern[piece][dir];
+					Pattern pattern = cell(pos).pattern(piece, dir);
 					if (pattern >= F4) {
 						set.insert(pos);
 						continue;
@@ -2943,7 +2992,7 @@ void Evaluator::getAllCostPosAgainstF3(Pos posB, Piece piece, set<Pos> & set) {
 				p = board->get(pos);
 				if (p == piece) continue;
 				else if (p == Empty) {
-					Pattern pattern = cell(pos).pattern[piece][dir];
+					Pattern pattern = cell(pos).pattern(piece, dir);
 					if (pattern >= F4) {
 						set.insert(pos);
 						continue;
@@ -2959,7 +3008,7 @@ void Evaluator::getAllCostPosAgainstF3(Pos posB, Piece piece, set<Pos> & set) {
 
 	if (!flex3) {
 		for (dir = 0; dir < 4; dir++) {
-			if (c.pattern[piece][dir] < B4) continue;
+			if (c.pattern(piece, dir) < B4) continue;
 
 			Pos pos = posB;
 			Piece p;
@@ -2968,7 +3017,7 @@ void Evaluator::getAllCostPosAgainstF3(Pos posB, Piece piece, set<Pos> & set) {
 				p = board->get(pos);
 				if (p == piece) continue;
 				else if (p == Empty) {
-					if (cell(pos).pattern[piece][dir] >= B4) {
+					if (cell(pos).pattern(piece, dir) >= B4) {
 						set.insert(pos);
 						goto NoCheck_another_direction;
 					}
@@ -2981,7 +3030,7 @@ void Evaluator::getAllCostPosAgainstF3(Pos posB, Piece piece, set<Pos> & set) {
 				p = board->get(pos);
 				if (p == piece) continue;
 				else if (p == Empty) {
-					if (cell(pos).pattern[piece][dir] >= B4)
+					if (cell(pos).pattern(piece, dir) >= B4)
 						set.insert(pos);
 				}
 				break;
@@ -3002,8 +3051,8 @@ void Evaluator::expendCand(Pos pos, int fillDist, int lineDist) {
 		for (int yi = -fillDist; yi <= fillDist; yi++) {
 			if (xi == 0 && yi == 0) continue;
 			p = POS(x + xi, y + yi);
-			if (board->isEmpty(p) && cell(p).cand == 0) {
-				cell(p).cand++;
+			if (board->isEmpty(p) && cand(p) == 0) {
+				cand(p)++;
 			}
 		}
 	}
@@ -3018,14 +3067,14 @@ void Evaluator::expendCand(Pos pos, int fillDist, int lineDist) {
 			int target = int(p) + int(RANGE_NEIGHBOR[k]) * i;
 			if (target < 0 || target >= Board::MaxBoardSizeSqr) continue;
 			if (!board->isInBoard(Pos(target))) continue;
-			cell(Pos(target)).cand++;
+			cand(Pos(target))++;
 		}
 	}
 }
 
 void Evaluator::clearLose() {
 	FOR_EVERY_POSITION_POS(p) {
-		cell(p).isLose = false;
+		isLose(p) = false;
 	}
 }
 
@@ -3107,10 +3156,10 @@ void Evaluator::trace(ostream & ss, const string & appendBefore) {
 		if (x != 0 || y != 0) ss << " ";
 		if (y == 0 && x != 0) ss << endl << appendBefore;
 		if (board->isEmpty(POS(x, y))) {
-			if (cell(x, y).isLose) {
+			if (isLose(POS(x, y))) {
 				ss << "L";
 			} else {
-				if (cell(x, y).isCand()) ss << '*';
+				if (isCand(POS(x, y))) ss << '*';
 				else ss << '.';
 			}
 		} else {
@@ -3135,7 +3184,7 @@ void Evaluator::trace(ostream & ss, const string & appendBefore) {
 	FOR_EVERY_POSITION(x, y) {
 		if (y == 0 && x != 0) ss << endl << appendBefore;
 		if (board->isEmpty(POS(x, y))) {
-			if (cell(x, y).isCand()) ss << std::setw(5) << cell(x, y).getScore();
+			if (isCand(POS(x, y))) ss << std::setw(5) << cell(x, y).getScore();
 			else ss << "    .";
 		} else {
 			ss << "    ";
@@ -3527,7 +3576,7 @@ Pos AI::fullSearch() {
 
 	bool hasLose = false;
 	FOR_EVERY_POSITION_POS(p) {
-		if (cell(p).isLose) {
+		if (isLose(p)) {
 			if (!hasLose) {
 				MESSAGES_BEGIN;
 			#ifdef VERSION_YIXIN_BOARD
@@ -3599,7 +3648,7 @@ Move AI::alphabeta_root(int depth, int alpha, int beta) {
 			&& std::find(contestRootExclude.begin(), contestRootExclude.end(),
 				int(CoordX(move->pos)) * 15 + int(CoordY(move->pos))) != contestRootExclude.end())
 			continue;
-		if (cell(move->pos).isLose) {
+		if (isLose(move->pos)) {
 			DEBUGL("PVS����" << PosStr(move->pos) << ": Lose");
 			ANALYSIS("LOST", move->pos);
 			continue;
@@ -3638,7 +3687,7 @@ Move AI::alphabeta_root(int depth, int alpha, int beta) {
 		DEBUGL("PVS����" << PosStr(move->pos) << "  Ԥ��:" << move->value << "  ���:" << value << " Best.value = " << best.value);
 
 		if (value <= -WIN_MIN) {
-			cell(move->pos).isLose = true;
+			isLose(move->pos) = true;
 			move->value = -value;
 			ANALYSIS("LOST", move->pos);
 		} else {
@@ -4658,7 +4707,7 @@ int AI::quickDefenceCheck() {
 				Cell & c = cell(p);
 				int dir;
 				for (dir = 0; dir < 4; dir++) {
-					Pattern pattern = c.pattern[self][dir];
+					Pattern pattern = c.pattern(self, dir);
 					if (pattern >= B4) {
 						Pos pos;
 						int i;
@@ -4764,10 +4813,12 @@ void AI::tryReadConfig(string path) {
 		if (strncmp(line, "Eval:", 10) == 0) {
 			for (int i = 0; i < 3876; i++)
 				file >> Value[i];
+			buildPatternInfo();
 			override++;
 		} else if (strncmp(line, "Score:", 6) == 0) {
 			for (int i = 0; i < 3876; i++)
 				file >> Score[i];
+			buildPatternInfo();
 			override++;
 		} else if (strncmp(line, "ExtensionCoefficient:", 21) == 0) {
 			int ExtensionNumBase;
