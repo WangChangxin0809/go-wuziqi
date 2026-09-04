@@ -2960,8 +2960,17 @@ void Evaluator::expendCand(Pos pos, int fillDist, int lineDist) {
 	}
 	p = POS(x, y);
 	for (int i = MAX(3, fillDist + 1); i <= lineDist; i++) {
-		for (int k = 0; k < 8; k++)
-			cell(p + RANGE_NEIGHBOR[k] * i).cand++;
+		for (int k = 0; k < 8; k++) {
+			// The array is padded by four, so a step of five off a board edge
+			// leaves it: from the top row the index goes negative and the
+			// process dies on the spot.  An opponent opening anywhere on row 0
+			// was a segfault and an instant loss, and any other edge opening
+			// silently raised the candidate count of an unrelated cell.
+			int target = int(p) + int(RANGE_NEIGHBOR[k]) * i;
+			if (target < 0 || target >= Board::MaxBoardSizeSqr) continue;
+			if (!board->isInBoard(Pos(target))) continue;
+			cell(Pos(target)).cand++;
+		}
 	}
 }
 
