@@ -27,9 +27,17 @@
  */
 #include <algorithm>
 #include <cstring>
+#include <cstdlib>
 #include <cstdio>
 #include <climits>
 #include <chrono>
+#include <csignal>
+#if defined(__unix__) || defined(__linux__) || defined(__APPLE__)
+#define CONTEST_POSIX_WATCHDOG 1
+#include <signal.h>
+#include <sys/time.h>
+#include <unistd.h>
+#endif
 #if defined(__GNUC__)
 #pragma GCC diagnostic ignored "-Wnarrowing"
 #pragma GCC diagnostic ignored "-Wparentheses"
@@ -123,9 +131,341 @@ inline void toupper(string & str) {
 // ���ص�ǰʱ��(��λ:ms)
 using WallClock = std::chrono::steady_clock;
 static const WallClock::time_point processStart = WallClock::now();
-static const long PROCESS_DEADLINE_MS = 760;
+
+// This clock starts running at static-initialization time, which is already
+// after fork/exec and after the dynamic linker has done its work, while the
+// judge's one second is counted from process creation.  On Linux that gap can
+// be measured instead of guessed: /proc/self/stat field 22 is the process start
+// time in clock ticks since boot, and /proc/uptime is the current time on the
+// same scale.  Reading them costs well under a millisecond and turns the
+// remaining timing risk into a number.  If either file is unavailable the offset
+// stays zero and the deadlines simply behave as before.
+static long measureStartupOffsetMs() {
+#ifdef CONTEST_POSIX_WATCHDOG
+	std::FILE * uptimeFile = std::fopen("/proc/uptime", "r");
+	if (!uptimeFile) return 0;
+	double uptime = 0.0;
+	int uptimeFields = std::fscanf(uptimeFile, "%lf", &uptime);
+	std::fclose(uptimeFile);
+	if (uptimeFields != 1) return 0;
+
+	std::FILE * statFile = std::fopen("/proc/self/stat", "r");
+	if (!statFile) return 0;
+	char line[1024];
+	char * text = std::fgets(line, sizeof(line), statFile);
+	std::fclose(statFile);
+	if (!text) return 0;
+
+	// Field 2 is the executable name in parentheses and may itself contain
+	// spaces, so fields are counted from the last closing parenthesis.
+	char * cursor = std::strrchr(line, ')');
+	if (!cursor) return 0;
+	++cursor;
+	long long startTicks = -1;
+	for (int field = 3; field <= 22; ++field) {
+		while (*cursor == ' ') ++cursor;
+		if (!*cursor) return 0;
+		char * end = cursor;
+		while (*end && *end != ' ') ++end;
+		if (field == 22) {
+			char saved = *end;
+			*end = '\0';
+			startTicks = std::atoll(cursor);
+			*end = saved;
+		}
+		cursor = end;
+	}
+	if (startTicks < 0) return 0;
+
+	long ticksPerSecond = sysconf(_SC_CLK_TCK);
+	if (ticksPerSecond <= 0) return 0;
+	double age = uptime - double(startTicks) / double(ticksPerSecond);
+	if (age < 0.0 || age > 1.0) return 0;   // implausible, do not trust it
+	return long(age * 1000.0);
+#else
+	return 0;
+#endif
+}
+
+static const long startupOffsetMs = measureStartupOffsetMs();
+// The judge restarts this executable for every move and gives each process its
+// own 1 s wall clock, so time that is not spent on this move is lost, not
+// banked for a later one.  PROCESS_DEADLINE_MS is the soft target the search
+// aims for; WATCHDOG_DEADLINE_MS is a hard backstop enforced by SIGALRM, which
+// prints the best move found so far and exits.  With the backstop in place the
+// soft target can sit much closer to the limit without risking a TLE loss.
+// Measured against the local harness, the gap between the in-process clock and
+// the wall time the judge sees is only a few milliseconds, but the judge runs on
+// an aarch64 machine whose process startup cost is unknown, so ~100ms is kept in
+// hand.  Both values can be raised through GOMOKU_DEADLINE_MS for offline
+// analysis (opening-book generation, deep position study); the contest never
+// sets that variable and therefore always uses the defaults below.
+static long PROCESS_DEADLINE_MS = 820;
+static long WATCHDOG_DEADLINE_MS = 900;
+static const long WATCHDOG_MARGIN_MS = 80;
+// Milliseconds since the judge started this process, not since main() began.
 inline long getTime() {
-	return (long)std::chrono::duration_cast<std::chrono::milliseconds>(WallClock::now() - processStart).count();
+	return startupOffsetMs
+		+ (long)std::chrono::duration_cast<std::chrono::milliseconds>(WallClock::now() - processStart).count();
+}
+
+// ---- Hard wall-clock backstop ---------------------------------------------
+// The search updates contestPublish() with the best legal move it has proven so
+// far.  If anything overruns the soft deadline the SIGALRM handler writes that
+// move and exits, so the process can never lose on time.  Only write(2) and
+// _exit(2) are used inside the handler; both are async-signal-safe.
+static volatile sig_atomic_t contestBestRow = -1;
+static volatile sig_atomic_t contestBestCol = -1;
+
+static inline void contestPublish(int row, int col) {
+	if (row >= 0 && row < 15 && col >= 0 && col < 15) {
+		contestBestRow = row;
+		contestBestCol = col;
+	}
+}
+
+#ifdef CONTEST_POSIX_WATCHDOG
+extern "C" void contestWatchdogHandler(int) {
+	int row = contestBestRow, col = contestBestCol;
+	if (row < 0 || col < 0) _exit(1);
+	char buf[8];
+	int n = 0;
+	if (row >= 10) buf[n++] = char('0' + row / 10);
+	buf[n++] = char('0' + row % 10);
+	buf[n++] = ' ';
+	if (col >= 10) buf[n++] = char('0' + col / 10);
+	buf[n++] = char('0' + col % 10);
+	buf[n++] = '\n';
+	ssize_t written = write(1, buf, n);
+	(void)written;
+	_exit(0);
+}
+
+static void contestArmWatchdog() {
+	struct sigaction sa;
+	std::memset(&sa, 0, sizeof(sa));
+	sa.sa_handler = contestWatchdogHandler;
+	sigaction(SIGALRM, &sa, nullptr);
+
+	long remain = WATCHDOG_DEADLINE_MS - getTime();
+	if (remain < 1) remain = 1;
+	struct itimerval timer;
+	std::memset(&timer, 0, sizeof(timer));
+	timer.it_value.tv_sec = remain / 1000;
+	timer.it_value.tv_usec = (remain % 1000) * 1000;
+	setitimer(ITIMER_REAL, &timer, nullptr);
+}
+
+static void contestDisarmWatchdog() {
+	struct itimerval timer;
+	std::memset(&timer, 0, sizeof(timer));
+	setitimer(ITIMER_REAL, &timer, nullptr);
+}
+#else
+static void contestArmWatchdog() {}
+static void contestDisarmWatchdog() {}
+#endif
+
+/* ===== Opening book =========================================================
+ * Generated by book_build.py from searches given seconds per move instead of
+ * the contest's one, and inserted between the two markers below.  A position is
+ * stored in one canonical orientation out of the eight board symmetries, so an
+ * entry found during analysis also covers all of its rotations and mirrors.
+ * Keys are FNV-1a 64 over the 225-character board plane; the move is packed as
+ * row * 15 + col in the same canonical orientation.
+ */
+struct ContestBookEntry {
+	unsigned long long key;
+	unsigned char move;
+};
+
+static const ContestBookEntry CONTEST_BOOK[] = {
+/* BOOK-BEGIN */
+	{136724680927428445ull, 142},
+	{155075007725977348ull, 125},
+	{244459415681846240ull, 145},
+	{270288769295963212ull, 141},
+	{472522793932075537ull, 127},
+	{578828477200917452ull, 94},
+	{585355502992913896ull, 129},
+	{794954091736609172ull, 110},
+	{814229270163483290ull, 143},
+	{831506863838267259ull, 159},
+	{856267815196294961ull, 66},
+	{938809129822981162ull, 142},
+	{1162965746810963002ull, 81},
+	{1171569356945566706ull, 84},
+	{1273410702916178188ull, 157},
+	{1312936826703684914ull, 83},
+	{1350558649169574846ull, 146},
+	{1427611622849644988ull, 83},
+	{1450960246397437906ull, 69},
+	{1531761003600154926ull, 154},
+	{1738539680693823502ull, 97},
+	{2014942935636039867ull, 111},
+	{2204426660194354804ull, 159},
+	{2296770630526993064ull, 155},
+	{2499867430927436912ull, 69},
+	{2729232781046406742ull, 82},
+	{3006453112047185290ull, 155},
+	{3119223309062398081ull, 142},
+	{3141687293862521892ull, 125},
+	{3270274571439125984ull, 84},
+	{3309864790411829353ull, 109},
+	{3384372374210444029ull, 82},
+	{3578347126636653518ull, 127},
+	{3623172059533187559ull, 95},
+	{3798024370608596635ull, 130},
+	{3997787440687074979ull, 130},
+	{4027030714714727482ull, 141},
+	{4096143896979018760ull, 99},
+	{4264490368042224342ull, 98},
+	{4404837856064721053ull, 140},
+	{4495254606419232509ull, 144},
+	{4547393408656045356ull, 158},
+	{4637938735819134774ull, 98},
+	{4736309422065500626ull, 81},
+	{5192803440222850372ull, 142},
+	{5288444797591842940ull, 157},
+	{5871562639656917642ull, 109},
+	{5913330134648294096ull, 115},
+	{5924581508340007823ull, 83},
+	{5938526365443820796ull, 156},
+	{5987708504432644427ull, 140},
+	{6484968531220541784ull, 82},
+	{6531283151983102048ull, 144},
+	{6648647068637481100ull, 115},
+	{6700610041740672645ull, 144},
+	{6818318053093977288ull, 99},
+	{6831357710860921684ull, 141},
+	{6851818516163393180ull, 111},
+	{6856128424025385120ull, 158},
+	{6923292006151795646ull, 84},
+	{7507679342375161100ull, 155},
+	{7774234538829876610ull, 139},
+	{8151722485012787272ull, 99},
+	{8310322032992541944ull, 130},
+	{8348887967035475632ull, 174},
+	{8387051519771245816ull, 113},
+	{8406718149365111690ull, 94},
+	{8544152777556706256ull, 114},
+	{8628722313892958578ull, 96},
+	{8835850785849034619ull, 145},
+	{8912985201160313632ull, 124},
+	{8930817629954057509ull, 83},
+	{8998782232872514234ull, 172},
+	{9008082481175298360ull, 145},
+	{9318125225923670176ull, 130},
+	{9346411331797609429ull, 82},
+	{9508379580731954546ull, 115},
+	{9803630106753202908ull, 143},
+	{9885904725519324954ull, 171},
+	{9955821253719382899ull, 155},
+	{10018755187192241772ull, 84},
+	{10442597814046487848ull, 81},
+	{10638976654756225124ull, 144},
+	{10907389580706149740ull, 110},
+	{10979560152960394264ull, 101},
+	{11084244360952641127ull, 96},
+	{11099146183339727704ull, 80},
+	{11119414655678148803ull, 141},
+	{11312290930966897302ull, 159},
+	{11427757145854826852ull, 158},
+	{11430954485656643670ull, 99},
+	{11432037041403312222ull, 130},
+	{11835240388745314594ull, 96},
+	{11910218148801061274ull, 83},
+	{11945840583873523675ull, 145},
+	{12219700443787896595ull, 158},
+	{12243446553510203219ull, 115},
+	{12264716189294849619ull, 110},
+	{12368250543610409402ull, 114},
+	{12593529832626500987ull, 155},
+	{12663575443540092246ull, 157},
+	{13006700459009227428ull, 145},
+	{13182238951063273181ull, 109},
+	{13205102898710970232ull, 110},
+	{13206725170263094596ull, 65},
+	{13290364515772506098ull, 110},
+	{13322459881913264914ull, 124},
+	{13529656597765675498ull, 143},
+	{13571617300608126004ull, 144},
+	{13572301763705136290ull, 154},
+	{13689783417385623110ull, 98},
+	{14107883947512476622ull, 155},
+	{14280837240968947668ull, 155},
+	{14511227165574234409ull, 129},
+	{14592046235987181520ull, 144},
+	{14688593780829692501ull, 82},
+	{14882269207463631837ull, 82},
+	{15252191417141825832ull, 101},
+	{15392980598294909600ull, 100},
+	{15888254911385447986ull, 143},
+	{15926120742100504423ull, 96},
+	{16426542252868945110ull, 97},
+	{16471038341541501916ull, 125},
+	{16581639009516568137ull, 113},
+	{17669003234996236814ull, 140},
+	{17674497544075264176ull, 141},
+	{18194190516208731678ull, 156},
+	{18209320786928440922ull, 158},
+	{18253832013342230792ull, 70},
+	{18269926925656313914ull, 140},
+/* BOOK-END */
+};
+static const int CONTEST_BOOK_SIZE = int(sizeof(CONTEST_BOOK) / sizeof(CONTEST_BOOK[0]));
+
+// The eight symmetries of the square board.  Must stay identical to TRANSFORMS
+// in book_build.py, including their order, or generated keys will not match.
+static inline void contestTransform(int index, int row, int col, int & outRow, int & outCol) {
+	switch (index) {
+	case 0: outRow = row;          outCol = col;          break;
+	case 1: outRow = col;          outCol = 14 - row;     break;
+	case 2: outRow = 14 - row;     outCol = 14 - col;     break;
+	case 3: outRow = 14 - col;     outCol = row;          break;
+	case 4: outRow = row;          outCol = 14 - col;     break;
+	case 5: outRow = 14 - row;     outCol = col;          break;
+	case 6: outRow = col;          outCol = row;          break;
+	default: outRow = 14 - col;    outCol = 14 - row;     break;
+	}
+}
+static const int CONTEST_INVERSE[8] = {0, 3, 2, 1, 4, 5, 6, 7};
+
+static unsigned long long contestBookHash(const char * plane, int length) {
+	unsigned long long hash = 14695981039346656037ull;
+	for (int i = 0; i < length; ++i) {
+		hash ^= (unsigned char)plane[i];
+		hash *= 1099511628211ull;
+	}
+	return hash;
+}
+
+// Root moves the search must skip.  Only ever filled from GOMOKU_EXCLUDE, which
+// exists so the book generator can ask for the second and third best reply in a
+// position instead of only the principal variation.
+static std::vector<int> contestRootExclude;   // row * 15 + col
+
+// Reads the two analysis-only environment variables.  Absent variables leave the
+// contest defaults untouched.
+static void contestReadEnv() {
+	if (const char * budget = std::getenv("GOMOKU_DEADLINE_MS")) {
+		long ms = std::atol(budget);
+		if (ms > 0) {
+			PROCESS_DEADLINE_MS = ms;
+			WATCHDOG_DEADLINE_MS = ms + WATCHDOG_MARGIN_MS;
+		}
+	}
+	if (const char * excluded = std::getenv("GOMOKU_EXCLUDE")) {
+		int row = -1, col = -1;
+		const char * cursor = excluded;
+		while (*cursor) {
+			if (std::sscanf(cursor, "%d,%d", &row, &col) == 2
+				&& row >= 0 && row < 15 && col >= 0 && col < 15)
+				contestRootExclude.push_back(row * 15 + col);
+			while (*cursor && *cursor != ';') ++cursor;
+			if (*cursor == ';') ++cursor;
+		}
+	}
 }
 
 #ifdef _DEBUG
@@ -437,8 +777,12 @@ static bool contestForbiddenBlack(const Board &board, Pos move) {
 	};
 	for (int d = 0; d < 4; ++d)
 		if (run(move, d) > 5) return true;
-	for (int d = 0; d < 4; ++d)
-		if (run(move, d) == 5) return false; // exact five has priority over 4-4
+	// A move that completes an exact five is NOT exempt from the four-four ban.
+	// The website checks the ban before it checks for a win (judge order in
+	// arena_server.play_game and gomoku_match, and SITE_API.md), so a black
+	// point that makes five in one direction while forming two fours in others
+	// is an immediate loss, not a victory.  Treating it as a win made the search
+	// actively seek out that exact losing move.
 
 	U64 seen[40] = {};
 	int seenCount = 0;
@@ -467,6 +811,27 @@ static bool contestForbiddenBlack(const Board &board, Pos move) {
 		}
 	}
 	return seenCount >= 2;
+}
+
+// True when placing `side` at `move` completes a run of exactly five somewhere.
+// An overline wins for nobody here, so a point that only ever reaches six or more
+// is not a winning point.  For black such a point is the long-connection ban and
+// contestForbiddenBlack already rejects it; white may legally play it, it simply
+// does not win, and the pattern tables classify any run of five or more as a
+// five.  Without this the search reports a win it will never be awarded and
+// stops looking for the move that would actually win.
+static bool contestMakesExactFive(const Board &board, Pos move, Piece side) {
+	for (int d = 0; d < 4; ++d) {
+		int n = 1;
+		for (int sign : {-1, 1})
+			for (int k = 1; ; ++k) {
+				Pos p = Pos(int(move) + sign * k * D[d]);
+				if (!board.isInBoard(p) || board.get(p) != side) break;
+				++n;
+			}
+		if (n == 5) return true;
+	}
+	return false;
 }
 
 static inline bool contestLegalMove(const Board &board, Pos p, Piece side) {
@@ -704,18 +1069,26 @@ struct Line {
 class AI : public Evaluator {
 private:
 	static const long TIME_RESERVED = 40;            // ms
-	static const long TIME_RESERVED_PER_MOVE = 200;  // ms
+	static const long TIME_RESERVED_PER_MOVE = 60;   // ms
 	static const int MATCH_SPARE = 23;         // how much is time spared for the rest of game
 	static const int MATCH_SPARE_MIN = 7;      // min time spared for the rest of game
 	static const int MATCH_SPARE_MAX = 40;     // max time spared for the rest of game
 	static const int TIMEOUT_PREVENT = 45;     // alphabeta become slow when depth increases
+	// A new iteration is started only if the time already spent plus this
+	// multiple of the previous iteration's cost still fits inside the budget.
+	// 150 means "assume the next depth costs about 1.5x the last one", which is
+	// deliberately optimistic: overshooting is cheap because the mid-iteration
+	// cutoff keeps whatever the partial search proved, while stopping early
+	// wastes budget outright, since the judge does not carry time to the next
+	// move.
+	static const int NEXT_ITERATION_COST_PERCENTAGE = 150;
 	static const int TIMEOUT_PREVENT_MIN = 70; // (TIMEOUT_PREVENT_MIN / 100.0)�ٷ���
 	static const int BM_CHANGE_MIN = 3;        // if bestmove changes more than this, increase time
 	static const int BM_CHANGE_MIN_DEPTH = 7;  // max bestmove changes taken into account
 	static const int BM_STABLE_MIN = 3;        // if bestmove remains same more than this, decrease time
 	static const int TIME_INCRESE_PERCENTAGE = 105;  // ʱ�����ӵİٷ���
-	static const int TIME_DECREASE_PERCENTAGE = 90;  // ʱ����ٵİٷ���
-	static const int TURNTIME_MIN_DIVISION = 3;      // min time for this turn
+	static const int TIME_DECREASE_PERCENTAGE = 100;  // ʱ����ٵİٷ���
+	static const int TURNTIME_MIN_DIVISION = 1;      // min time for this turn
 
 	static const int MAX_SEARCH_DEPTH = 64;    // ����ȫ��������������
 	static const int MAX_PLY = 150;            // �����ܼ����������
@@ -782,14 +1155,16 @@ private:
 		return MIN(info.time_left, MAX(0L, PROCESS_DEADLINE_MS - getTime()));
 #endif
 	}
+	// Both budgets are absolute wall-clock targets measured from process start
+	// (turnMove sets startTime to 0, so timeUsed() is time since process start).
+	// timeLeft() must not be used here: it shrinks as the search runs, which
+	// used to make every iteration compare elapsed time against a moving target
+	// and stop the search at roughly a third of the available budget.
 	inline long timeForTurn() {
-		// This executable is launched once per move by the harness.  Do not
-		// apply Rapfi's whole-match reserve division: it would turn the 760ms
-		// process deadline into a few dozen milliseconds.
-		return MAX(0L, MIN(info.timeout_turn, timeLeft()) - TIME_RESERVED);
+		return MAX(0L, MIN(info.timeout_turn, PROCESS_DEADLINE_MS) - TIME_RESERVED);
 	}
 	inline long timeForTurnMax() {
-		return MAX(0L, MIN(info.timeout_turn, timeLeft()) - TIME_RESERVED);
+		return MAX(0L, MIN(info.timeout_turn, PROCESS_DEADLINE_MS));
 	}
 
 	/////////////////////////////////////////////////////////////
@@ -1786,6 +2161,8 @@ void Evaluator::makeMove(Pos pos) {
 
 				p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
 				c->updatePattern4(pCodeBlack, pCodeWhite);
+				if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
+					c->pattern4[White] = NONE;
 				if (contestForbiddenBlack(*board, p)) c->pattern4[Black] = FORBID;
 				p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
 			}
@@ -1812,6 +2189,8 @@ void Evaluator::makeMove(Pos pos) {
 
 				p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
 				c->updatePattern4(pCodeBlack, pCodeWhite);
+				if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
+					c->pattern4[White] = NONE;
 				if (contestForbiddenBlack(*board, p)) c->pattern4[Black] = FORBID;
 				p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
 			}
@@ -1829,6 +2208,8 @@ void Evaluator::makeMove(Pos pos) {
 		p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
 		pCodeBlack = c->getPatternCode(Black); pCodeWhite = c->getPatternCode(White);
 		c->updatePattern4(pCodeBlack, pCodeWhite);
+		if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
+			c->pattern4[White] = NONE;
 		if (contestForbiddenBlack(*board, p)) c->pattern4[Black] = FORBID;
 		p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
 	}
@@ -1904,6 +2285,8 @@ void Evaluator::undoMove() {
 
 				p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
 				c->updatePattern4(pCodeBlack, pCodeWhite);
+				if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
+					c->pattern4[White] = NONE;
 				if (contestForbiddenBlack(*board, p)) c->pattern4[Black] = FORBID;
 				p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
 			}
@@ -1930,6 +2313,8 @@ void Evaluator::undoMove() {
 
 				p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
 				c->updatePattern4(pCodeBlack, pCodeWhite);
+				if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
+					c->pattern4[White] = NONE;
 				if (contestForbiddenBlack(*board, p)) c->pattern4[Black] = FORBID;
 				p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
 			}
@@ -1944,6 +2329,8 @@ void Evaluator::undoMove() {
 		p4Count[Black][c->pattern4[Black]]--; p4Count[White][c->pattern4[White]]--;
 		pCodeBlack = c->getPatternCode(Black); pCodeWhite = c->getPatternCode(White);
 		c->updatePattern4(pCodeBlack, pCodeWhite);
+		if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
+			c->pattern4[White] = NONE;
 		if (contestForbiddenBlack(*board, p)) c->pattern4[Black] = FORBID;
 		p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
 	}
@@ -2039,13 +2426,16 @@ void Evaluator::init() {
 					v[i++] = d * (N * N * N) + c * (N * N) + b * N + a;
 				}
 
-	for (int i = 0, sum = N * N * N * N; i < N * N * N * N; i++)
-		if (v[i] > -1)
-			for (int j = i + 1; j < N * N * N * N; j++)
-				if (v[i] == v[j]) v[j] = -1, sum--;
-
+	// v[i] holds the sorted (canonical) form of index i, so the canonical codes
+	// are exactly the fixed points v[i] == i: sorting the digits ascending into
+	// the most significant positions yields the smallest index of its class.
+	// The original code found them with an O(n^2) scan over 65536 entries, about
+	// 254 million comparisons and ~140ms of every move's budget.  The judge
+	// restarts the process for every move, so this identical table was being
+	// rebuilt from scratch each time.  Numbering the fixed points in a single
+	// pass produces a bit-identical table in about 6ms.
 	for (int i = 0, count = 0; i < N * N * N * N; i++)
-		if (v[i] > -1) v[i] = count++;
+		v[i] = (v[i] == i) ? count++ : -1;
 
 	for (int i = 0; i < N; i++)
 		for (int j = 0; j < N; j++)
@@ -2752,6 +3142,52 @@ void AI::setMaxDepth(int depth) {
 	maxSearchDepth = MAX(MIN(depth, 255), 2);
 }
 
+// Returns the book move for this position, or NullPos when the position is not
+// in the book.  Costs eight 225-byte board rewrites and a binary search, which
+// is far below a millisecond.
+static Pos contestBookMove(const Board & board) {
+	if (CONTEST_BOOK_SIZE == 0 || CONTEST_BOOK[0].key == 0ull) return NullPos;
+	if (board.size() != 15) return NullPos;
+
+	char plane[225];
+	for (int r = 0; r < 15; ++r)
+		for (int c = 0; c < 15; ++c) {
+			Piece piece = board.get(POS(r, c));
+			plane[r * 15 + c] = piece == Black ? 'b' : (piece == White ? 'w' : '.');
+		}
+
+	char canonicalPlane[225], candidate[225];
+	int canonicalIndex = -1;
+	for (int t = 0; t < 8; ++t) {
+		for (int r = 0; r < 15; ++r)
+			for (int c = 0; c < 15; ++c) {
+				int nr, nc;
+				contestTransform(t, r, c, nr, nc);
+				candidate[nr * 15 + nc] = plane[r * 15 + c];
+			}
+		if (canonicalIndex < 0 || std::memcmp(candidate, canonicalPlane, 225) < 0) {
+			std::memcpy(canonicalPlane, candidate, 225);
+			canonicalIndex = t;
+		}
+	}
+
+	unsigned long long key = contestBookHash(canonicalPlane, 225);
+	int low = 0, high = CONTEST_BOOK_SIZE - 1, found = -1;
+	while (low <= high) {
+		int mid = (low + high) / 2;
+		if (CONTEST_BOOK[mid].key == key) { found = mid; break; }
+		if (CONTEST_BOOK[mid].key < key) low = mid + 1;
+		else high = mid - 1;
+	}
+	if (found < 0) return NullPos;
+
+	int row, col;
+	contestTransform(CONTEST_INVERSE[canonicalIndex],
+		CONTEST_BOOK[found].move / 15, CONTEST_BOOK[found].move % 15, row, col);
+	Pos move = POS(row, col);
+	return board.isEmpty(move) ? move : NullPos;
+}
+
 Pos AI::turnMove() {
 	startTime = 0;
 	terminateAI = false;
@@ -2776,6 +3212,14 @@ Pos AI::turnMove() {
 		return NullPos;
 
 	Pos best;
+
+	// Our own generated book comes first: its entries are the moves a search
+	// with seconds of thinking time played, which is depth this process cannot
+	// reach inside the contest's one second.
+	Pos bookMove = contestBookMove(*board);
+	if (bookMove != NullPos && contestLegalMove(*board, bookMove, SELF))
+		return bookMove;
+
 #ifndef VERSION_YIXIN_BOARD
     if (useOpeningBook) {
 		best = databaseMove();
@@ -2799,17 +3243,22 @@ Pos AI::turnMove() {
 	aiPiece = SELF;
 	hashTable->newSearch();
 
-	best = fullSearch();
-	if (!board->isEmpty(best) || !contestLegalMove(*board, best, SELF)) {
-		Pos legal = NullPos;
+	// Cheap legal move first, so the watchdog always has something sane to print
+	// even if the search is cut off before it finishes its first iteration.
+	Pos legal = NullPos;
+	{
 		int score = INT_MIN;
 		FOR_EVERY_EMPTY_POS(p) {
 			if (!contestLegalMove(*board, p, SELF)) continue;
 			int s = cell(p).getScore();
 			if (legal == NullPos || s > score) { legal = p; score = s; }
 		}
-		best = legal;
+		if (legal != NullPos) contestPublish(CoordX(legal), CoordY(legal));
 	}
+
+	best = fullSearch();
+	if (!board->isEmpty(best) || !contestLegalMove(*board, best, SELF))
+		best = legal;
 
 	long time = timeUsed();
 #ifdef VERSION_YIXIN_BOARD
@@ -2847,6 +3296,8 @@ Pos AI::fullSearch() {
 		else if (move.value == -INF)  // ���ʱ��֪����һ����������ֵ������һ���Ĵ���
 			move.value = bestMove.value; 
 		bestMove = move;
+		if (board->isEmpty(bestMove.pos) && contestLegalMove(*board, bestMove.pos, SELF))
+			contestPublish(CoordX(bestMove.pos), CoordY(bestMove.pos));
 
 		if (nodeExpended != lastNodeExpended) {
 			if (BestMoveChangeCount == 0) {
@@ -2860,7 +3311,13 @@ Pos AI::fullSearch() {
 		}
 
 		// ��ǰ�˳�|��ʱ�˳�|Ӯ�����˳�|ƽ���˳�
-		shouldBreak = (timeLeft() / MATCH_SPARE_MAX < info.timeout_turn || timeUsed() > turnTime * TIMEOUT_PREVENT_MIN / 100) && (turnTime * 10 <= (getTime() - lastDepthTime) * TIMEOUT_PREVENT)
+		// Rapfi's original condition compared timeLeft() against the whole-match
+		// reserve, which in a per-move process is always true, so it collapsed
+		// into "stop as soon as one iteration costs more than about 170ms" and
+		// returned with most of the budget unspent.  Predicting the next
+		// iteration's cost uses the budget instead of abandoning it.
+		long lastIterationTime = getTime() - lastDepthTime;
+		shouldBreak = timeUsed() + lastIterationTime * NEXT_ITERATION_COST_PERCENTAGE / 100 > turnTime
 			|| terminateAI
 			|| bestMove.value >= WIN_MIN || bestMove.value <= -WIN_MIN;
 
@@ -2957,6 +3414,10 @@ Move AI::alphabeta_root(int depth, int alpha, int beta) {
 	minEvalPly = depth;
 
 	do {
+		if (!contestRootExclude.empty()
+			&& std::find(contestRootExclude.begin(), contestRootExclude.end(),
+				int(CoordX(move->pos)) * 15 + int(CoordY(move->pos))) != contestRootExclude.end())
+			continue;
 		if (cell(move->pos).isLose) {
 			DEBUGL("PVS����" << PosStr(move->pos) << ": Lose");
 			ANALYSIS("LOST", move->pos);
@@ -3010,6 +3471,8 @@ Move AI::alphabeta_root(int depth, int alpha, int beta) {
 			ANALYSIS("BEST", best.pos);
 			BestMoveChangeCount++;
 			move->value = value + 1000;
+			if (ply == 0 && board->isEmpty(best.pos) && contestLegalMove(*board, best.pos, SELF))
+				contestPublish(CoordX(best.pos), CoordY(best.pos));
 			// ���ڵ��value�����beta��
 			if (value > alpha) {
 				hashFlag = Hash_PV;
@@ -3126,7 +3589,7 @@ int AI::alphabeta(float depth, int alpha, int beta, bool cutNode) {
 	// Step 07. ��ʱ�ж�(Time Control)
 	static int cnt = 0;
 	if (--cnt < 0) {
-		cnt = 3000;
+		cnt = 1000;
 		if (timeUsed() > timeForTurnMax()) 
 			terminateAI = true;
 	}
@@ -3387,7 +3850,7 @@ int AI::quickVCFSearch() {
 	// ��ʱ�ж�
 	static int cnt = 0;
 	if (--cnt < 0) {
-		cnt = 7000;
+		cnt = 2000;
 		if (timeUsed() > timeForTurnMax()) 
 			return terminateAI = true, 0;
 	}
@@ -3841,14 +4304,27 @@ void AI::tryReadConfig(string path) {
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
+    contestReadEnv();
     int me, x;
     if (!(std::cin >> me)) return 0;
     std::vector<Pos> stones[2];
+    int grid[15][15];
     for (int r = 0; r < 15; ++r)
         for (int c = 0; c < 15; ++c) {
             std::cin >> x;
+            grid[r][c] = x;
             if (x == 0 || x == 1) stones[x].push_back(POS(r, c));
         }
+
+    // Arm the backstop before Rapfi's per-process initialization, using the
+    // closest empty point to the centre as the answer of last resort.  Legality
+    // is refined as soon as the evaluator is up; this only has to beat a TLE.
+    for (int radius = 0; radius < 15 && contestBestRow < 0; ++radius)
+        for (int r = 7 - radius; r <= 7 + radius && contestBestRow < 0; ++r)
+            for (int c = 7 - radius; c <= 7 + radius && contestBestRow < 0; ++c)
+                if (r >= 0 && r < 15 && c >= 0 && c < 15 && grid[r][c] == -1)
+                    contestPublish(r, c);
+    contestArmWatchdog();
 
     Board board(15);
     AI ai(&board);
@@ -3865,6 +4341,7 @@ int main() {
     ai.info.time_left = 100000000;
     ai.info.setMaxMemory(256 * 1024 * 1024L);
     Pos p = ai.turnMove();
+    contestDisarmWatchdog();
     std::cout << int(CoordX(p)) << ' ' << int(CoordY(p)) << '\n';
     return 0;
 }

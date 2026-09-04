@@ -21,3 +21,6 @@ reports/smoke.json
 upstream-rapfi/
 upstream-rapfi2018/
 upstream-rapfi-release/
+
+# Opening book build cache
+.build-book/
