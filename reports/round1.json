@@ -1,0 +1,3884 @@
+{
+  "schema": 1,
+  "type": "matrix",
+  "pairs": [
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:22:48+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 80,
+      "sources": [
+        "src.cpp",
+        "variants\\chatgpt-latest\\src.cpp"
+      ],
+      "score": {
+        "src.cpp": 2,
+        "variants\\chatgpt-latest\\src.cpp": 0,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "src.cpp",
+          "white": "variants\\chatgpt-latest\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 317.925,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 332.774,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 696.929,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                9
+              ],
+              "time_ms": 1073.859,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                6
+              ],
+              "time_ms": 678.667,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                9
+              ],
+              "time_ms": 1076.437,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                5
+              ],
+              "time_ms": 683.497,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                8
+              ],
+              "time_ms": 387.929,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                7
+              ],
+              "time_ms": 511.202,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 444.569,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 377.273,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                4
+              ],
+              "time_ms": 356.402,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                6
+              ],
+              "time_ms": 356.866,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                6
+              ],
+              "time_ms": 317.179,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                5
+              ],
+              "time_ms": 315.298,
+              "stderr": ""
+            },
+            {
+              "ply": 15,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                10
+              ],
+              "time_ms": 309.272,
+              "stderr": ""
+            },
+            {
+              "ply": 16,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                11
+              ],
+              "time_ms": 310.36,
+              "stderr": ""
+            },
+            {
+              "ply": 17,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                8
+              ],
+              "time_ms": 318.896,
+              "stderr": ""
+            },
+            {
+              "ply": 18,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 315.562,
+              "stderr": ""
+            },
+            {
+              "ply": 19,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                9
+              ],
+              "time_ms": 319.359,
+              "stderr": ""
+            },
+            {
+              "ply": 20,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                4
+              ],
+              "time_ms": 308.989,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Time Limit Exceeded",
+          "opening": "empty",
+          "black": "variants\\chatgpt-latest\\src.cpp",
+          "white": "src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 321.762,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 308.673,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 927.402,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 891.913,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 1035.282,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 769.749,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                8
+              ],
+              "time_ms": 1091.927,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 979.09,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": false,
+              "reason": "Time Limit Exceeded",
+              "time_ms": 1161.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:23:17+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 80,
+      "sources": [
+        "src.cpp",
+        "variants\\wallclock-fast\\src.cpp"
+      ],
+      "score": {
+        "src.cpp": 1,
+        "variants\\wallclock-fast\\src.cpp": 1,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "src.cpp",
+          "white": "variants\\wallclock-fast\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 306.49,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 311.219,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 792.704,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 716.893,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 1036.831,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 809.162,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                6
+              ],
+              "time_ms": 718.412,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                8
+              ],
+              "time_ms": 755.686,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 700.36,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                9
+              ],
+              "time_ms": 817.452,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                6
+              ],
+              "time_ms": 771.742,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                6
+              ],
+              "time_ms": 706.617,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                7
+              ],
+              "time_ms": 725.776,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                5
+              ],
+              "time_ms": 888.141,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                6
+              ],
+              "time_ms": 601.699,
+              "stderr": ""
+            },
+            {
+              "ply": 15,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 315.19,
+              "stderr": ""
+            },
+            {
+              "ply": 16,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                8
+              ],
+              "time_ms": 349.933,
+              "stderr": ""
+            },
+            {
+              "ply": 17,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                5
+              ],
+              "time_ms": 327.076,
+              "stderr": ""
+            },
+            {
+              "ply": 18,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 331.5,
+              "stderr": ""
+            },
+            {
+              "ply": 19,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 308.197,
+              "stderr": ""
+            },
+            {
+              "ply": 20,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                5
+              ],
+              "time_ms": 317.164,
+              "stderr": ""
+            },
+            {
+              "ply": 21,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                4
+              ],
+              "time_ms": 310.536,
+              "stderr": ""
+            },
+            {
+              "ply": 22,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                7
+              ],
+              "time_ms": 315.036,
+              "stderr": ""
+            },
+            {
+              "ply": 23,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                7
+              ],
+              "time_ms": 312.259,
+              "stderr": ""
+            },
+            {
+              "ply": 24,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                4
+              ],
+              "time_ms": 327.122,
+              "stderr": ""
+            },
+            {
+              "ply": 25,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                7
+              ],
+              "time_ms": 327.838,
+              "stderr": ""
+            },
+            {
+              "ply": 26,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                5
+              ],
+              "time_ms": 321.201,
+              "stderr": ""
+            },
+            {
+              "ply": 27,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                8
+              ],
+              "time_ms": 321.783,
+              "stderr": ""
+            },
+            {
+              "ply": 28,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                3
+              ],
+              "time_ms": 559.578,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\wallclock-fast\\src.cpp",
+          "white": "src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 1142.744,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 405.449,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                5
+              ],
+              "time_ms": 726.366,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                4
+              ],
+              "time_ms": 905.21,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 717.265,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                4
+              ],
+              "time_ms": 885.89,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 721.032,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                5
+              ],
+              "time_ms": 708.933,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                6
+              ],
+              "time_ms": 749.568,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                4
+              ],
+              "time_ms": 751.564,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 725.284,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 678.441,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                6
+              ],
+              "time_ms": 754.581,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                6
+              ],
+              "time_ms": 432.619,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                5
+              ],
+              "time_ms": 566.719,
+              "stderr": ""
+            },
+            {
+              "ply": 15,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                4
+              ],
+              "time_ms": 335.357,
+              "stderr": ""
+            },
+            {
+              "ply": 16,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                11,
+                7
+              ],
+              "time_ms": 499.97,
+              "stderr": ""
+            },
+            {
+              "ply": 17,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                4
+              ],
+              "time_ms": 357.134,
+              "stderr": ""
+            },
+            {
+              "ply": 18,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                7
+              ],
+              "time_ms": 306.432,
+              "stderr": ""
+            },
+            {
+              "ply": 19,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                4
+              ],
+              "time_ms": 312.803,
+              "stderr": ""
+            },
+            {
+              "ply": 20,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                8
+              ],
+              "time_ms": 314.289,
+              "stderr": ""
+            },
+            {
+              "ply": 21,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                11,
+                4
+              ],
+              "time_ms": 343.853,
+              "stderr": ""
+            },
+            {
+              "ply": 22,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                11,
+                9
+              ],
+              "time_ms": 307.472,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:23:26+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 80,
+      "sources": [
+        "src.cpp",
+        "variants\\threat-solver\\src.cpp"
+      ],
+      "score": {
+        "src.cpp": 2,
+        "variants\\threat-solver\\src.cpp": 0,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "src.cpp",
+          "white": "variants\\threat-solver\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 307.045,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 154.627,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 693.32,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 149.434,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 989.005,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                9
+              ],
+              "time_ms": 158.072,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                8
+              ],
+              "time_ms": 666.59,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                10
+              ],
+              "time_ms": 157.746,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 326.088,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                11
+              ],
+              "time_ms": 170.308,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                9
+              ],
+              "time_ms": 305.113,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                10
+              ],
+              "time_ms": 148.293,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                5
+              ],
+              "time_ms": 305.94,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\threat-solver\\src.cpp",
+          "white": "src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 158.59,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 326.996,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 160.375,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 958.127,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 152.477,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                6
+              ],
+              "time_ms": 831.445,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                7
+              ],
+              "time_ms": 157.871,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                8
+              ],
+              "time_ms": 684.483,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                7
+              ],
+              "time_ms": 155.471,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                5
+              ],
+              "time_ms": 310.783,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                9
+              ],
+              "time_ms": 152.098,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                4
+              ],
+              "time_ms": 320.863,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:23:37+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 80,
+      "sources": [
+        "src.cpp",
+        "variants\\mcts-hybrid\\src.cpp"
+      ],
+      "score": {
+        "src.cpp": 2,
+        "variants\\mcts-hybrid\\src.cpp": 0,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "src.cpp",
+          "white": "variants\\mcts-hybrid\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 317.806,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 250.018,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 680.32,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 263.632,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 811.215,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 302.419,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 794.884,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                2
+              ],
+              "time_ms": 353.39,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                1
+              ],
+              "time_ms": 306.005,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                3
+              ],
+              "time_ms": 392.479,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 316.184,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                0
+              ],
+              "time_ms": 386.309,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 309.173,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                7
+              ],
+              "time_ms": 145.752,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                7
+              ],
+              "time_ms": 298.382,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\mcts-hybrid\\src.cpp",
+          "white": "src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 155.027,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 302.187,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 206.262,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                9
+              ],
+              "time_ms": 844.922,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 247.024,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                8
+              ],
+              "time_ms": 662.69,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                5
+              ],
+              "time_ms": 333.26,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                4
+              ],
+              "time_ms": 314.692,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                8
+              ],
+              "time_ms": 383.711,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                10
+              ],
+              "time_ms": 827.999,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 442.452,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                7
+              ],
+              "time_ms": 301.865,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                6
+              ],
+              "time_ms": 143.813,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                11
+              ],
+              "time_ms": 306.592,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:23:49+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 80,
+      "sources": [
+        "variants\\chatgpt-latest\\src.cpp",
+        "variants\\wallclock-fast\\src.cpp"
+      ],
+      "score": {
+        "variants\\chatgpt-latest\\src.cpp": 0,
+        "variants\\wallclock-fast\\src.cpp": 2,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 1,
+          "reason": "Time Limit Exceeded",
+          "opening": "empty",
+          "black": "variants\\chatgpt-latest\\src.cpp",
+          "white": "variants\\wallclock-fast\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 305.223,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 306.481,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": false,
+              "reason": "Time Limit Exceeded",
+              "time_ms": 1123.747
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\wallclock-fast\\src.cpp",
+          "white": "variants\\chatgpt-latest\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 308.876,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 308.47,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                9
+              ],
+              "time_ms": 716.681,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                10
+              ],
+              "time_ms": 1118.436,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 708.65,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                10
+              ],
+              "time_ms": 1045.64,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                8
+              ],
+              "time_ms": 756.713,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                9
+              ],
+              "time_ms": 1039.061,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                7
+              ],
+              "time_ms": 622.563,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 439.866,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                6
+              ],
+              "time_ms": 419.483,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                5
+              ],
+              "time_ms": 313.043,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                8
+              ],
+              "time_ms": 341.251,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                9
+              ],
+              "time_ms": 313.959,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                6
+              ],
+              "time_ms": 330.379,
+              "stderr": ""
+            },
+            {
+              "ply": 15,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                11
+              ],
+              "time_ms": 315.468,
+              "stderr": ""
+            },
+            {
+              "ply": 16,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                12
+              ],
+              "time_ms": 306.482,
+              "stderr": ""
+            },
+            {
+              "ply": 17,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                9
+              ],
+              "time_ms": 331.516,
+              "stderr": ""
+            },
+            {
+              "ply": 18,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                5
+              ],
+              "time_ms": 323.619,
+              "stderr": ""
+            },
+            {
+              "ply": 19,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                4
+              ],
+              "time_ms": 311.994,
+              "stderr": ""
+            },
+            {
+              "ply": 20,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                9
+              ],
+              "time_ms": 300.944,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:23:56+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 80,
+      "sources": [
+        "variants\\chatgpt-latest\\src.cpp",
+        "variants\\threat-solver\\src.cpp"
+      ],
+      "score": {
+        "variants\\chatgpt-latest\\src.cpp": 1,
+        "variants\\threat-solver\\src.cpp": 1,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\chatgpt-latest\\src.cpp",
+          "white": "variants\\threat-solver\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 302.663,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 147.496,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 1105.204,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 157.288,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 1032.548,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                9
+              ],
+              "time_ms": 150.456,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                8
+              ],
+              "time_ms": 930.946,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                10
+              ],
+              "time_ms": 158.579,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 353.095,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                11
+              ],
+              "time_ms": 153.693,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                9
+              ],
+              "time_ms": 301.038,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                10
+              ],
+              "time_ms": 147.183,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                5
+              ],
+              "time_ms": 315.55,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "reason": "Time Limit Exceeded",
+          "opening": "empty",
+          "black": "variants\\threat-solver\\src.cpp",
+          "white": "variants\\chatgpt-latest\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 150.372,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 315.844,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                8
+              ],
+              "time_ms": 158.696,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": false,
+              "reason": "Time Limit Exceeded",
+              "time_ms": 1128.156
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:24:09+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 80,
+      "sources": [
+        "variants\\chatgpt-latest\\src.cpp",
+        "variants\\mcts-hybrid\\src.cpp"
+      ],
+      "score": {
+        "variants\\chatgpt-latest\\src.cpp": 2,
+        "variants\\mcts-hybrid\\src.cpp": 0,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\chatgpt-latest\\src.cpp",
+          "white": "variants\\mcts-hybrid\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 306.274,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 193.259,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 1041.249,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 272.025,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 1009.228,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 321.507,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 1097.64,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                2
+              ],
+              "time_ms": 341.01,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                1
+              ],
+              "time_ms": 311.374,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                3
+              ],
+              "time_ms": 416.867,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 318.194,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                0
+              ],
+              "time_ms": 434.552,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 305.722,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                7
+              ],
+              "time_ms": 143.701,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                7
+              ],
+              "time_ms": 300.999,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\mcts-hybrid\\src.cpp",
+          "white": "variants\\chatgpt-latest\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 159.075,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 300.951,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 203.414,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                9
+              ],
+              "time_ms": 1054.037,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 249.62,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                9
+              ],
+              "time_ms": 1037.079,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 283.333,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 302.617,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                5
+              ],
+              "time_ms": 372.356,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                10
+              ],
+              "time_ms": 506.694,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                12
+              ],
+              "time_ms": 436.278,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 324.476,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 144.32,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\chatgpt-latest\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                11
+              ],
+              "time_ms": 306.786,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:24:18+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 80,
+      "sources": [
+        "variants\\wallclock-fast\\src.cpp",
+        "variants\\threat-solver\\src.cpp"
+      ],
+      "score": {
+        "variants\\wallclock-fast\\src.cpp": 2,
+        "variants\\threat-solver\\src.cpp": 0,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\wallclock-fast\\src.cpp",
+          "white": "variants\\threat-solver\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 300.86,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 151.11,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                5
+              ],
+              "time_ms": 757.552,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                6
+              ],
+              "time_ms": 152.378,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 817.243,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                6
+              ],
+              "time_ms": 147.637,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                5
+              ],
+              "time_ms": 381.835,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                6
+              ],
+              "time_ms": 152.948,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                5
+              ],
+              "time_ms": 312.765,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                11,
+                6
+              ],
+              "time_ms": 151.204,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                5
+              ],
+              "time_ms": 311.031,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                5
+              ],
+              "time_ms": 158.893,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 315.201,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\threat-solver\\src.cpp",
+          "white": "variants\\wallclock-fast\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 165.857,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 327.459,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                8
+              ],
+              "time_ms": 161.263,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                9
+              ],
+              "time_ms": 1006.172,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                10
+              ],
+              "time_ms": 167.534,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                9
+              ],
+              "time_ms": 709.5,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                11
+              ],
+              "time_ms": 160.886,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 473.591,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                12
+              ],
+              "time_ms": 163.925,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                10
+              ],
+              "time_ms": 352.083,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                13
+              ],
+              "time_ms": 160.396,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                14
+              ],
+              "time_ms": 310.22,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                11
+              ],
+              "time_ms": 156.814,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 311.003,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                11
+              ],
+              "time_ms": 152.402,
+              "stderr": ""
+            },
+            {
+              "ply": 15,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                6
+              ],
+              "time_ms": 315.731,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:24:29+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 80,
+      "sources": [
+        "variants\\wallclock-fast\\src.cpp",
+        "variants\\mcts-hybrid\\src.cpp"
+      ],
+      "score": {
+        "variants\\wallclock-fast\\src.cpp": 2,
+        "variants\\mcts-hybrid\\src.cpp": 0,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\wallclock-fast\\src.cpp",
+          "white": "variants\\mcts-hybrid\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 312.331,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 202.647,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 721.006,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 279.669,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 661.601,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 311.31,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 817.383,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                2
+              ],
+              "time_ms": 374.028,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                1
+              ],
+              "time_ms": 315.589,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                3
+              ],
+              "time_ms": 412.188,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 320.047,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                0
+              ],
+              "time_ms": 412.375,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 365.741,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                7
+              ],
+              "time_ms": 161.451,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                7
+              ],
+              "time_ms": 322.084,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\mcts-hybrid\\src.cpp",
+          "white": "variants\\wallclock-fast\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 151.108,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 316.114,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 204.366,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 715.607,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 251.041,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                8
+              ],
+              "time_ms": 680.229,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 314.37,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 322.98,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                5
+              ],
+              "time_ms": 418.685,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 636.167,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                3
+              ],
+              "time_ms": 388.657,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                5
+              ],
+              "time_ms": 308.099,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                4
+              ],
+              "time_ms": 143.322,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                9
+              ],
+              "time_ms": 316.716,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:24:37+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 80,
+      "sources": [
+        "variants\\threat-solver\\src.cpp",
+        "variants\\mcts-hybrid\\src.cpp"
+      ],
+      "score": {
+        "variants\\threat-solver\\src.cpp": 0,
+        "variants\\mcts-hybrid\\src.cpp": 2,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\threat-solver\\src.cpp",
+          "white": "variants\\mcts-hybrid\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 145.318,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 194.483,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 197.916,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 250.244,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 159.78,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                6
+              ],
+              "time_ms": 334.168,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                9
+              ],
+              "time_ms": 162.521,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                10
+              ],
+              "time_ms": 161.017,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                11,
+                11
+              ],
+              "time_ms": 158.706,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                4
+              ],
+              "time_ms": 489.106,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                12,
+                12
+              ],
+              "time_ms": 157.898,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 617.165,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                3
+              ],
+              "time_ms": 158.45,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 162.24,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\mcts-hybrid\\src.cpp",
+          "white": "variants\\threat-solver\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 152.936,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 177.859,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 262.546,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 165.375,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                9
+              ],
+              "time_ms": 247.267,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                5
+              ],
+              "time_ms": 177.976,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                10
+              ],
+              "time_ms": 340.023,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                11
+              ],
+              "time_ms": 156.09,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                9
+              ],
+              "time_ms": 449.054,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                4
+              ],
+              "time_ms": 151.49,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                9
+              ],
+              "time_ms": 476.817,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                11,
+                3
+              ],
+              "time_ms": 156.966,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                12,
+                2
+              ],
+              "time_ms": 146.533,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                13,
+                1
+              ],
+              "time_ms": 152.207,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                9
+              ],
+              "time_ms": 645.875,
+              "stderr": ""
+            },
+            {
+              "ply": 15,
+              "side": 1,
+              "engine": "variants\\threat-solver\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                9
+              ],
+              "time_ms": 148.274,
+              "stderr": ""
+            },
+            {
+              "ply": 16,
+              "side": 0,
+              "engine": "variants\\mcts-hybrid\\src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                9
+              ],
+              "time_ms": 156.85,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

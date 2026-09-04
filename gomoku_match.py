@@ -125,6 +125,12 @@ def run_engine(binary: Path, side: int, board: list[list[int]], timeout: float) 
             timeout=timeout,
         )
         elapsed = round((time.perf_counter() - started) * 1000, 3)
+        # Windows' subprocess timeout can return a process just after the
+        # deadline instead of raising TimeoutExpired. The website's runner is
+        # a hard wall-clock limit, so classify measured overruns consistently.
+        if elapsed > timeout * 1000:
+            return {"ok": False, "reason": "Time Limit Exceeded", "time_ms": elapsed,
+                    "code": proc.returncode, "stderr": proc.stderr[-2000:]}
         if proc.returncode:
             return {"ok": False, "reason": "Runtime Error", "code": proc.returncode,
                     "stderr": proc.stderr[-2000:], "time_ms": elapsed}
@@ -217,6 +223,49 @@ def load_openings(path: str | None) -> list[dict[str, Any]]:
     return data
 
 
+def load_position(path: str) -> tuple[int, list[list[int]]]:
+    text = sys.stdin.read() if path == "-" else Path(path).read_text(encoding="utf-8")
+    words = text.split()
+    if len(words) != 226:
+        raise ValueError("position must contain side plus 225 board cells")
+    side = int(words[0])
+    cells = [int(value) for value in words[1:]]
+    if side not in (0, 1) or any(value not in (-1, 0, 1) for value in cells):
+        raise ValueError("position contains an invalid side or cell value")
+    return side, [cells[row * 15:(row + 1) * 15] for row in range(15)]
+
+
+def probe(engine: Engine, position: str, timeout: float,
+          expected: list[str]) -> tuple[dict[str, Any], bool]:
+    side, board = load_position(position)
+    result = engine.run(side, board, timeout)
+    report: dict[str, Any] = {"engine": engine.label, "side": side, **result}
+    passed = bool(result.get("ok"))
+    if passed:
+        r, c = result["move"]
+        if not in_board(r, c) or board[r][c] != -1:
+            report.update({"ok": False, "reason": "Illegal Move"})
+            passed = False
+        else:
+            board[r][c] = side
+            if side == 0:
+                ban = black_forbidden(board, r, c)
+                if ban:
+                    report.update({"ok": False, "reason": ban})
+                    passed = False
+    accepted = []
+    for value in expected:
+        parts = value.replace(",", " ").split()
+        if len(parts) != 2:
+            raise ValueError(f"bad --expect coordinate: {value}")
+        accepted.append([int(parts[0]), int(parts[1])])
+    if accepted:
+        report["expected"] = accepted
+        report["matched"] = result.get("move") in accepted
+        passed = passed and report["matched"]
+    return report, passed
+
+
 def match_pair(
     engine_a: Engine,
     engine_b: Engine,
@@ -260,6 +309,45 @@ def write_report(report: dict[str, Any], destination: str | None) -> None:
         print(text)
 
 
+def build_standings(pair_reports: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    table: dict[str, dict[str, Any]] = {}
+
+    def row(name: str) -> dict[str, Any]:
+        return table.setdefault(name, {"engine": name, "wins": 0, "losses": 0,
+                                       "draws": 0, "tle": 0, "illegal": 0,
+                                       "times_ms": []})
+
+    for pair in pair_reports:
+        for game in pair["games"]:
+            black, white = game["black"], game["white"]
+            for move in game["moves"]:
+                if not move.get("opening") and isinstance(move.get("time_ms"), (int, float)):
+                    row(move["engine"])["times_ms"].append(move["time_ms"])
+            if game["winner"] == -1:
+                row(black)["draws"] += 1
+                row(white)["draws"] += 1
+                continue
+            victor = [black, white][game["winner"]]
+            loser = [white, black][game["winner"]]
+            row(victor)["wins"] += 1
+            row(loser)["losses"] += 1
+            if game["reason"] == "Time Limit Exceeded":
+                row(loser)["tle"] += 1
+            if "Ban" in game["reason"] or game["reason"] in ("Illegal Move", "Invalid Output"):
+                row(loser)["illegal"] += 1
+
+    result = []
+    for item in table.values():
+        times = sorted(item.pop("times_ms"))
+        item["moves"] = len(times)
+        item["avg_ms"] = round(sum(times) / len(times), 3) if times else None
+        item["p95_ms"] = times[min(len(times) - 1, int(len(times) * 0.95))] if times else None
+        item["max_ms"] = times[-1] if times else None
+        result.append(item)
+    return sorted(result, key=lambda item: (-item["wins"], item["tle"], item["illegal"],
+                                            item["avg_ms"] or 0))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", type=Path, default=DEFAULT_STATE,
@@ -282,7 +370,20 @@ def main() -> int:
     matrix.add_argument("--openings")
     matrix.add_argument("--json", dest="json_path")
 
+    probe_parser = sub.add_parser("probe", help="run one engine on one saved position")
+    probe_parser.add_argument("engine", help="source path/directory or uid:STUDENT_ID")
+    probe_parser.add_argument("position", help="position text file, or - for stdin")
+    probe_parser.add_argument("--timeout", type=float, default=1.0)
+    probe_parser.add_argument("--expect", action="append", default=[], metavar="ROW,COL")
+    probe_parser.add_argument("--json", dest="json_path")
+
     args = parser.parse_args()
+    if args.command == "probe":
+        report, passed = probe(engine_from_spec(args.engine, args.state), args.position,
+                               args.timeout, args.expect)
+        write_report(report, args.json_path)
+        return 0 if passed else 1
+
     openings = load_openings(args.openings)
     if args.command == "pair":
         report = match_pair(engine_from_spec(args.source_a, args.state),
@@ -293,7 +394,14 @@ def main() -> int:
         pair_reports = []
         for a, b in itertools.combinations(engines, 2):
             pair_reports.append(match_pair(a, b, args.games, args.timeout, args.max_plies, openings))
-        report = {"schema": 1, "type": "matrix", "pairs": pair_reports}
+        standings = build_standings(pair_reports)
+        report = {"schema": 1, "type": "matrix", "standings": standings,
+                  "pairs": pair_reports}
+        print("standings:")
+        for index, item in enumerate(standings, 1):
+            print(f"  {index}. {item['engine']}: {item['wins']}W {item['losses']}L "
+                  f"{item['draws']}D, TLE={item['tle']}, illegal={item['illegal']}, "
+                  f"p95={item['p95_ms']}ms")
     write_report(report, args.json_path)
     return 0
 

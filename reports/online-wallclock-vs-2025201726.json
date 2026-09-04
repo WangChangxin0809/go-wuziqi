@@ -1,0 +1,895 @@
+{
+  "schema": 1,
+  "created_at": "2026-09-04T18:34:47+0800",
+  "timeout_seconds": 1.0,
+  "max_plies": 80,
+  "sources": [
+    "variants\\wallclock-fast\\src.cpp",
+    "uid:2025201726"
+  ],
+  "score": {
+    "variants\\wallclock-fast\\src.cpp": 0,
+    "uid:2025201726": 4,
+    "draw": 0
+  },
+  "games": [
+    {
+      "winner": 1,
+      "reason": "Time Limit Exceeded",
+      "opening": "empty",
+      "black": "variants\\wallclock-fast\\src.cpp",
+      "white": "uid:2025201726",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            7
+          ],
+          "time_ms": 316.745,
+          "stderr": ""
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 814.145,
+          "time_ms": 3.812,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            6
+          ]
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            7
+          ],
+          "time_ms": 316.844,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 233.572,
+          "time_ms": 3.87,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            7
+          ]
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 321.588,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1746.727,
+          "time_ms": 914.248,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            9
+          ]
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            9
+          ],
+          "time_ms": 370.353,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1519.71,
+          "time_ms": 912.511,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            10
+          ]
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            6
+          ],
+          "time_ms": 342.155,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 568.863,
+          "time_ms": 3.949,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            3,
+            5
+          ]
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            8
+          ],
+          "time_ms": 704.415,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1134.275,
+          "time_ms": 914.687,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            8
+          ],
+          "time_ms": 315.557,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 442.98,
+          "time_ms": 136.009,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            4,
+            8
+          ]
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            11
+          ],
+          "time_ms": 316.534,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 317.73,
+          "time_ms": 3.851,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            10
+          ]
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            8
+          ],
+          "time_ms": 314.415,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 108.529,
+          "time_ms": 3.802,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            8,
+            8
+          ]
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 316.855,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1267.369,
+          "time_ms": 917.549,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            11
+          ]
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            9
+          ],
+          "time_ms": 323.001,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1279.681,
+          "time_ms": 919.809,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            10
+          ]
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            10
+          ],
+          "time_ms": 353.712,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 771.918,
+          "time_ms": 406.389,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            9,
+            12
+          ]
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            13
+          ],
+          "time_ms": 349.184,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 546.8,
+          "time_ms": 182.04,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            12
+          ]
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            9
+          ],
+          "time_ms": 323.012,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 786.491,
+          "time_ms": 135.641,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            11,
+            10
+          ]
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": false,
+          "reason": "Time Limit Exceeded",
+          "time_ms": 1211.395,
+          "code": 0,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "uid:2025201726",
+      "white": "variants\\wallclock-fast\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 967.343,
+          "time_ms": 4.001,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            7
+          ]
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 319.984,
+          "stderr": ""
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 829.139,
+          "time_ms": 3.852,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            7
+          ]
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 348.817,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 206.586,
+          "time_ms": 4.046,
+          "memory": 10813440,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            5
+          ],
+          "time_ms": 311.267,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 548.17,
+          "time_ms": 3.794,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            8,
+            6
+          ]
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            8
+          ],
+          "time_ms": 318.361,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1079.184,
+          "time_ms": 3.607,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            8
+          ]
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            5
+          ],
+          "time_ms": 380.34,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 703.746,
+          "time_ms": 131.116,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            6
+          ]
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            6
+          ],
+          "time_ms": 348.21,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 735.108,
+          "time_ms": 129.864,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            5
+          ]
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            4
+          ],
+          "time_ms": 350.341,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 865.402,
+          "time_ms": 3.764,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "winner": 1,
+      "reason": "Time Limit Exceeded",
+      "opening": "center-horizontal",
+      "black": "variants\\wallclock-fast\\src.cpp",
+      "white": "uid:2025201726",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            7,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": false,
+          "reason": "Time Limit Exceeded",
+          "time_ms": 1065.204,
+          "code": 0,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "center-horizontal",
+      "black": "uid:2025201726",
+      "white": "variants\\wallclock-fast\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            7,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 151.62,
+          "time_ms": 4.446,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            8,
+            8
+          ]
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 320.237,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 526.117,
+          "time_ms": 3.537,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            9,
+            7
+          ]
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 324.787,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 272.518,
+          "time_ms": 4.044,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            10,
+            6
+          ]
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            9
+          ],
+          "time_ms": 323.034,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 564.084,
+          "time_ms": 3.809,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            9,
+            5
+          ]
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            6
+          ],
+          "time_ms": 308.947,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 474.477,
+          "time_ms": 130.872,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            5
+          ]
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            5
+          ],
+          "time_ms": 316.868,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 397.132,
+          "time_ms": 135.954,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            4
+          ]
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 318.908,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 393.604,
+          "time_ms": 129.514,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            3
+          ]
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            2
+          ],
+          "time_ms": 320.2,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 108.337,
+          "time_ms": 4.464,
+          "memory": 12713984,
+          "code": 0,
+          "move": [
+            10,
+            7
+          ]
+        }
+      ]
+    }
+  ]
+}

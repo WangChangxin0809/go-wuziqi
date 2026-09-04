@@ -1,0 +1,4328 @@
+{
+  "schema": 1,
+  "type": "matrix",
+  "standings": [
+    {
+      "engine": "variants\\wallclock-fast\\src.cpp",
+      "wins": 10,
+      "losses": 2,
+      "draws": 0,
+      "tle": 0,
+      "illegal": 0,
+      "moves": 89,
+      "avg_ms": 315.932,
+      "p95_ms": 337.189,
+      "max_ms": 440.937
+    },
+    {
+      "engine": "src.cpp",
+      "wins": 10,
+      "losses": 2,
+      "draws": 0,
+      "tle": 2,
+      "illegal": 0,
+      "moves": 102,
+      "avg_ms": 557.029,
+      "p95_ms": 937.494,
+      "max_ms": 1118.576
+    },
+    {
+      "engine": "variants\\proof-number\\src.cpp",
+      "wins": 4,
+      "losses": 8,
+      "draws": 0,
+      "tle": 0,
+      "illegal": 0,
+      "moves": 62,
+      "avg_ms": 161.88,
+      "p95_ms": 180.217,
+      "max_ms": 217.651
+    },
+    {
+      "engine": "variants\\beam-search\\src.cpp",
+      "wins": 0,
+      "losses": 12,
+      "draws": 0,
+      "tle": 0,
+      "illegal": 0,
+      "moves": 59,
+      "avg_ms": 157.168,
+      "p95_ms": 171.574,
+      "max_ms": 178.217
+    }
+  ],
+  "pairs": [
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:32:16+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 60,
+      "sources": [
+        "src.cpp",
+        "variants\\wallclock-fast\\src.cpp"
+      ],
+      "score": {
+        "src.cpp": 2,
+        "variants\\wallclock-fast\\src.cpp": 2,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 1,
+          "reason": "Time Limit Exceeded",
+          "opening": "empty",
+          "black": "src.cpp",
+          "white": "variants\\wallclock-fast\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 313.716,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 317.475,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 691.784,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 313.739,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": false,
+              "reason": "Time Limit Exceeded",
+              "time_ms": 1006.956,
+              "code": 0,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "reason": "Time Limit Exceeded",
+          "opening": "empty",
+          "black": "variants\\wallclock-fast\\src.cpp",
+          "white": "src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 329.525,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 314.756,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 310.603,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                7
+              ],
+              "time_ms": 868.742,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                6
+              ],
+              "time_ms": 316.894,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                9
+              ],
+              "time_ms": 977.045,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                5
+              ],
+              "time_ms": 310.101,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 696.832,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                4
+              ],
+              "time_ms": 305.202,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                3
+              ],
+              "time_ms": 305.677,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                5
+              ],
+              "time_ms": 306.059,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 965.969,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                9
+              ],
+              "time_ms": 305.382,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                8
+              ],
+              "time_ms": 684.177,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 326.531,
+              "stderr": ""
+            },
+            {
+              "ply": 15,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 670.808,
+              "stderr": ""
+            },
+            {
+              "ply": 16,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                8
+              ],
+              "time_ms": 345.67,
+              "stderr": ""
+            },
+            {
+              "ply": 17,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                5
+              ],
+              "time_ms": 685.099,
+              "stderr": ""
+            },
+            {
+              "ply": 18,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                6
+              ],
+              "time_ms": 309.834,
+              "stderr": ""
+            },
+            {
+              "ply": 19,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                4
+              ],
+              "time_ms": 674.54,
+              "stderr": ""
+            },
+            {
+              "ply": 20,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                6
+              ],
+              "time_ms": 307.999,
+              "stderr": ""
+            },
+            {
+              "ply": 21,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                7
+              ],
+              "time_ms": 918.317,
+              "stderr": ""
+            },
+            {
+              "ply": 22,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                6
+              ],
+              "time_ms": 305.092,
+              "stderr": ""
+            },
+            {
+              "ply": 23,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                6
+              ],
+              "time_ms": 299.638,
+              "stderr": ""
+            },
+            {
+              "ply": 24,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                7
+              ],
+              "time_ms": 304.088,
+              "stderr": ""
+            },
+            {
+              "ply": 25,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 674.501,
+              "stderr": ""
+            },
+            {
+              "ply": 26,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                4
+              ],
+              "time_ms": 304.575,
+              "stderr": ""
+            },
+            {
+              "ply": 27,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                5
+              ],
+              "time_ms": 665.146,
+              "stderr": ""
+            },
+            {
+              "ply": 28,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                6
+              ],
+              "time_ms": 317.148,
+              "stderr": ""
+            },
+            {
+              "ply": 29,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                3
+              ],
+              "time_ms": 902.15,
+              "stderr": ""
+            },
+            {
+              "ply": 30,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                3
+              ],
+              "time_ms": 307.584,
+              "stderr": ""
+            },
+            {
+              "ply": 31,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                2
+              ],
+              "time_ms": 302.997,
+              "stderr": ""
+            },
+            {
+              "ply": 32,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 300.708,
+              "stderr": ""
+            },
+            {
+              "ply": 33,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                11,
+                4
+              ],
+              "time_ms": 735.847,
+              "stderr": ""
+            },
+            {
+              "ply": 34,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                2
+              ],
+              "time_ms": 320.85,
+              "stderr": ""
+            },
+            {
+              "ply": 35,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                4
+              ],
+              "time_ms": 308.468,
+              "stderr": ""
+            },
+            {
+              "ply": 36,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                2
+              ],
+              "time_ms": 310.114,
+              "stderr": ""
+            },
+            {
+              "ply": 37,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                1
+              ],
+              "time_ms": 871.884,
+              "stderr": ""
+            },
+            {
+              "ply": 38,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                2
+              ],
+              "time_ms": 315.163,
+              "stderr": ""
+            },
+            {
+              "ply": 39,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                2
+              ],
+              "time_ms": 892.932,
+              "stderr": ""
+            },
+            {
+              "ply": 40,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                4
+              ],
+              "time_ms": 310.815,
+              "stderr": ""
+            },
+            {
+              "ply": 41,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                5
+              ],
+              "time_ms": 787.179,
+              "stderr": ""
+            },
+            {
+              "ply": 42,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 354.278,
+              "stderr": ""
+            },
+            {
+              "ply": 43,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": false,
+              "reason": "Time Limit Exceeded",
+              "time_ms": 1118.576
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "center-horizontal",
+          "black": "src.cpp",
+          "white": "variants\\wallclock-fast\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "move": [
+                7,
+                7
+              ],
+              "opening": true
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "move": [
+                7,
+                8
+              ],
+              "opening": true
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 677.718,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 306.894,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 667.197,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 312.8,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 739.68,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 303.065,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                6
+              ],
+              "time_ms": 677.102,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                6
+              ],
+              "time_ms": 332.279,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                5
+              ],
+              "time_ms": 678.45,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                4
+              ],
+              "time_ms": 305.186,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                4
+              ],
+              "time_ms": 743.228,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                7
+              ],
+              "time_ms": 310.399,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                5
+              ],
+              "time_ms": 740.875,
+              "stderr": ""
+            },
+            {
+              "ply": 15,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                6
+              ],
+              "time_ms": 315.789,
+              "stderr": ""
+            },
+            {
+              "ply": 16,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                4
+              ],
+              "time_ms": 422.163,
+              "stderr": ""
+            },
+            {
+              "ply": 17,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                7
+              ],
+              "time_ms": 306.549,
+              "stderr": ""
+            },
+            {
+              "ply": 18,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                5
+              ],
+              "time_ms": 332.422,
+              "stderr": ""
+            },
+            {
+              "ply": 19,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                11,
+                5
+              ],
+              "time_ms": 312.867,
+              "stderr": ""
+            },
+            {
+              "ply": 20,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                5
+              ],
+              "time_ms": 309.677,
+              "stderr": ""
+            },
+            {
+              "ply": 21,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                5
+              ],
+              "time_ms": 322.844,
+              "stderr": ""
+            },
+            {
+              "ply": 22,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                3
+              ],
+              "time_ms": 308.742,
+              "stderr": ""
+            },
+            {
+              "ply": 23,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                2
+              ],
+              "time_ms": 306.562,
+              "stderr": ""
+            },
+            {
+              "ply": 24,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                2
+              ],
+              "time_ms": 322.202,
+              "stderr": ""
+            },
+            {
+              "ply": 25,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                1
+              ],
+              "time_ms": 332.249,
+              "stderr": ""
+            },
+            {
+              "ply": 26,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                11,
+                6
+              ],
+              "time_ms": 308.967,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "center-horizontal",
+          "black": "variants\\wallclock-fast\\src.cpp",
+          "white": "src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "move": [
+                7,
+                7
+              ],
+              "opening": true
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "move": [
+                7,
+                8
+              ],
+              "opening": true
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 327.372,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 675.928,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                9
+              ],
+              "time_ms": 312.1,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                5
+              ],
+              "time_ms": 937.494,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 322.528,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                10
+              ],
+              "time_ms": 968.661,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                9
+              ],
+              "time_ms": 308.578,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                10
+              ],
+              "time_ms": 646.334,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                5
+              ],
+              "time_ms": 309.159,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 316.763,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                9
+              ],
+              "time_ms": 303.957,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                9
+              ],
+              "time_ms": 703.319,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 305.301,
+              "stderr": ""
+            },
+            {
+              "ply": 15,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                7
+              ],
+              "time_ms": 669.389,
+              "stderr": ""
+            },
+            {
+              "ply": 16,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                10
+              ],
+              "time_ms": 309.257,
+              "stderr": ""
+            },
+            {
+              "ply": 17,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                6
+              ],
+              "time_ms": 309.033,
+              "stderr": ""
+            },
+            {
+              "ply": 18,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                4
+              ],
+              "time_ms": 305.211,
+              "stderr": ""
+            },
+            {
+              "ply": 19,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                6
+              ],
+              "time_ms": 309.67,
+              "stderr": ""
+            },
+            {
+              "ply": 20,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                8
+              ],
+              "time_ms": 315.851,
+              "stderr": ""
+            },
+            {
+              "ply": 21,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 306.842,
+              "stderr": ""
+            },
+            {
+              "ply": 22,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                6
+              ],
+              "time_ms": 337.189,
+              "stderr": ""
+            },
+            {
+              "ply": 23,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                6
+              ],
+              "time_ms": 305.651,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:32:32+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 60,
+      "sources": [
+        "src.cpp",
+        "variants\\beam-search\\src.cpp"
+      ],
+      "score": {
+        "src.cpp": 4,
+        "variants\\beam-search\\src.cpp": 0,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "src.cpp",
+          "white": "variants\\beam-search\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 306.21,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 150.476,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 670.979,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                6
+              ],
+              "time_ms": 156.947,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                5
+              ],
+              "time_ms": 735.093,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                4
+              ],
+              "time_ms": 154.935,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                7
+              ],
+              "time_ms": 687.303,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                0,
+                3
+              ],
+              "time_ms": 156.095,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 304.431,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                2
+              ],
+              "time_ms": 157.632,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                8
+              ],
+              "time_ms": 349.805,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                9
+              ],
+              "time_ms": 146.027,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                4
+              ],
+              "time_ms": 299.267,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\beam-search\\src.cpp",
+          "white": "src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 147.319,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 305.517,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                9
+              ],
+              "time_ms": 148.984,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 669.801,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                9
+              ],
+              "time_ms": 157.681,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                9
+              ],
+              "time_ms": 931.803,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                9
+              ],
+              "time_ms": 156.976,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 669.584,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                9
+              ],
+              "time_ms": 154.035,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                9
+              ],
+              "time_ms": 306.738,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                0,
+                9
+              ],
+              "time_ms": 167.324,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                6
+              ],
+              "time_ms": 304.754,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                5
+              ],
+              "time_ms": 147.583,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                10
+              ],
+              "time_ms": 303.971,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "center-horizontal",
+          "black": "src.cpp",
+          "white": "variants\\beam-search\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "move": [
+                7,
+                7
+              ],
+              "opening": true
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "move": [
+                7,
+                8
+              ],
+              "opening": true
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 680.427,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 151.409,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                9
+              ],
+              "time_ms": 674.311,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                5
+              ],
+              "time_ms": 152.679,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                9
+              ],
+              "time_ms": 714.909,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                3
+              ],
+              "time_ms": 153.179,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 315.408,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 147.717,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                10
+              ],
+              "time_ms": 303.36,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "center-horizontal",
+          "black": "variants\\beam-search\\src.cpp",
+          "white": "src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "move": [
+                7,
+                7
+              ],
+              "opening": true
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "move": [
+                7,
+                8
+              ],
+              "opening": true
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 163.994,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 863.595,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 151.42,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 873.643,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                2
+              ],
+              "time_ms": 163.35,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                9
+              ],
+              "time_ms": 678.896,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                1
+              ],
+              "time_ms": 155.189,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 312.973,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                0,
+                0
+              ],
+              "time_ms": 165.39,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                10
+              ],
+              "time_ms": 303.53,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                11
+              ],
+              "time_ms": 142.623,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                6
+              ],
+              "time_ms": 302.313,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:32:50+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 60,
+      "sources": [
+        "src.cpp",
+        "variants\\proof-number\\src.cpp"
+      ],
+      "score": {
+        "src.cpp": 4,
+        "variants\\proof-number\\src.cpp": 0,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "src.cpp",
+          "white": "variants\\proof-number\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 310.141,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 170.407,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 675.034,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 169.045,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 793.425,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 172.37,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 808.38,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                2
+              ],
+              "time_ms": 180.217,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                1
+              ],
+              "time_ms": 312.456,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                3
+              ],
+              "time_ms": 160.998,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 329.049,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                3
+              ],
+              "time_ms": 158.546,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 316.058,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                7
+              ],
+              "time_ms": 150.484,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                7
+              ],
+              "time_ms": 302.97,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\proof-number\\src.cpp",
+          "white": "src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 143.734,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 302.425,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 171.514,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                9
+              ],
+              "time_ms": 665.501,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 168.305,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                9
+              ],
+              "time_ms": 772.207,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 146.813,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 307.694,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                5
+              ],
+              "time_ms": 189.706,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                10
+              ],
+              "time_ms": 511.393,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                5
+              ],
+              "time_ms": 165.06,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 304.306,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                6
+              ],
+              "time_ms": 148.071,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                11
+              ],
+              "time_ms": 303.849,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "center-horizontal",
+          "black": "src.cpp",
+          "white": "variants\\proof-number\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "move": [
+                7,
+                7
+              ],
+              "opening": true
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "move": [
+                7,
+                8
+              ],
+              "opening": true
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 665.393,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 163.952,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                9
+              ],
+              "time_ms": 679.499,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                6
+              ],
+              "time_ms": 163.934,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                10
+              ],
+              "time_ms": 787.931,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                5
+              ],
+              "time_ms": 149.098,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                4
+              ],
+              "time_ms": 308.039,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                6
+              ],
+              "time_ms": 166.298,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                9
+              ],
+              "time_ms": 327.602,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                6
+              ],
+              "time_ms": 177.012,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                11
+              ],
+              "time_ms": 309.112,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                12
+              ],
+              "time_ms": 149.677,
+              "stderr": ""
+            },
+            {
+              "ply": 14,
+              "side": 0,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                7
+              ],
+              "time_ms": 303.313,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "center-horizontal",
+          "black": "variants\\proof-number\\src.cpp",
+          "white": "src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "move": [
+                7,
+                7
+              ],
+              "opening": true
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "move": [
+                7,
+                8
+              ],
+              "opening": true
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 157.608,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 730.648,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 163.369,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 735.059,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 143.812,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 325.195,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                5
+              ],
+              "time_ms": 161.79,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                6
+              ],
+              "time_ms": 687.217,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                5
+              ],
+              "time_ms": 175.274,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                9
+              ],
+              "time_ms": 340.323,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                10
+              ],
+              "time_ms": 148.661,
+              "stderr": ""
+            },
+            {
+              "ply": 13,
+              "side": 1,
+              "engine": "src.cpp",
+              "ok": true,
+              "move": [
+                10,
+                5
+              ],
+              "time_ms": 322.891,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:33:00+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 60,
+      "sources": [
+        "variants\\wallclock-fast\\src.cpp",
+        "variants\\beam-search\\src.cpp"
+      ],
+      "score": {
+        "variants\\wallclock-fast\\src.cpp": 4,
+        "variants\\beam-search\\src.cpp": 0,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\wallclock-fast\\src.cpp",
+          "white": "variants\\beam-search\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 315.868,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 155.277,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 313.643,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                9
+              ],
+              "time_ms": 166.367,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 315.857,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                10
+              ],
+              "time_ms": 166.655,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                11
+              ],
+              "time_ms": 305.59,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                9
+              ],
+              "time_ms": 158.257,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 316.505,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                9
+              ],
+              "time_ms": 159.223,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 319.98,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 151.616,
+              "stderr": ""
+            },
+            {
+              "ply": 12,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                9
+              ],
+              "time_ms": 319.071,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\beam-search\\src.cpp",
+          "white": "variants\\wallclock-fast\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 152.755,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 314.504,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                9
+              ],
+              "time_ms": 151.736,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 308.865,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                6
+              ],
+              "time_ms": 159.348,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 305.63,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                6
+              ],
+              "time_ms": 155.869,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                8
+              ],
+              "time_ms": 315.15,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                8
+              ],
+              "time_ms": 149.393,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                8
+              ],
+              "time_ms": 440.937,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "center-horizontal",
+          "black": "variants\\wallclock-fast\\src.cpp",
+          "white": "variants\\beam-search\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "move": [
+                7,
+                7
+              ],
+              "opening": true
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "move": [
+                7,
+                8
+              ],
+              "opening": true
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 303.271,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 152.276,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 313.837,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                7
+              ],
+              "time_ms": 157.687,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                9
+              ],
+              "time_ms": 307.386,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                5
+              ],
+              "time_ms": 153.003,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 306.53,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                5
+              ],
+              "time_ms": 144.088,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                10
+              ],
+              "time_ms": 309.005,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "center-horizontal",
+          "black": "variants\\beam-search\\src.cpp",
+          "white": "variants\\wallclock-fast\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "move": [
+                7,
+                7
+              ],
+              "opening": true
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "move": [
+                7,
+                8
+              ],
+              "opening": true
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 156.542,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 322.566,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 167.44,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 319.193,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                6
+              ],
+              "time_ms": 170.599,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 311.536,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                8
+              ],
+              "time_ms": 171.223,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 317.199,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                8
+              ],
+              "time_ms": 155.231,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                8
+              ],
+              "time_ms": 318.867,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:33:10+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 60,
+      "sources": [
+        "variants\\wallclock-fast\\src.cpp",
+        "variants\\proof-number\\src.cpp"
+      ],
+      "score": {
+        "variants\\wallclock-fast\\src.cpp": 4,
+        "variants\\proof-number\\src.cpp": 0,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\wallclock-fast\\src.cpp",
+          "white": "variants\\proof-number\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 315.351,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 159.381,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 309.876,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 157.662,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                7
+              ],
+              "time_ms": 311.786,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 165.73,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 309.472,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                7
+              ],
+              "time_ms": 147.95,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 311.879,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\proof-number\\src.cpp",
+          "white": "variants\\wallclock-fast\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 151.526,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 312.697,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 154.068,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 311.047,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 179.818,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 309.524,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 154.309,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 340.433,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                5
+              ],
+              "time_ms": 155.949,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                8
+              ],
+              "time_ms": 308.419,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                8
+              ],
+              "time_ms": 157.977,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                8
+              ],
+              "time_ms": 332.367,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "center-horizontal",
+          "black": "variants\\wallclock-fast\\src.cpp",
+          "white": "variants\\proof-number\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "move": [
+                7,
+                7
+              ],
+              "opening": true
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "move": [
+                7,
+                8
+              ],
+              "opening": true
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 307.975,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 162.228,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                7
+              ],
+              "time_ms": 316.692,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 180.87,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                7
+              ],
+              "time_ms": 331.251,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                7
+              ],
+              "time_ms": 152.961,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                7
+              ],
+              "time_ms": 320.858,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "center-horizontal",
+          "black": "variants\\proof-number\\src.cpp",
+          "white": "variants\\wallclock-fast\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "move": [
+                7,
+                7
+              ],
+              "opening": true
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "move": [
+                7,
+                8
+              ],
+              "opening": true
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 159.929,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 304.582,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 167.802,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 314.25,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 156.29,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                8
+              ],
+              "time_ms": 329.591,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                5
+              ],
+              "time_ms": 167.477,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 304.218,
+              "stderr": ""
+            },
+            {
+              "ply": 10,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                8
+              ],
+              "time_ms": 156.312,
+              "stderr": ""
+            },
+            {
+              "ply": 11,
+              "side": 1,
+              "engine": "variants\\wallclock-fast\\src.cpp",
+              "ok": true,
+              "move": [
+                9,
+                8
+              ],
+              "time_ms": 315.315,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "created_at": "2026-09-04T18:33:15+0800",
+      "timeout_seconds": 1.0,
+      "max_plies": 60,
+      "sources": [
+        "variants\\beam-search\\src.cpp",
+        "variants\\proof-number\\src.cpp"
+      ],
+      "score": {
+        "variants\\beam-search\\src.cpp": 0,
+        "variants\\proof-number\\src.cpp": 4,
+        "draw": 0
+      },
+      "games": [
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\beam-search\\src.cpp",
+          "white": "variants\\proof-number\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 173.026,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 162.782,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                8
+              ],
+              "time_ms": 147.825,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 217.651,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                4
+              ],
+              "time_ms": 156.218,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 162.987,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 158.605,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                2,
+                2
+              ],
+              "time_ms": 147.393,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                1
+              ],
+              "time_ms": 148.943,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 149.63,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "empty",
+          "black": "variants\\proof-number\\src.cpp",
+          "white": "variants\\beam-search\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                7,
+                7
+              ],
+              "time_ms": 153.105,
+              "stderr": ""
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                8
+              ],
+              "time_ms": 169.435,
+              "stderr": ""
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 159.312,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                6
+              ],
+              "time_ms": 171.574,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 161.194,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                1,
+                4
+              ],
+              "time_ms": 162.277,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 176.241,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 149.043,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 153.64,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "reason": "Five",
+          "opening": "center-horizontal",
+          "black": "variants\\beam-search\\src.cpp",
+          "white": "variants\\proof-number\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "move": [
+                7,
+                7
+              ],
+              "opening": true
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "move": [
+                7,
+                8
+              ],
+              "opening": true
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 171.383,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                7
+              ],
+              "time_ms": 169.229,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 156.871,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                6
+              ],
+              "time_ms": 160.151,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                4
+              ],
+              "time_ms": 155.412,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                5
+              ],
+              "time_ms": 174.076,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                4
+              ],
+              "time_ms": 148.672,
+              "stderr": ""
+            },
+            {
+              "ply": 9,
+              "side": 1,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                9
+              ],
+              "time_ms": 163.706,
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "reason": "Five",
+          "opening": "center-horizontal",
+          "black": "variants\\proof-number\\src.cpp",
+          "white": "variants\\beam-search\\src.cpp",
+          "moves": [
+            {
+              "ply": 0,
+              "side": 0,
+              "move": [
+                7,
+                7
+              ],
+              "opening": true
+            },
+            {
+              "ply": 1,
+              "side": 1,
+              "move": [
+                7,
+                8
+              ],
+              "opening": true
+            },
+            {
+              "ply": 2,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                6,
+                6
+              ],
+              "time_ms": 153.442,
+              "stderr": ""
+            },
+            {
+              "ply": 3,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                10
+              ],
+              "time_ms": 161.576,
+              "stderr": ""
+            },
+            {
+              "ply": 4,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                5,
+                5
+              ],
+              "time_ms": 160.301,
+              "stderr": ""
+            },
+            {
+              "ply": 5,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                11
+              ],
+              "time_ms": 160.274,
+              "stderr": ""
+            },
+            {
+              "ply": 6,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                4,
+                4
+              ],
+              "time_ms": 156.872,
+              "stderr": ""
+            },
+            {
+              "ply": 7,
+              "side": 1,
+              "engine": "variants\\beam-search\\src.cpp",
+              "ok": true,
+              "move": [
+                3,
+                3
+              ],
+              "time_ms": 178.217,
+              "stderr": ""
+            },
+            {
+              "ply": 8,
+              "side": 0,
+              "engine": "variants\\proof-number\\src.cpp",
+              "ok": true,
+              "move": [
+                8,
+                8
+              ],
+              "time_ms": 150.836,
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

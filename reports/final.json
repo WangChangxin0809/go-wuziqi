@@ -1,0 +1,1423 @@
+{
+  "schema": 1,
+  "created_at": "2026-09-04T18:34:10+0800",
+  "timeout_seconds": 1.0,
+  "max_plies": 80,
+  "sources": [
+    "src.cpp",
+    "variants\\wallclock-fast\\src.cpp"
+  ],
+  "score": {
+    "src.cpp": 4,
+    "variants\\wallclock-fast\\src.cpp": 4,
+    "draw": 0
+  },
+  "games": [
+    {
+      "winner": 1,
+      "reason": "Time Limit Exceeded",
+      "opening": "empty",
+      "black": "src.cpp",
+      "white": "variants\\wallclock-fast\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            7
+          ],
+          "time_ms": 330.537,
+          "stderr": ""
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 344.678,
+          "stderr": ""
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 712.263,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 313.952,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": false,
+          "reason": "Time Limit Exceeded",
+          "time_ms": 1011.605,
+          "code": 0,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 1,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "variants\\wallclock-fast\\src.cpp",
+      "white": "src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            7
+          ],
+          "time_ms": 308.771,
+          "stderr": ""
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 320.604,
+          "stderr": ""
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            6
+          ],
+          "time_ms": 311.293,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            8
+          ],
+          "time_ms": 700.659,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            6
+          ],
+          "time_ms": 318.396,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 993.504,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 320.953,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            6
+          ],
+          "time_ms": 977.74,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            5
+          ],
+          "time_ms": 316.612,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            4
+          ],
+          "time_ms": 709.774,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            9
+          ],
+          "time_ms": 328.719,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 402.69,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            8
+          ],
+          "time_ms": 322.051,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            7
+          ],
+          "time_ms": 774.449,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 316.24,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            4
+          ],
+          "time_ms": 698.459,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            7
+          ],
+          "time_ms": 337.978,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            5
+          ],
+          "time_ms": 312.482,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            7
+          ],
+          "time_ms": 331.431,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 310.817,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            9
+          ],
+          "time_ms": 311.257,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 309.424,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            4
+          ],
+          "time_ms": 322.638,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            9
+          ],
+          "time_ms": 330.884,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "center-horizontal",
+      "black": "src.cpp",
+      "white": "variants\\wallclock-fast\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            7,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 705.964,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 335.959,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 679.245,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 303.484,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 743.534,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 316.285,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            6
+          ],
+          "time_ms": 675.245,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            6
+          ],
+          "time_ms": 312.555,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            5
+          ],
+          "time_ms": 667.092,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            4
+          ],
+          "time_ms": 305.658,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            4
+          ],
+          "time_ms": 728.274,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            7
+          ],
+          "time_ms": 316.811,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            5
+          ],
+          "time_ms": 699.747,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            6
+          ],
+          "time_ms": 314.983,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            4
+          ],
+          "time_ms": 411.641,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            7
+          ],
+          "time_ms": 311.955,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            5
+          ],
+          "time_ms": 335.939,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            5
+          ],
+          "time_ms": 309.101,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            5
+          ],
+          "time_ms": 320.94,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 309.445,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            3
+          ],
+          "time_ms": 319.345,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            2
+          ],
+          "time_ms": 314.572,
+          "stderr": ""
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            2
+          ],
+          "time_ms": 307.187,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            1
+          ],
+          "time_ms": 312.958,
+          "stderr": ""
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            6
+          ],
+          "time_ms": 322.133,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 1,
+      "reason": "Five",
+      "opening": "center-horizontal",
+      "black": "variants\\wallclock-fast\\src.cpp",
+      "white": "src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            7,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 326.963,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 687.724,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            9
+          ],
+          "time_ms": 317.997,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            5
+          ],
+          "time_ms": 927.978,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 306.941,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            10
+          ],
+          "time_ms": 975.765,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            9
+          ],
+          "time_ms": 326.043,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            10
+          ],
+          "time_ms": 622.266,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            5
+          ],
+          "time_ms": 352.015,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 318.648,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            9
+          ],
+          "time_ms": 313.204,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            9
+          ],
+          "time_ms": 715.758,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 309.584,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            7
+          ],
+          "time_ms": 668.11,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            10
+          ],
+          "time_ms": 315.073,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 315.157,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            4
+          ],
+          "time_ms": 319.491,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            6
+          ],
+          "time_ms": 317.296,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            8
+          ],
+          "time_ms": 324.655,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 380.673,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            6
+          ],
+          "time_ms": 329.235,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            6
+          ],
+          "time_ms": 321.302,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 1,
+      "reason": "Time Limit Exceeded",
+      "opening": "center-diagonal",
+      "black": "src.cpp",
+      "white": "variants\\wallclock-fast\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            8,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "move": [
+            6,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "move": [
+            8,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": false,
+          "reason": "Time Limit Exceeded",
+          "time_ms": 1137.77
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Time Limit Exceeded",
+      "opening": "center-diagonal",
+      "black": "variants\\wallclock-fast\\src.cpp",
+      "white": "src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            8,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "move": [
+            6,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "move": [
+            8,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 338.924,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": false,
+          "reason": "Time Limit Exceeded",
+          "time_ms": 1069.794,
+          "code": 0,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "cross",
+      "black": "src.cpp",
+      "white": "variants\\wallclock-fast\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            6,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "move": [
+            7,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "move": [
+            8,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "move": [
+            8,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "move": [
+            6,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            6
+          ],
+          "time_ms": 688.546,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            9
+          ],
+          "time_ms": 313.697,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 950.851,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            9
+          ],
+          "time_ms": 324.947,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            7
+          ],
+          "time_ms": 322.495,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 340.378,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            5
+          ],
+          "time_ms": 314.942,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            4
+          ],
+          "time_ms": 325.959,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 318.205,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            6
+          ],
+          "time_ms": 319.415,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            4
+          ],
+          "time_ms": 313.505,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            3
+          ],
+          "time_ms": 316.156,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            8
+          ],
+          "time_ms": 308.532,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Time Limit Exceeded",
+      "opening": "cross",
+      "black": "variants\\wallclock-fast\\src.cpp",
+      "white": "src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            6,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "move": [
+            7,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "move": [
+            8,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "move": [
+            8,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "move": [
+            6,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 311.357,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": false,
+          "reason": "Time Limit Exceeded",
+          "time_ms": 1055.759,
+          "code": 0,
+          "stderr": ""
+        }
+      ]
+    }
+  ]
+}

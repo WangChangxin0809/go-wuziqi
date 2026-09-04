@@ -8,10 +8,12 @@
 - `chatgpt-latest/src.cpp`：ChatGPT 网页资料库中下载时间最新的完整版本，原文件名
   `gomoku_v11_stable_clean.cpp`。
 
-后续每个方向使用独立目录，例如：
+当前并行候选：
 
-- `time-control/src.cpp`：墙钟硬截止、初始化与内存优化；
-- `tactical/src.cpp`：VCF/VCT、强制防守与禁手安全；
-- `evaluation/src.cpp`：估值、候选点和着法排序。
+- `wallclock-fast/src.cpp`：Rapfi 基线加全进程墙钟硬截止和快速初始化；
+- `threat-solver/src.cpp`：轻量威胁搜索；
+- `mcts-hybrid/src.cpp`：固定种子的 Monte-Carlo 根层抽样；
+- `beam-search/src.cpp`：有限宽度的确定性多层搜索；
+- `proof-number/src.cpp`：AND-OR/证明数式强制威胁求解。
 
 任意两个方向都通过根目录的 `gomoku_match.py` 按相同规则交换黑白测试。

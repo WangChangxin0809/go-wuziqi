@@ -56,8 +56,15 @@ python .\gomoku_match.py matrix .\src.cpp .\variants\*\src.cpp --games 2
 py -3.11 .\gomoku_match.py pair .\src.cpp uid:2025201726 --games 2
 ```
 
+固定局面回归（可重复使用 `--expect` 接受多个正确应手）：
+
+```powershell
+py -3.11 .\gomoku_match.py probe .\src.cpp .\fixtures\empty-black.txt --expect 7,7
+```
+
 仓库只保留每条方向最新版本，旧版本由 Git 历史保存，目录约定见
 [variants/README.md](variants/README.md)。
 
 已登录网页的 `/api/exec`、`/api/submit` 调用方法和本地客户端见
 [SITE_API.md](SITE_API.md)。认证 Cookie 只保存在被忽略的 `.playwright/` 目录中。
+候选淘汰、决赛与线上挑战规则见 [TOURNAMENT.md](TOURNAMENT.md)。
