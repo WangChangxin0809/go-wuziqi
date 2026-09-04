@@ -4282,10 +4282,11 @@ int AI::quickWinCheck() {
 		}
 	}
 Check_Flex3:
-	if (p4Count[self][F_FLEX3_2X] >= 1) {
-		if (p4Count[oppo][B_FLEX4] == 0 && p4Count[oppo][C_BLOCK4_FLEX3] == 0 && p4Count[oppo][D_BLOCK4_PLUS] == 0 && p4Count[oppo][E_BLOCK4] == 0)
-			return WIN_MAX - ply - 4;
-	}
+	// Rapfi's "double open three with no enemy four wins" shortcut is a freestyle
+	// rule of thumb.  Under exactly-five scoring an "open three" whose extensions
+	// would make an overline is not a real threat, so the shortcut announces mates
+	// that do not exist (measured: 21% of all mate claims in games we lost).  The
+	// main search finds the genuine ones anyway, so drop the shortcut entirely.
 
 #ifdef Win_Check_FLEX3_2X
 	if (has_FLEX3_2X) { // �Է���������������
