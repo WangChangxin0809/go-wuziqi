@@ -134,30 +134,72 @@ def winner(board: list[list[int]]) -> int:
     return -1
 
 
+def four_count_on_line(board: list[list[int]], r: int, c: int,
+                       dr: int, dc: int) -> int:
+    """Exact port of the website's getFourOnOneLine JavaScript function.
+
+    The board already contains the newly placed black stone at (r, c), while
+    `middle = 1` accounts for it and both scans start at the adjacent cells.
+    """
+    before, middle, after = 0, 1, 0
+    gap_seen = False
+    rr, cc = r - dr, c - dc
+    while True:
+        if not in_board(rr, cc):
+            if not gap_seen:
+                before = -1
+            break
+        value = board[rr][cc]
+        if value == 1:
+            if not gap_seen:
+                before = -1
+            break
+        if value == 0:
+            if gap_seen:
+                before += 1
+            else:
+                middle += 1
+        else:
+            if gap_seen:
+                break
+            gap_seen = True
+        rr, cc = rr - dr, cc - dc
+
+    gap_seen = False
+    rr, cc = r + dr, c + dc
+    while True:
+        if not in_board(rr, cc):
+            if not gap_seen:
+                after = -1
+            break
+        value = board[rr][cc]
+        if value == 1:
+            if not gap_seen:
+                after = -1
+            break
+        if value == 0:
+            if gap_seen:
+                after += 1
+            else:
+                middle += 1
+        else:
+            if gap_seen:
+                break
+            gap_seen = True
+        rr, cc = rr + dr, cc + dc
+
+    if middle == 4:
+        return 1 if before == 0 or after == 0 else 0
+    return int(before > 0 and before + middle == 4) + \
+        int(after > 0 and middle + after == 4)
+
+
 def black_forbidden(board: list[list[int]], r: int, c: int) -> str | None:
     for dr, dc in DIRS:
         if line_len(board, r, c, 0, dr, dc) > 5:
             return "LongBan"
-    # Exact five takes precedence over four-four in the assignment variant.
-    if any(line_len(board, r, c, 0, dr, dc) == 5 for dr, dc in DIRS):
-        return None
-    signatures: set[tuple[tuple[int, int], ...]] = set()
-    for dr, dc in DIRS:
-        for start in range(-4, 1):
-            cells = [(r + (start + k) * dr, c + (start + k) * dc) for k in range(5)]
-            if not all(in_board(rr, cc) and board[rr][cc] != 1 for rr, cc in cells):
-                continue
-            if sum(board[rr][cc] == 0 for rr, cc in cells) != 4:
-                continue
-            gap = next((p for p in cells if board[p[0]][p[1]] == -1), None)
-            if gap is None:
-                continue
-            board[gap[0]][gap[1]] = 0
-            exact = line_len(board, gap[0], gap[1], 0, dr, dc) == 5
-            board[gap[0]][gap[1]] = -1
-            if exact:
-                signatures.add(tuple(sorted((rr, cc) for rr, cc in cells if (rr, cc) != gap)))
-    return "FourFourBan" if len(signatures) >= 2 else None
+    four_count = sum(four_count_on_line(board, r, c, dr, dc) for dr, dc in DIRS)
+    return "FourFourBan" if four_count > 1 else None
 
 
 def play_game(p0: str, p1: str) -> dict[str, Any]:

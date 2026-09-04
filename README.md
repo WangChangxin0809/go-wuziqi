@@ -34,3 +34,30 @@ Alpha-Beta/PVS、置换表、威胁生成和 VCF 搜索，不是重新仿写的�
 `arena_server.py` + `arena.html` 提供不依赖第三方库的本地 BetaGomoku 评测器，
 可将多个实现放入 `players/<name>/src.cpp` 后进行编译、逐手计时和双向对局。
 详见 [arena_README.md](arena_README.md)。
+
+命令行标准对战器为 `gomoku_match.py`。它每一手都会重新启动选手程序，传入静态棋盘，
+使用 1 秒墙钟限制，并检查输出、重复落子、黑棋长连/四四禁手和恰好五连。两个版本
+会交换黑白：
+
+```powershell
+python .\gomoku_match.py pair .\src.cpp .\variants\chatgpt-latest\src.cpp `
+  --games 2 --json .\reports\baseline-vs-chatgpt-latest.json
+```
+
+多个方向可运行循环赛：
+
+```powershell
+python .\gomoku_match.py matrix .\src.cpp .\variants\*\src.cpp --games 2
+```
+
+登录态保存后，也可以把评测网站上的 UID 当作选手，与本地版本交换黑白：
+
+```powershell
+py -3.11 .\gomoku_match.py pair .\src.cpp uid:2025201726 --games 2
+```
+
+仓库只保留每条方向最新版本，旧版本由 Git 历史保存，目录约定见
+[variants/README.md](variants/README.md)。
+
+已登录网页的 `/api/exec`、`/api/submit` 调用方法和本地客户端见
+[SITE_API.md](SITE_API.md)。认证 Cookie 只保存在被忽略的 `.playwright/` 目录中。

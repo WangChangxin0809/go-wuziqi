@@ -12,6 +12,9 @@ __pycache__/
 .playwright-cli/
 players/*/engine.exe
 players/
+.arena-build/
+reports/*-smoke.json
+reports/smoke.json
 
 # Downloaded upstream repositories keep their own Git metadata and are not
 # copied into this snapshot; src.cpp is the self-contained submission source.
