@@ -68,3 +68,6 @@ py -3.11 .\gomoku_match.py probe .\src.cpp .\fixtures\empty-black.txt --expect 7
 已登录网页的 `/api/exec`、`/api/submit` 调用方法和本地客户端见
 [SITE_API.md](SITE_API.md)。认证 Cookie 只保存在被忽略的 `.playwright/` 目录中。
 候选淘汰、决赛与线上挑战规则见 [TOURNAMENT.md](TOURNAMENT.md)。
+
+特定线上对手的实验候选会在对应目录 README 中标明适用开局；未知局面请优先使用根目录
+通用引擎，不要把特化主线误当成泛化性能。

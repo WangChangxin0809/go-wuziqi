@@ -29,6 +29,7 @@
 #include <cstring>
 #include <cstdio>
 #include <climits>
+#include <chrono>
 #if defined(__GNUC__)
 #pragma GCC diagnostic ignored "-Wnarrowing"
 #pragma GCC diagnostic ignored "-Wparentheses"
@@ -120,8 +121,11 @@ inline void toupper(string & str) {
 }
 
 // ���ص�ǰʱ��(��λ:ms)
+using WallClock = std::chrono::steady_clock;
+static const WallClock::time_point processStart = WallClock::now();
+static const long processDeadlineMs = 840;
 inline long getTime() {
-	return clock() * 1000L / CLOCKS_PER_SEC;
+	return (long)std::chrono::duration_cast<std::chrono::milliseconds>(WallClock::now() - processStart).count();
 }
 
 #ifdef _DEBUG
@@ -763,6 +767,7 @@ private:
 	int maxPlyReached;
 	int VCFMaxPly, VCTMaxPly;
 	int BestMoveChangeCount;
+	int phaseMode = 0; // 0 quiet, 1 tactical, 2 forced defense
 
 	// ����ͳ�Ʊ���
 	int node, nodeExpended;
@@ -775,16 +780,17 @@ private:
 #ifdef _DEBUG
 		return INF;
 #else
-		return info.time_left;
+		return MIN(info.time_left, MAX(0L, processDeadlineMs - getTime()));
 #endif
 	}
 	inline long timeForTurn() {
-		double timePercentage = (double)board->getMoveLeftCount() / board->maxCells();
-		return MIN(info.timeout_turn, 
-			timeLeft() / (MAX((long)round(MATCH_SPARE * timePercentage), MATCH_SPARE_MIN))) - TIME_RESERVED;
+		// This executable is launched once per move by the harness.  Do not
+		// apply Rapfi's whole-match reserve division: it would turn the 760ms
+		// process deadline into a few dozen milliseconds.
+		return MAX(0L, MIN(info.timeout_turn, timeLeft()) - TIME_RESERVED);
 	}
 	inline long timeForTurnMax() {
-		return MIN(info.timeout_turn, timeLeft() / MATCH_SPARE_MIN) - TIME_RESERVED;
+		return MAX(0L, MIN(info.timeout_turn, timeLeft()) - TIME_RESERVED);
 	}
 
 	/////////////////////////////////////////////////////////////
@@ -845,6 +851,8 @@ public:
 	void stopThinking() { terminateAI = true; }
 	void clearHash();
 	void setMaxDepth(int depth);
+	void setPhaseMode(int mode) { phaseMode = std::max(0, std::min(2, mode));
+		maxSearchDepth = phaseMode == 2 ? 48 : phaseMode == 1 ? 56 : MAX_SEARCH_DEPTH; }
 	Pos turnMove();
 
 	inline int evaluate();
@@ -2292,7 +2300,8 @@ Pos Evaluator::getCostPosAgainstB4(Pos posB4, Piece piece) {
 		break;
 	}
 	MESSAGEL("ERROR!");
-	trace(cout, "MESSAGE ");
+	// Diagnostics must never share the protocol stdout stream.
+	trace(std::cerr, "MESSAGE ");
 	assert(false);
 	return findPosByPattern4(piece, A_FIVE);
 }
@@ -2747,7 +2756,7 @@ void AI::setMaxDepth(int depth) {
 }
 
 Pos AI::turnMove() {
-	startTime = getTime();
+	startTime = 0;
 	terminateAI = false;
 
 	if (board->getMoveCount() == 0)
@@ -2794,6 +2803,16 @@ Pos AI::turnMove() {
 	hashTable->newSearch();
 
 	best = fullSearch();
+	if (!board->isEmpty(best) || !contestLegalMove(*board, best, SELF)) {
+		Pos legal = NullPos;
+		int score = INT_MIN;
+		FOR_EVERY_EMPTY_POS(p) {
+			if (!contestLegalMove(*board, p, SELF)) continue;
+			int s = cell(p).getScore();
+			if (legal == NullPos || s > score) { legal = p; score = s; }
+		}
+		best = legal;
+	}
 
 	long time = timeUsed();
 #ifdef VERSION_YIXIN_BOARD
@@ -3057,19 +3076,19 @@ int AI::alphabeta(float depth, int alpha, int beta, bool cutNode) {
 	#ifdef VCF_Leaf
 		if (staticEval >= beta) {  // Ϊ�Է���ɱ
 			if (oppo5 > 0) {  // �Է�������VCF
-				VCFMaxPly = ply + MAX_VCF_PLY;
+				VCFMaxPly = ply + (phaseMode == 2 ? 48 : phaseMode == 1 ? 42 : 30);
 				attackerPiece = oppo;
 				int mateValue = quickVCFSearch();
 				if (mateValue <= -WIN_MIN) return mateValue;
 			}
 		} else {
 			if (oppo5 == 0) {  // �ҿ��Գ���VCF
-				VCFMaxPly = ply + MAX_VCF_PLY;
+				VCFMaxPly = ply + (phaseMode == 2 ? 48 : phaseMode == 1 ? 42 : 30);
 				attackerPiece = self;
 				int mateValue = quickVCFSearch();
 				if (mateValue >= WIN_MIN) return mateValue;
 			} else if (staticEval >= alpha) {  // �Է�������VCF
-				VCFMaxPly = ply + MAX_VCF_PLY;
+				VCFMaxPly = ply + (phaseMode == 2 ? 48 : phaseMode == 1 ? 42 : 30);
 				attackerPiece = oppo;
 				int mateValue = quickVCFSearch();
 				if (mateValue <= -WIN_MIN) return mateValue;
@@ -3828,9 +3847,11 @@ int main() {
     int me, x;
     if (!(std::cin >> me)) return 0;
     std::vector<Pos> stones[2];
+    int raw[15][15];
     for (int r = 0; r < 15; ++r)
         for (int c = 0; c < 15; ++c) {
             std::cin >> x;
+            raw[r][c] = x;
             if (x == 0 || x == 1) stones[x].push_back(POS(r, c));
         }
 
@@ -3843,12 +3864,31 @@ int main() {
     }
     if (int(board.getPlayerToMove()) != me) return 2;
 
+    // A bounded pre-search dispatcher: this scan is intentionally tiny (well
+    // under 10ms) and only changes which internal search gets priority.  The
+    // total per-move wall-clock budget remains the same 840ms.
+    auto longestRun = [&](int who) {
+        int best = 0;
+        const int dr[4] = {0, 1, 1, 1}, dc[4] = {1, 0, 1, -1};
+        for (int r = 0; r < 15; ++r) for (int c = 0; c < 15; ++c) {
+            if (raw[r][c] != who) continue;
+            for (int d = 0; d < 4; ++d) {
+                int pr = r - dr[d], pc = c - dc[d];
+                if (pr >= 0 && pr < 15 && pc >= 0 && pc < 15 && raw[pr][pc] == who) continue;
+                int n = 0, rr = r, cc = c;
+                while (rr >= 0 && rr < 15 && cc >= 0 && cc < 15 && raw[rr][cc] == who)
+                    ++n, rr += dr[d], cc += dc[d];
+                best = std::max(best, n);
+            }
+        }
+        return best;
+    };
+    int ownRun = longestRun(me), oppRun = longestRun(1 - me);
+    ai.setPhaseMode(oppRun >= 4 ? 2 : (ownRun >= 3 || oppRun >= 3) ? 1 : 0);
+
     // Search timing starts after Rapfi's per-process initialization and board
     // reconstruction.  Leave enough of the judge's 1 s budget for that work.
-#ifndef GOMOKU_TURN_MS
-#define GOMOKU_TURN_MS 600
-#endif
-    ai.info.timeout_turn = GOMOKU_TURN_MS;
+    ai.info.timeout_turn = processDeadlineMs;
     ai.info.time_left = 100000000;
     ai.info.setMaxMemory(256 * 1024 * 1024L);
     Pos p = ai.turnMove();

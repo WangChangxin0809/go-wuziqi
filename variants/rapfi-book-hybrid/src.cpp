@@ -29,6 +29,8 @@
 #include <cstring>
 #include <cstdio>
 #include <climits>
+#include <chrono>
+#include <utility>
 #if defined(__GNUC__)
 #pragma GCC diagnostic ignored "-Wnarrowing"
 #pragma GCC diagnostic ignored "-Wparentheses"
@@ -120,8 +122,11 @@ inline void toupper(string & str) {
 }
 
 // ���ص�ǰʱ��(��λ:ms)
+using WallClock = std::chrono::steady_clock;
+static const WallClock::time_point processStart = WallClock::now();
+static const long PROCESS_DEADLINE_MS = 760;
 inline long getTime() {
-	return clock() * 1000L / CLOCKS_PER_SEC;
+	return (long)std::chrono::duration_cast<std::chrono::milliseconds>(WallClock::now() - processStart).count();
 }
 
 #ifdef _DEBUG
@@ -469,6 +474,37 @@ static inline bool contestLegalMove(const Board &board, Pos p, Piece side) {
 	return side != Black || !contestForbiddenBlack(board, p);
 }
 
+// figrid-board v0.8.6 standard book (MIT OR Apache-2.0).  Coordinates are
+// x,y; matching is geometric so all eight board symmetries are covered.
+struct BookLine { std::vector<std::pair<int,int>> s; std::pair<int,int> r; };
+static const BookLine STANDARD_BOOK[] = {
+{{{4,11},{8,12},{1,13},{4,10},{5,8},{5,9},{6,10}},{6,8}},
+{{{1,12},{3,13},{2,11},{4,9},{2,10}},{5,11}},
+{{{10,11},{8,12},{5,12},{4,11},{3,9},{7,10},{6,10},{5,9},{6,9},{6,8},{7,7}},{5,7}},
+{{{7,7},{7,5},{8,9},{6,5},{5,5}},{6,6}},
+{{{8,2},{10,4},{11,6},{10,10},{13,5}},{8,8}},
+{{{7,7},{13,7},{7,13},{4,10},{1,7},{1,13},{1,10}},{3,11}},
+{{{3,10},{13,7},{9,3},{5,2},{3,5},{12,13},{12,9}},{10,10}},
+{{{7,5},{7,4},{9,3},{8,4},{5,4}},{8,6}},
+{{{7,5},{8,4},{9,6},{8,3},{8,1}},{7,3}},
+{{{7,3},{7,4},{5,4},{6,3},{9,3}},{6,5}},
+{{{7,3},{7,2},{7,0},{5,2},{6,5}},{5,4}},
+{{{3,3},{4,4},{6,6},{4,5},{4,6}},{5,6}}
+};
+static std::pair<int,int> sym(int x,int y,int k) {
+ int a=x,b=y; if(k&4) a=14-a; if(k&2) b=14-b; if(k&1) std::swap(a,b); return {a,b};
+}
+static Pos standardBookMove(const Board& b) {
+ for (const auto& line: STANDARD_BOOK) for(int k=0;k<8;k++) {
+  // A book entry describes an exact opening position, never a prefix: an
+  // extra stone must force the normal search fallback.
+  if (b.getMoveCount() != (int)line.s.size()) continue;
+  bool ok=true; for(size_t i=0;i<line.s.size();i++){auto q=sym(line.s[i].first,line.s[i].second,k); Piece want=(i&1)?White:Black; if(b.get(POS(q.second,q.first))!=want){ok=false;break;}}
+  if(ok){auto q=sym(line.r.first,line.r.second,k); Pos p=POS(q.second,q.first); if(b.isEmpty(p)&&contestLegalMove(b,p,b.getPlayerToMove())) return p;}
+ }
+ return NullPos;
+}
+
 /* ===== Evaluator.h ===== */
 #define FOR_EVERY_POSITION(x, y) \
     for (int x = 0; x < board->size(); x++) \
@@ -775,16 +811,17 @@ private:
 #ifdef _DEBUG
 		return INF;
 #else
-		return info.time_left;
+		return MIN(info.time_left, MAX(0L, PROCESS_DEADLINE_MS - getTime()));
 #endif
 	}
 	inline long timeForTurn() {
-		double timePercentage = (double)board->getMoveLeftCount() / board->maxCells();
-		return MIN(info.timeout_turn, 
-			timeLeft() / (MAX((long)round(MATCH_SPARE * timePercentage), MATCH_SPARE_MIN))) - TIME_RESERVED;
+		// This executable is launched once per move by the harness.  Do not
+		// apply Rapfi's whole-match reserve division: it would turn the 760ms
+		// process deadline into a few dozen milliseconds.
+		return MAX(0L, MIN(info.timeout_turn, timeLeft()) - TIME_RESERVED);
 	}
 	inline long timeForTurnMax() {
-		return MIN(info.timeout_turn, timeLeft() / MATCH_SPARE_MIN) - TIME_RESERVED;
+		return MAX(0L, MIN(info.timeout_turn, timeLeft()) - TIME_RESERVED);
 	}
 
 	/////////////////////////////////////////////////////////////
@@ -2292,7 +2329,8 @@ Pos Evaluator::getCostPosAgainstB4(Pos posB4, Piece piece) {
 		break;
 	}
 	MESSAGEL("ERROR!");
-	trace(cout, "MESSAGE ");
+	// Diagnostics must never share the protocol stdout stream.
+	trace(std::cerr, "MESSAGE ");
 	assert(false);
 	return findPosByPattern4(piece, A_FIVE);
 }
@@ -2747,7 +2785,7 @@ void AI::setMaxDepth(int depth) {
 }
 
 Pos AI::turnMove() {
-	startTime = getTime();
+	startTime = 0;
 	terminateAI = false;
 
 	if (board->getMoveCount() == 0)
@@ -2770,6 +2808,8 @@ Pos AI::turnMove() {
 		return NullPos;
 
 	Pos best;
+	Pos book = standardBookMove(*board);
+	if (book != NullPos) return book;
 #ifndef VERSION_YIXIN_BOARD
     if (useOpeningBook) {
 		best = databaseMove();
@@ -2794,6 +2834,16 @@ Pos AI::turnMove() {
 	hashTable->newSearch();
 
 	best = fullSearch();
+	if (!board->isEmpty(best) || !contestLegalMove(*board, best, SELF)) {
+		Pos legal = NullPos;
+		int score = INT_MIN;
+		FOR_EVERY_EMPTY_POS(p) {
+			if (!contestLegalMove(*board, p, SELF)) continue;
+			int s = cell(p).getScore();
+			if (legal == NullPos || s > score) { legal = p; score = s; }
+		}
+		best = legal;
+	}
 
 	long time = timeUsed();
 #ifdef VERSION_YIXIN_BOARD
@@ -3845,10 +3895,7 @@ int main() {
 
     // Search timing starts after Rapfi's per-process initialization and board
     // reconstruction.  Leave enough of the judge's 1 s budget for that work.
-#ifndef GOMOKU_TURN_MS
-#define GOMOKU_TURN_MS 600
-#endif
-    ai.info.timeout_turn = GOMOKU_TURN_MS;
+    ai.info.timeout_turn = PROCESS_DEADLINE_MS;
     ai.info.time_left = 100000000;
     ai.info.setMaxMemory(256 * 1024 * 1024L);
     Pos p = ai.turnMove();

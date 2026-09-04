@@ -1,0 +1,989 @@
+{
+  "schema": 1,
+  "created_at": "2026-09-04T19:14:12+0800",
+  "timeout_seconds": 1.0,
+  "max_plies": 80,
+  "sources": [
+    "variants\\replay-book-1726\\src.cpp",
+    "uid:2025201726"
+  ],
+  "score": {
+    "variants\\replay-book-1726\\src.cpp": 1,
+    "uid:2025201726": 1,
+    "draw": 0
+  },
+  "games": [
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "center-horizontal",
+      "black": "variants\\replay-book-1726\\src.cpp",
+      "white": "uid:2025201726",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            7,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 80.288,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1130.083,
+          "time_ms": 914.538,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            6
+          ]
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 73.093,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1151.521,
+          "time_ms": 918.845,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            6,
+            8
+          ]
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 87.735,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1390.762,
+          "time_ms": 913.297,
+          "memory": 67239936,
+          "code": 0,
+          "move": [
+            8,
+            7
+          ]
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            6
+          ],
+          "time_ms": 85.958,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1341.907,
+          "time_ms": 915.502,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            7
+          ]
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 129.407,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1352.545,
+          "time_ms": 916.257,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            4,
+            6
+          ]
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            9
+          ],
+          "time_ms": 82.775,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1486.767,
+          "time_ms": 911.414,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            7
+          ]
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            5
+          ],
+          "time_ms": 79.133,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1281.798,
+          "time_ms": 915.732,
+          "memory": 73269248,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            7
+          ],
+          "time_ms": 82.158,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1315.368,
+          "time_ms": 639.094,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            4
+          ]
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            5
+          ],
+          "time_ms": 94.63,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1004.508,
+          "time_ms": 393.739,
+          "memory": 67108864,
+          "code": 0,
+          "move": [
+            9,
+            5
+          ]
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            6
+          ],
+          "time_ms": 76.886,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1080.388,
+          "time_ms": 216.068,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            8
+          ]
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            6
+          ],
+          "time_ms": 85.868,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 208.824,
+          "time_ms": 3.743,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            12,
+            6
+          ]
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            8
+          ],
+          "time_ms": 76.605,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 963.845,
+          "time_ms": 239.661,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            9
+          ]
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            4
+          ],
+          "time_ms": 78.938,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1109.945,
+          "time_ms": 299.557,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            2,
+            4
+          ]
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            5
+          ],
+          "time_ms": 82.845,
+          "stderr": ""
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 864.905,
+          "time_ms": 202.758,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            10,
+            3
+          ]
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            8
+          ],
+          "time_ms": 83.974,
+          "stderr": ""
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 714.496,
+          "time_ms": 3.565,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            12,
+            9
+          ]
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            13,
+            4
+          ],
+          "time_ms": 96.412,
+          "stderr": ""
+        },
+        {
+          "ply": 33,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 856.032,
+          "time_ms": 3.48,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            12,
+            5
+          ]
+        },
+        {
+          "ply": 34,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            12,
+            3
+          ],
+          "time_ms": 80.487,
+          "stderr": ""
+        },
+        {
+          "ply": 35,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 549.81,
+          "time_ms": 4.878,
+          "memory": 12713984,
+          "code": 0,
+          "move": [
+            13,
+            2
+          ]
+        },
+        {
+          "ply": 36,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            5
+          ],
+          "time_ms": 81.88,
+          "stderr": ""
+        },
+        {
+          "ply": 37,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 816.867,
+          "time_ms": 3.852,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            11,
+            7
+          ]
+        },
+        {
+          "ply": 38,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            2
+          ],
+          "time_ms": 80.713,
+          "stderr": ""
+        },
+        {
+          "ply": 39,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 779.658,
+          "time_ms": 4.035,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            11,
+            3
+          ]
+        },
+        {
+          "ply": 40,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            1
+          ],
+          "time_ms": 83.309,
+          "stderr": ""
+        },
+        {
+          "ply": 41,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 524.192,
+          "time_ms": 135.908,
+          "memory": 65863680,
+          "code": 0,
+          "move": [
+            14,
+            5
+          ]
+        },
+        {
+          "ply": 42,
+          "side": 0,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            0
+          ],
+          "time_ms": 82.201,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "center-horizontal",
+      "black": "uid:2025201726",
+      "white": "variants\\replay-book-1726\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            7,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1095.679,
+          "time_ms": 4.935,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            8,
+            8
+          ]
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 365.702,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 268.048,
+          "time_ms": 4.49,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            9,
+            7
+          ]
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 405.45,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 331.742,
+          "time_ms": 4.261,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            9
+          ]
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            6
+          ],
+          "time_ms": 344.857,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1209.245,
+          "time_ms": 3.726,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            5,
+            6
+          ]
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            4
+          ],
+          "time_ms": 346.464,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1852.205,
+          "time_ms": 913.431,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            9
+          ]
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            5
+          ],
+          "time_ms": 353.605,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1675.482,
+          "time_ms": 912.558,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            11,
+            7
+          ]
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            9
+          ],
+          "time_ms": 345.164,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 732.019,
+          "time_ms": 137.827,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            7
+          ]
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            7
+          ],
+          "time_ms": 269.723,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 671.625,
+          "time_ms": 142.067,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            8
+          ]
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 285.319,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 753.288,
+          "time_ms": 140.694,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            7
+          ]
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            6
+          ],
+          "time_ms": 252.722,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 838.719,
+          "time_ms": 3.698,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            3
+          ],
+          "time_ms": 262.14,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 343.839,
+          "time_ms": 4.044,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            2
+          ]
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            6
+          ],
+          "time_ms": 229.21,
+          "stderr": ""
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 542.502,
+          "time_ms": 4.851,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            12,
+            6
+          ]
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            10
+          ],
+          "time_ms": 232.605,
+          "stderr": ""
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 778.821,
+          "time_ms": 132.218,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            8
+          ]
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "variants\\replay-book-1726\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            5
+          ],
+          "time_ms": 245.314,
+          "stderr": ""
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 512.772,
+          "time_ms": 3.563,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            5,
+            10
+          ]
+        }
+      ]
+    }
+  ]
+}

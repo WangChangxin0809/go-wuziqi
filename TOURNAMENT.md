@@ -31,6 +31,10 @@
 TLE 或非法着法；原版出现一次四四禁手。当前结论是：硬墙钟路线解决了可靠性，但棋力
 仍未超过原版，下一轮应融合原版搜索质量与硬截止，而不是直接宣称已有最终冠军。
 
+随后加入 `replay-book-1726`：它精确记录此前原版在 `center-horizontal` 开局对该 UID
+赢下的完整黑方主线。复测为 1:1，其中候选执黑第 43 手以 Five 获胜；书内平均耗时约
+85ms。它证明精确静态局面开局簿有效，但属于对手/开局特化，不代表未知空盘泛化棋力。
+
 原始逐手数据在 `reports/`。`online-wallclock-vs-2025201726.json` 是按用户要求与本地
 决赛并行执行的压力样本，会受到 CPU 竞争影响；干净复核使用文件名带 `-clean` 的报告。
 
@@ -43,6 +47,10 @@ TLE 或非法着法；原版出现一次四四禁手。当前结论是：硬墙�
 - `mcts-hybrid`：固定种子的 Monte-Carlo 根层抽样。
 - `beam-search`：有限宽度的确定性多层搜索。
 - `proof-number`：AND-OR/证明数式强制威胁求解。
+- `rapfi-deadline-fusion`、`rapfi-aggressive`：不同硬截止/棋力边界实验。
+- `rapfi-adaptive-time`：固定总预算下的 10ms 局面分类 dispatcher 原型。
+- `rapfi-book-hybrid`：figrid-board Standard 开局库 + Rapfi fallback。
+- `replay-book-1726`：已验证的 1726 对手/center-horizontal 精确主线。
 
 ## 公平性
 
@@ -52,3 +60,6 @@ TLE 或非法着法；原版出现一次四四禁手。当前结论是：硬墙�
 
 为了测吞吐可以并行跑线上和本地对局，但正式比较 1 秒时限时应串行运行本地候选，避免
 多个引擎争抢 CPU 造成假 TLE。
+
+时间管理目标是每步固定总预算：先用约 10ms 做局面分类，再在剩余时间内动态选择开局
+库、强制防守、VCF/VCT 或 Alpha-Beta 的优先级，不能按手数简单改变总时限。

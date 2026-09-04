@@ -20,3 +20,4 @@ reports/smoke.json
 # copied into this snapshot; src.cpp is the self-contained submission source.
 upstream-rapfi/
 upstream-rapfi2018/
+upstream-rapfi-release/

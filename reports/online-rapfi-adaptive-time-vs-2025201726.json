@@ -1,0 +1,1550 @@
+{
+  "schema": 1,
+  "created_at": "2026-09-04T19:17:10+0800",
+  "timeout_seconds": 1.0,
+  "max_plies": 80,
+  "sources": [
+    "variants\\rapfi-adaptive-time\\src.cpp",
+    "uid:2025201726"
+  ],
+  "score": {
+    "variants\\rapfi-adaptive-time\\src.cpp": 0,
+    "uid:2025201726": 4,
+    "draw": 0
+  },
+  "games": [
+    {
+      "winner": 1,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "variants\\rapfi-adaptive-time\\src.cpp",
+      "white": "uid:2025201726",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            7
+          ],
+          "time_ms": 244.919,
+          "stderr": ""
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 270.378,
+          "time_ms": 3.595,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            6
+          ]
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 458.688,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 239.367,
+          "time_ms": 4.002,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 413.148,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1045.777,
+          "time_ms": 919.273,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            7
+          ]
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            5
+          ],
+          "time_ms": 378.913,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1115.66,
+          "time_ms": 915.135,
+          "memory": 67174400,
+          "code": 0,
+          "move": [
+            6,
+            8
+          ]
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 404.949,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1746.072,
+          "time_ms": 907.166,
+          "memory": 67174400,
+          "code": 0,
+          "move": [
+            8,
+            5
+          ]
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            6
+          ],
+          "time_ms": 387.469,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1064.874,
+          "time_ms": 916.463,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            4
+          ]
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            8
+          ],
+          "time_ms": 381.276,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1139.468,
+          "time_ms": 869.467,
+          "memory": 67174400,
+          "code": 0,
+          "move": [
+            5,
+            6
+          ]
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            6
+          ],
+          "time_ms": 387.086,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1360.617,
+          "time_ms": 920.821,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            11,
+            7
+          ]
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            4
+          ],
+          "time_ms": 444.714,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1214.383,
+          "time_ms": 907.946,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            7
+          ]
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 410.354,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 491.76,
+          "time_ms": 201.333,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            11,
+            5
+          ]
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            14,
+            8
+          ],
+          "time_ms": 363.63,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 445.596,
+          "time_ms": 138.991,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            11,
+            8
+          ]
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            7
+          ],
+          "time_ms": 240.797,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1321.503,
+          "time_ms": 4.267,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            5,
+            7
+          ]
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            3
+          ],
+          "time_ms": 272.962,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 520.744,
+          "time_ms": 4.397,
+          "memory": 12648448,
+          "code": 0,
+          "move": [
+            4,
+            2
+          ]
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            6
+          ],
+          "time_ms": 254.44,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 663.587,
+          "time_ms": 133.495,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            11,
+            6
+          ]
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            4
+          ],
+          "time_ms": 239.507,
+          "stderr": ""
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 278.869,
+          "time_ms": 3.698,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            11,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "uid:2025201726",
+      "white": "variants\\rapfi-adaptive-time\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 203.314,
+          "time_ms": 3.567,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            7
+          ]
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 235.919,
+          "stderr": ""
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 272.698,
+          "time_ms": 3.827,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            8
+          ]
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 398.907,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 319.7,
+          "time_ms": 4.311,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            9
+          ]
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            6
+          ],
+          "time_ms": 400.645,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 315.391,
+          "time_ms": 3.762,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            5,
+            7
+          ]
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            10
+          ],
+          "time_ms": 454.444,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 167.139,
+          "time_ms": 4.11,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            8,
+            5
+          ]
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            9
+          ],
+          "time_ms": 485.91,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1344.481,
+          "time_ms": 915.351,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            4,
+            8
+          ]
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            11
+          ],
+          "time_ms": 407.393,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1127.932,
+          "time_ms": 911.458,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            8
+          ]
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            10
+          ],
+          "time_ms": 386.712,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 637.289,
+          "time_ms": 151.187,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            6
+          ]
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 340.189,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 586.283,
+          "time_ms": 140.77,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            5
+          ]
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            4
+          ],
+          "time_ms": 267.751,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 764.821,
+          "time_ms": 141.061,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            8
+          ]
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            12
+          ],
+          "time_ms": 267.128,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 339.921,
+          "time_ms": 3.583,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            5,
+            13
+          ]
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 268.171,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 450.685,
+          "time_ms": 131.536,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            3,
+            8
+          ]
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            2,
+            8
+          ],
+          "time_ms": 237.708,
+          "stderr": ""
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 679.278,
+          "time_ms": 3.344,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "winner": 1,
+      "reason": "Five",
+      "opening": "center-horizontal",
+      "black": "variants\\rapfi-adaptive-time\\src.cpp",
+      "white": "uid:2025201726",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            7,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 495.988,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1296.063,
+          "time_ms": 913.21,
+          "memory": 71237632,
+          "code": 0,
+          "move": [
+            8,
+            8
+          ]
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 421.666,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1580.918,
+          "time_ms": 915.044,
+          "memory": 67174400,
+          "code": 0,
+          "move": [
+            8,
+            6
+          ]
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 410.854,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1292.265,
+          "time_ms": 920.034,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            5
+          ]
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 417.209,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1568.386,
+          "time_ms": 915.105,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            7
+          ]
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            8
+          ],
+          "time_ms": 386.316,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1411.973,
+          "time_ms": 916.552,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            7
+          ]
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            8
+          ],
+          "time_ms": 414.904,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1167.709,
+          "time_ms": 914.294,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            6
+          ]
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            9
+          ],
+          "time_ms": 407.307,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1933.474,
+          "time_ms": 911.56,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            9
+          ]
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            12,
+            6
+          ],
+          "time_ms": 398.08,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1545.627,
+          "time_ms": 914.796,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            5
+          ]
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            5
+          ],
+          "time_ms": 387.663,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 738.492,
+          "time_ms": 150.523,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            5
+          ]
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 400.702,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1031.611,
+          "time_ms": 144.514,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            6
+          ]
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            4
+          ],
+          "time_ms": 292.796,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1146.495,
+          "time_ms": 149.19,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            4
+          ]
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            7
+          ],
+          "time_ms": 271.278,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 754.78,
+          "time_ms": 137.125,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            3
+          ]
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 276.366,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 841.695,
+          "time_ms": 133.695,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            4
+          ]
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            2
+          ],
+          "time_ms": 268.476,
+          "stderr": ""
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 767.455,
+          "time_ms": 132.256,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            3
+          ]
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            2
+          ],
+          "time_ms": 271.04,
+          "stderr": ""
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1178.22,
+          "time_ms": 3.392,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            11,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "center-horizontal",
+      "black": "uid:2025201726",
+      "white": "variants\\rapfi-adaptive-time\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            7,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 717.111,
+          "time_ms": 4.038,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            8,
+            8
+          ]
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 388.037,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 429.282,
+          "time_ms": 3.601,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            9,
+            7
+          ]
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 395.425,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1011.94,
+          "time_ms": 3.568,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            9
+          ]
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            6
+          ],
+          "time_ms": 477.438,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 853.049,
+          "time_ms": 4.002,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            5,
+            6
+          ]
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            5
+          ],
+          "time_ms": 500.148,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 2202.766,
+          "time_ms": 912.482,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            10
+          ]
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            7
+          ],
+          "time_ms": 389.49,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1309.635,
+          "time_ms": 911.635,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            4
+          ]
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            5
+          ],
+          "time_ms": 391.589,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 942.119,
+          "time_ms": 146.821,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            8
+          ]
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            7
+          ],
+          "time_ms": 351.511,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1182.306,
+          "time_ms": 159.612,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            9
+          ]
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            10
+          ],
+          "time_ms": 257.65,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 765.856,
+          "time_ms": 138.621,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            9
+          ]
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            12,
+            8
+          ],
+          "time_ms": 268.322,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1180.062,
+          "time_ms": 3.561,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            13,
+            9
+          ]
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            9
+          ],
+          "time_ms": 230.957,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1916.547,
+          "time_ms": 132.474,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            7
+          ]
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "variants\\rapfi-adaptive-time\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 268.178,
+          "stderr": ""
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1242.571,
+          "time_ms": 3.282,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            8,
+            11
+          ]
+        }
+      ]
+    }
+  ]
+}

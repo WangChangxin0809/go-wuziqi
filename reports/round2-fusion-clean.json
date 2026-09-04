@@ -1,0 +1,2345 @@
+{
+  "schema": 1,
+  "created_at": "2026-09-04T19:18:36+0800",
+  "timeout_seconds": 1.0,
+  "max_plies": 60,
+  "sources": [
+    "variants\\rapfi-deadline-fusion\\src.cpp",
+    "variants\\wallclock-fast\\src.cpp"
+  ],
+  "score": {
+    "variants\\rapfi-deadline-fusion\\src.cpp": 3,
+    "variants\\wallclock-fast\\src.cpp": 0,
+    "draw": 1
+  },
+  "games": [
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "variants\\rapfi-deadline-fusion\\src.cpp",
+      "white": "variants\\wallclock-fast\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            7
+          ],
+          "time_ms": 248.528,
+          "stderr": ""
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 241.062,
+          "stderr": ""
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            9
+          ],
+          "time_ms": 399.205,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            8
+          ],
+          "time_ms": 230.939,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 421.938,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            7
+          ],
+          "time_ms": 225.7,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            9
+          ],
+          "time_ms": 339.792,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 260.075,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 382.257,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            11
+          ],
+          "time_ms": 232.911,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            5
+          ],
+          "time_ms": 338.271,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 233.355,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 356.292,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            7
+          ],
+          "time_ms": 235.064,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            8
+          ],
+          "time_ms": 341.392,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            7
+          ],
+          "time_ms": 238.153,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            2,
+            7
+          ],
+          "time_ms": 227.795,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            6
+          ],
+          "time_ms": 230.023,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            9
+          ],
+          "time_ms": 337.291,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            9
+          ],
+          "time_ms": 232.87,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            6
+          ],
+          "time_ms": 332.561,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            8
+          ],
+          "time_ms": 227.43,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            9
+          ],
+          "time_ms": 329.405,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            2,
+            9
+          ],
+          "time_ms": 228.98,
+          "stderr": ""
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            11
+          ],
+          "time_ms": 355.549,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            1,
+            10
+          ],
+          "time_ms": 229.658,
+          "stderr": ""
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            0,
+            11
+          ],
+          "time_ms": 226.728,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            10
+          ],
+          "time_ms": 229.005,
+          "stderr": ""
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            5
+          ],
+          "time_ms": 331.435,
+          "stderr": ""
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            4
+          ],
+          "time_ms": 228.56,
+          "stderr": ""
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            2,
+            10
+          ],
+          "time_ms": 329.759,
+          "stderr": ""
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            10
+          ],
+          "time_ms": 269.658,
+          "stderr": ""
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            0,
+            9
+          ],
+          "time_ms": 226.716,
+          "stderr": ""
+        },
+        {
+          "ply": 33,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            1,
+            8
+          ],
+          "time_ms": 229.909,
+          "stderr": ""
+        },
+        {
+          "ply": 34,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            0,
+            12
+          ],
+          "time_ms": 227.83,
+          "stderr": ""
+        },
+        {
+          "ply": 35,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            1,
+            11
+          ],
+          "time_ms": 233.278,
+          "stderr": ""
+        },
+        {
+          "ply": 36,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            0,
+            10
+          ],
+          "time_ms": 227.139,
+          "stderr": ""
+        },
+        {
+          "ply": 37,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            0,
+            8
+          ],
+          "time_ms": 231.803,
+          "stderr": ""
+        },
+        {
+          "ply": 38,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            0,
+            13
+          ],
+          "time_ms": 226.975,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": -1,
+      "reason": "Draw",
+      "opening": "empty",
+      "black": "variants\\wallclock-fast\\src.cpp",
+      "white": "variants\\rapfi-deadline-fusion\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            7
+          ],
+          "time_ms": 229.876,
+          "stderr": ""
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            6
+          ],
+          "time_ms": 249.312,
+          "stderr": ""
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 234.389,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 382.181,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 225.727,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 442.722,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            5
+          ],
+          "time_ms": 227.062,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            9
+          ],
+          "time_ms": 340.11,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 229.899,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            5
+          ],
+          "time_ms": 257.868,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            9
+          ],
+          "time_ms": 230.812,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            10
+          ],
+          "time_ms": 227.289,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            4
+          ],
+          "time_ms": 232.6,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            3
+          ],
+          "time_ms": 371.323,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 227.783,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            3
+          ],
+          "time_ms": 486.533,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            7
+          ],
+          "time_ms": 230.327,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            8
+          ],
+          "time_ms": 234.085,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            10
+          ],
+          "time_ms": 227.523,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            9
+          ],
+          "time_ms": 428.795,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            8
+          ],
+          "time_ms": 231.723,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 225.047,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            10
+          ],
+          "time_ms": 223.244,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            11
+          ],
+          "time_ms": 432.272,
+          "stderr": ""
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            10
+          ],
+          "time_ms": 231.098,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            10
+          ],
+          "time_ms": 341.244,
+          "stderr": ""
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            2,
+            6
+          ],
+          "time_ms": 274.515,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            7
+          ],
+          "time_ms": 228.045,
+          "stderr": ""
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            6
+          ],
+          "time_ms": 230.804,
+          "stderr": ""
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            6
+          ],
+          "time_ms": 227.212,
+          "stderr": ""
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            5
+          ],
+          "time_ms": 228.738,
+          "stderr": ""
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            2,
+            4
+          ],
+          "time_ms": 232.52,
+          "stderr": ""
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            4
+          ],
+          "time_ms": 233.752,
+          "stderr": ""
+        },
+        {
+          "ply": 33,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            10
+          ],
+          "time_ms": 237.116,
+          "stderr": ""
+        },
+        {
+          "ply": 34,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            9
+          ],
+          "time_ms": 226.35,
+          "stderr": ""
+        },
+        {
+          "ply": 35,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            9
+          ],
+          "time_ms": 238.098,
+          "stderr": ""
+        },
+        {
+          "ply": 36,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            8
+          ],
+          "time_ms": 234.005,
+          "stderr": ""
+        },
+        {
+          "ply": 37,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            11
+          ],
+          "time_ms": 225.452,
+          "stderr": ""
+        },
+        {
+          "ply": 38,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            8
+          ],
+          "time_ms": 224.394,
+          "stderr": ""
+        },
+        {
+          "ply": 39,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            12
+          ],
+          "time_ms": 221.084,
+          "stderr": ""
+        },
+        {
+          "ply": 40,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            12,
+            13
+          ],
+          "time_ms": 222.967,
+          "stderr": ""
+        },
+        {
+          "ply": 41,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            3
+          ],
+          "time_ms": 230.532,
+          "stderr": ""
+        },
+        {
+          "ply": 42,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            7
+          ],
+          "time_ms": 230.358,
+          "stderr": ""
+        },
+        {
+          "ply": 43,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            3
+          ],
+          "time_ms": 405.889,
+          "stderr": ""
+        },
+        {
+          "ply": 44,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            3
+          ],
+          "time_ms": 236.939,
+          "stderr": ""
+        },
+        {
+          "ply": 45,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            4
+          ],
+          "time_ms": 498.862,
+          "stderr": ""
+        },
+        {
+          "ply": 46,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            2
+          ],
+          "time_ms": 232.452,
+          "stderr": ""
+        },
+        {
+          "ply": 47,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            1,
+            10
+          ],
+          "time_ms": 340.232,
+          "stderr": ""
+        },
+        {
+          "ply": 48,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            2,
+            10
+          ],
+          "time_ms": 228.78,
+          "stderr": ""
+        },
+        {
+          "ply": 49,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            1,
+            7
+          ],
+          "time_ms": 336.198,
+          "stderr": ""
+        },
+        {
+          "ply": 50,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            2,
+            8
+          ],
+          "time_ms": 235.614,
+          "stderr": ""
+        },
+        {
+          "ply": 51,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            2,
+            9
+          ],
+          "time_ms": 481.873,
+          "stderr": ""
+        },
+        {
+          "ply": 52,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            1,
+            8
+          ],
+          "time_ms": 231.416,
+          "stderr": ""
+        },
+        {
+          "ply": 53,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            0,
+            8
+          ],
+          "time_ms": 229.156,
+          "stderr": ""
+        },
+        {
+          "ply": 54,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            2
+          ],
+          "time_ms": 231.444,
+          "stderr": ""
+        },
+        {
+          "ply": 55,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            9
+          ],
+          "time_ms": 331.522,
+          "stderr": ""
+        },
+        {
+          "ply": 56,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            9
+          ],
+          "time_ms": 228.012,
+          "stderr": ""
+        },
+        {
+          "ply": 57,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            11
+          ],
+          "time_ms": 233.683,
+          "stderr": ""
+        },
+        {
+          "ply": 58,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            12
+          ],
+          "time_ms": 232.856,
+          "stderr": ""
+        },
+        {
+          "ply": 59,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            11
+          ],
+          "time_ms": 228.814,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "center-horizontal",
+      "black": "variants\\rapfi-deadline-fusion\\src.cpp",
+      "white": "variants\\wallclock-fast\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            7,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 400.058,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 231.324,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 330.662,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 229.076,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 359.893,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            9
+          ],
+          "time_ms": 231.036,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 331.18,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            7
+          ],
+          "time_ms": 235.65,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            6
+          ],
+          "time_ms": 333.565,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            5
+          ],
+          "time_ms": 227.048,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            7
+          ],
+          "time_ms": 333.264,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            7
+          ],
+          "time_ms": 232.267,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            8
+          ],
+          "time_ms": 328.491,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            9
+          ],
+          "time_ms": 227.394,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            8
+          ],
+          "time_ms": 337.385,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            9
+          ],
+          "time_ms": 228.256,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            4
+          ],
+          "time_ms": 329.663,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            4
+          ],
+          "time_ms": 224.727,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            5
+          ],
+          "time_ms": 339.798,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            4
+          ],
+          "time_ms": 230.776,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            3
+          ],
+          "time_ms": 334.342,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 227.023,
+          "stderr": ""
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            6
+          ],
+          "time_ms": 334.377,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            4
+          ],
+          "time_ms": 225.678,
+          "stderr": ""
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            3
+          ],
+          "time_ms": 339.069,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 224.926,
+          "stderr": ""
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            3
+          ],
+          "time_ms": 419.394,
+          "stderr": ""
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            3
+          ],
+          "time_ms": 234.438,
+          "stderr": ""
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            4
+          ],
+          "time_ms": 331.254,
+          "stderr": ""
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            2
+          ],
+          "time_ms": 230.76,
+          "stderr": ""
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            2
+          ],
+          "time_ms": 334.982,
+          "stderr": ""
+        },
+        {
+          "ply": 33,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            5
+          ],
+          "time_ms": 225.934,
+          "stderr": ""
+        },
+        {
+          "ply": 34,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            1
+          ],
+          "time_ms": 331.339,
+          "stderr": ""
+        },
+        {
+          "ply": 35,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            0
+          ],
+          "time_ms": 236.219,
+          "stderr": ""
+        },
+        {
+          "ply": 36,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            4
+          ],
+          "time_ms": 372.448,
+          "stderr": ""
+        },
+        {
+          "ply": 37,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            3
+          ],
+          "time_ms": 228.222,
+          "stderr": ""
+        },
+        {
+          "ply": 38,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            5
+          ],
+          "time_ms": 343.957,
+          "stderr": ""
+        },
+        {
+          "ply": 39,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            6
+          ],
+          "time_ms": 227.933,
+          "stderr": ""
+        },
+        {
+          "ply": 40,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            1
+          ],
+          "time_ms": 233.85,
+          "stderr": ""
+        },
+        {
+          "ply": 41,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            2
+          ],
+          "time_ms": 247.001,
+          "stderr": ""
+        },
+        {
+          "ply": 42,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            1
+          ],
+          "time_ms": 231.547,
+          "stderr": ""
+        },
+        {
+          "ply": 43,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            0
+          ],
+          "time_ms": 229.197,
+          "stderr": ""
+        },
+        {
+          "ply": 44,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            1
+          ],
+          "time_ms": 226.953,
+          "stderr": ""
+        },
+        {
+          "ply": 45,
+          "side": 1,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            1
+          ],
+          "time_ms": 232.094,
+          "stderr": ""
+        },
+        {
+          "ply": 46,
+          "side": 0,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            1
+          ],
+          "time_ms": 231.911,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 1,
+      "reason": "Five",
+      "opening": "center-horizontal",
+      "black": "variants\\wallclock-fast\\src.cpp",
+      "white": "variants\\rapfi-deadline-fusion\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            7,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 224.75,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 343.014,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            9
+          ],
+          "time_ms": 242.82,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 474.723,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            7
+          ],
+          "time_ms": 232.823,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            8
+          ],
+          "time_ms": 337.962,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            7
+          ],
+          "time_ms": 229.687,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            7
+          ],
+          "time_ms": 223.564,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 226.016,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            6
+          ],
+          "time_ms": 355.728,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            10
+          ],
+          "time_ms": 224.507,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            11
+          ],
+          "time_ms": 226.936,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 227.141,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            9
+          ],
+          "time_ms": 396.63,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            4
+          ],
+          "time_ms": 231.292,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            5
+          ],
+          "time_ms": 227.74,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            4
+          ],
+          "time_ms": 232.156,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            6
+          ],
+          "time_ms": 337.7,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 230.405,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            8
+          ],
+          "time_ms": 348.087,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            9
+          ],
+          "time_ms": 222.838,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            8
+          ],
+          "time_ms": 330.685,
+          "stderr": ""
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            4
+          ],
+          "time_ms": 290.394,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            10
+          ],
+          "time_ms": 372.321,
+          "stderr": ""
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            9
+          ],
+          "time_ms": 232.579,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            9
+          ],
+          "time_ms": 342.359,
+          "stderr": ""
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            6
+          ],
+          "time_ms": 234.158,
+          "stderr": ""
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            8
+          ],
+          "time_ms": 332.439,
+          "stderr": ""
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            6
+          ],
+          "time_ms": 231.474,
+          "stderr": ""
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            10
+          ],
+          "time_ms": 297.276,
+          "stderr": ""
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            11
+          ],
+          "time_ms": 230.882,
+          "stderr": ""
+        },
+        {
+          "ply": 33,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            8
+          ],
+          "time_ms": 228.678,
+          "stderr": ""
+        },
+        {
+          "ply": 34,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 224.232,
+          "stderr": ""
+        },
+        {
+          "ply": 35,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            12
+          ],
+          "time_ms": 231.491,
+          "stderr": ""
+        },
+        {
+          "ply": 36,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            11
+          ],
+          "time_ms": 227.082,
+          "stderr": ""
+        },
+        {
+          "ply": 37,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            10
+          ],
+          "time_ms": 246.586,
+          "stderr": ""
+        },
+        {
+          "ply": 38,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            12,
+            11
+          ],
+          "time_ms": 232.444,
+          "stderr": ""
+        },
+        {
+          "ply": 39,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            10
+          ],
+          "time_ms": 229.049,
+          "stderr": ""
+        },
+        {
+          "ply": 40,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            9
+          ],
+          "time_ms": 227.062,
+          "stderr": ""
+        },
+        {
+          "ply": 41,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            10
+          ],
+          "time_ms": 256.203,
+          "stderr": ""
+        },
+        {
+          "ply": 42,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            10
+          ],
+          "time_ms": 223.344,
+          "stderr": ""
+        },
+        {
+          "ply": 43,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            11
+          ],
+          "time_ms": 234.383,
+          "stderr": ""
+        },
+        {
+          "ply": 44,
+          "side": 0,
+          "engine": "variants\\wallclock-fast\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            12
+          ],
+          "time_ms": 231.54,
+          "stderr": ""
+        },
+        {
+          "ply": 45,
+          "side": 1,
+          "engine": "variants\\rapfi-deadline-fusion\\src.cpp",
+          "ok": true,
+          "move": [
+            12,
+            7
+          ],
+          "time_ms": 231.171,
+          "stderr": ""
+        }
+      ]
+    }
+  ]
+}

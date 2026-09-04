@@ -110,14 +110,17 @@ def engine_from_spec(value: str, state_path: Path) -> Engine:
         label = str(path.relative_to(ROOT))
     except ValueError:
         label = str(path)
+    if path.suffix.lower() in (".exe", ".out", ".py"):
+        return Engine(label=label, binary=path)
     return Engine(label=label, binary=compile_source(path))
 
 
 def run_engine(binary: Path, side: int, board: list[list[int]], timeout: float) -> dict[str, Any]:
     started = time.perf_counter()
     try:
+        command = [sys.executable, str(binary)] if binary.suffix.lower() == ".py" else [str(binary)]
         proc = subprocess.run(
-            [str(binary)],
+            command,
             input=encode_input(side, board),
             text=True,
             capture_output=True,

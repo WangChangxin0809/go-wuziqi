@@ -1,0 +1,1829 @@
+{
+  "schema": 1,
+  "created_at": "2026-09-04T19:08:33+0800",
+  "timeout_seconds": 1.0,
+  "max_plies": 80,
+  "sources": [
+    "variants\\rapfi-book-hybrid\\src.cpp",
+    "uid:2025201726"
+  ],
+  "score": {
+    "variants\\rapfi-book-hybrid\\src.cpp": 0,
+    "uid:2025201726": 4,
+    "draw": 0
+  },
+  "games": [
+    {
+      "winner": 1,
+      "reason": "Five",
+      "opening": "figrid-standard-3",
+      "black": "variants\\rapfi-book-hybrid\\src.cpp",
+      "white": "uid:2025201726",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            5,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "move": [
+            9,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "move": [
+            5,
+            6
+          ],
+          "opening": true
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "move": [
+            5,
+            5
+          ],
+          "opening": true
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1067.068,
+          "time_ms": 912.12,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            6
+          ]
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 441.0,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1029.637,
+          "time_ms": 914.668,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            6,
+            5
+          ]
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 430.869,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 269.009,
+          "time_ms": 142.729,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            4
+          ]
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            2
+          ],
+          "time_ms": 372.907,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 325.161,
+          "time_ms": 140.576,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            4
+          ]
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            7
+          ],
+          "time_ms": 335.033,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 416.767,
+          "time_ms": 138.052,
+          "memory": 66977792,
+          "code": 0,
+          "move": [
+            5,
+            4
+          ]
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            4
+          ],
+          "time_ms": 340.787,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 279.56,
+          "time_ms": 137.004,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 320.766,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 276.68,
+          "time_ms": 132.216,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            4,
+            3
+          ]
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            2
+          ],
+          "time_ms": 320.592,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 309.039,
+          "time_ms": 4.366,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            8,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "figrid-standard-3",
+      "black": "uid:2025201726",
+      "white": "variants\\rapfi-book-hybrid\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            7,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            5,
+            7
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "move": [
+            9,
+            8
+          ],
+          "opening": true
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "move": [
+            5,
+            6
+          ],
+          "opening": true
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "move": [
+            5,
+            5
+          ],
+          "opening": true
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 317.464,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1062.457,
+          "time_ms": 920.417,
+          "memory": 67174400,
+          "code": 0,
+          "move": [
+            7,
+            5
+          ]
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            5
+          ],
+          "time_ms": 421.519,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1068.734,
+          "time_ms": 916.036,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            4
+          ],
+          "time_ms": 511.937,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1076.689,
+          "time_ms": 919.741,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            4,
+            7
+          ]
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            4
+          ],
+          "time_ms": 450.609,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1070.036,
+          "time_ms": 913.346,
+          "memory": 67436544,
+          "code": 0,
+          "move": [
+            6,
+            3
+          ]
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 465.905,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 112.697,
+          "time_ms": 4.096,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            7
+          ]
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            9
+          ],
+          "time_ms": 433.569,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1079.143,
+          "time_ms": 912.517,
+          "memory": 67174400,
+          "code": 0,
+          "move": [
+            8,
+            10
+          ]
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            8
+          ],
+          "time_ms": 469.397,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1038.229,
+          "time_ms": 920.139,
+          "memory": 67305472,
+          "code": 0,
+          "move": [
+            4,
+            8
+          ]
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            6
+          ],
+          "time_ms": 450.835,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 87.477,
+          "time_ms": 4.147,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            3,
+            5
+          ]
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            3
+          ],
+          "time_ms": 425.959,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 148.043,
+          "time_ms": 3.945,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            9,
+            2
+          ]
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            4
+          ],
+          "time_ms": 418.87,
+          "stderr": ""
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1009.458,
+          "time_ms": 915.944,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            4
+          ]
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            7
+          ],
+          "time_ms": 442.967,
+          "stderr": ""
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1016.373,
+          "time_ms": 915.81,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            5
+          ]
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            9
+          ],
+          "time_ms": 460.805,
+          "stderr": ""
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1090.243,
+          "time_ms": 918.265,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            9
+          ]
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            10
+          ],
+          "time_ms": 490.158,
+          "stderr": ""
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1375.116,
+          "time_ms": 915.297,
+          "memory": 65929216,
+          "code": 0,
+          "move": [
+            8,
+            8
+          ]
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            8
+          ],
+          "time_ms": 465.246,
+          "stderr": ""
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1056.721,
+          "time_ms": 913.948,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            10,
+            9
+          ]
+        },
+        {
+          "ply": 33,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            10
+          ],
+          "time_ms": 551.934,
+          "stderr": ""
+        },
+        {
+          "ply": 34,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1060.274,
+          "time_ms": 915.999,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            9,
+            5
+          ]
+        },
+        {
+          "ply": 35,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            6
+          ],
+          "time_ms": 468.79,
+          "stderr": ""
+        },
+        {
+          "ply": 36,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 257.003,
+          "time_ms": 4.384,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            2,
+            6
+          ]
+        },
+        {
+          "ply": 37,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            4
+          ],
+          "time_ms": 511.212,
+          "stderr": ""
+        },
+        {
+          "ply": 38,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 571.384,
+          "time_ms": 156.289,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            6
+          ]
+        },
+        {
+          "ply": 39,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            4
+          ],
+          "time_ms": 334.945,
+          "stderr": ""
+        },
+        {
+          "ply": 40,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 176.307,
+          "time_ms": 5.074,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            3,
+            4
+          ]
+        },
+        {
+          "ply": 41,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            7
+          ],
+          "time_ms": 331.294,
+          "stderr": ""
+        },
+        {
+          "ply": 42,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 402.956,
+          "time_ms": 139.759,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            5
+          ]
+        },
+        {
+          "ply": 43,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            5
+          ],
+          "time_ms": 319.808,
+          "stderr": ""
+        },
+        {
+          "ply": 44,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 566.358,
+          "time_ms": 133.437,
+          "memory": 64946176,
+          "code": 0,
+          "move": [
+            8,
+            6
+          ]
+        },
+        {
+          "ply": 45,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 324.486,
+          "stderr": ""
+        },
+        {
+          "ply": 46,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 458.786,
+          "time_ms": 135.281,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            4
+          ]
+        },
+        {
+          "ply": 47,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            3
+          ],
+          "time_ms": 335.109,
+          "stderr": ""
+        },
+        {
+          "ply": 48,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 399.35,
+          "time_ms": 133.047,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            3
+          ]
+        },
+        {
+          "ply": 49,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            2
+          ],
+          "time_ms": 331.459,
+          "stderr": ""
+        },
+        {
+          "ply": 50,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 524.035,
+          "time_ms": 3.899,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            10,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "winner": 1,
+      "reason": "Five",
+      "opening": "figrid-standard-11",
+      "black": "variants\\rapfi-book-hybrid\\src.cpp",
+      "white": "uid:2025201726",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            3,
+            3
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            4,
+            4
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "move": [
+            6,
+            6
+          ],
+          "opening": true
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "move": [
+            5,
+            4
+          ],
+          "opening": true
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "move": [
+            6,
+            4
+          ],
+          "opening": true
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1195.799,
+          "time_ms": 924.547,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            5
+          ]
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 423.904,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1088.377,
+          "time_ms": 916.75,
+          "memory": 67174400,
+          "code": 0,
+          "move": [
+            5,
+            3
+          ]
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            6
+          ],
+          "time_ms": 459.634,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 512.224,
+          "time_ms": 172.494,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            3,
+            5
+          ]
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            2
+          ],
+          "time_ms": 432.572,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 287.799,
+          "time_ms": 150.588,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            4,
+            5
+          ]
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 342.231,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 314.18,
+          "time_ms": 149.651,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            4,
+            6
+          ]
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            7
+          ],
+          "time_ms": 483.05,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 296.927,
+          "time_ms": 138.451,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            2,
+            5
+          ]
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            5
+          ],
+          "time_ms": 341.138,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 271.032,
+          "time_ms": 137.395,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            2,
+            6
+          ]
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            1,
+            7
+          ],
+          "time_ms": 317.668,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 263.621,
+          "time_ms": 134.726,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            2,
+            4
+          ]
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 334.427,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 84.212,
+          "time_ms": 4.018,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            9,
+            6
+          ]
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            7
+          ],
+          "time_ms": 330.741,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 177.048,
+          "time_ms": 3.995,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            10,
+            8
+          ]
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            2,
+            7
+          ],
+          "time_ms": 323.312,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 279.768,
+          "time_ms": 132.691,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            1,
+            3
+          ]
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            0,
+            2
+          ],
+          "time_ms": 343.251,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 159.531,
+          "time_ms": 3.63,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            5,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "figrid-standard-11",
+      "black": "uid:2025201726",
+      "white": "variants\\rapfi-book-hybrid\\src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "move": [
+            3,
+            3
+          ],
+          "opening": true
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "move": [
+            4,
+            4
+          ],
+          "opening": true
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "move": [
+            6,
+            6
+          ],
+          "opening": true
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "move": [
+            5,
+            4
+          ],
+          "opening": true
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "move": [
+            6,
+            4
+          ],
+          "opening": true
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            5
+          ],
+          "time_ms": 326.647,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1162.545,
+          "time_ms": 917.796,
+          "memory": 67174400,
+          "code": 0,
+          "move": [
+            4,
+            3
+          ]
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            3
+          ],
+          "time_ms": 448.025,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1174.932,
+          "time_ms": 919.46,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            3,
+            5
+          ]
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            6
+          ],
+          "time_ms": 450.3,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1180.089,
+          "time_ms": 916.513,
+          "memory": 67174400,
+          "code": 0,
+          "move": [
+            4,
+            5
+          ]
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 425.87,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1033.353,
+          "time_ms": 919.85,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            5
+          ]
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            6
+          ],
+          "time_ms": 440.819,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1091.453,
+          "time_ms": 921.313,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            4,
+            7
+          ]
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            8
+          ],
+          "time_ms": 464.805,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1051.897,
+          "time_ms": 919.267,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            9
+          ],
+          "time_ms": 528.47,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1114.683,
+          "time_ms": 910.481,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            4
+          ]
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            10
+          ],
+          "time_ms": 447.082,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1040.66,
+          "time_ms": 914.842,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            7
+          ]
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            8
+          ],
+          "time_ms": 476.361,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 363.32,
+          "time_ms": 236.959,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            5
+          ]
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            7
+          ],
+          "time_ms": 437.276,
+          "stderr": ""
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 276.843,
+          "time_ms": 152.546,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            3
+          ]
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            4
+          ],
+          "time_ms": 413.572,
+          "stderr": ""
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 300.7,
+          "time_ms": 155.444,
+          "memory": 69271552,
+          "code": 0,
+          "move": [
+            8,
+            2
+          ]
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            1
+          ],
+          "time_ms": 332.169,
+          "stderr": ""
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 361.523,
+          "time_ms": 140.925,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            3
+          ]
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            11
+          ],
+          "time_ms": 318.453,
+          "stderr": ""
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 250.224,
+          "time_ms": 4.668,
+          "memory": 10813440,
+          "code": 0,
+          "move": [
+            9,
+            12
+          ]
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            1,
+            6
+          ],
+          "time_ms": 320.259,
+          "stderr": ""
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 195.399,
+          "time_ms": 4.053,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            2,
+            6
+          ]
+        },
+        {
+          "ply": 33,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            5
+          ],
+          "time_ms": 323.965,
+          "stderr": ""
+        },
+        {
+          "ply": 34,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 485.51,
+          "time_ms": 133.556,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            3
+          ]
+        },
+        {
+          "ply": 35,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            2
+          ],
+          "time_ms": 325.538,
+          "stderr": ""
+        },
+        {
+          "ply": 36,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 392.797,
+          "time_ms": 134.711,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            3
+          ]
+        },
+        {
+          "ply": 37,
+          "side": 1,
+          "engine": "variants\\rapfi-book-hybrid\\src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            3
+          ],
+          "time_ms": 316.228,
+          "stderr": ""
+        },
+        {
+          "ply": 38,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 201.066,
+          "time_ms": 3.902,
+          "memory": 10616832,
+          "code": 0,
+          "move": [
+            11,
+            3
+          ]
+        }
+      ]
+    }
+  ]
+}
