@@ -89,7 +89,10 @@ def main() -> int:
             ply, rank = chunk.split(":")
             forks[int(ply)] = int(rank)
 
-    binary = compile_source(ROOT / args.engine)
+    # A prebuilt binary is accepted so several runs can share one compile and so
+    # a variant can be played without it having to live in the tree.
+    engine = Path(args.engine)
+    binary = engine if engine.suffix.lower() in (".out", ".exe") else compile_source(ROOT / args.engine)
     client = SiteClient(resolve_cookie(None, DEFAULT_COOKIE_FILE, DEFAULT_STATE))
     our_side = 0 if args.side == "black" else 1
     started = time.time()
