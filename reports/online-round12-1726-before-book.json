@@ -1,0 +1,1649 @@
+{
+  "schema": 1,
+  "created_at": "2026-09-04T22:47:24+0800",
+  "timeout_seconds": 1.0,
+  "max_plies": 225,
+  "sources": [
+    "src.cpp",
+    "uid:2025201726"
+  ],
+  "score": {
+    "src.cpp": 0,
+    "uid:2025201726": 4,
+    "draw": 0
+  },
+  "games": [
+    {
+      "winner": 1,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "src.cpp",
+      "white": "uid:2025201726",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            7
+          ],
+          "time_ms": 19.767,
+          "stderr": ""
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 178.275,
+          "time_ms": 3.697,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            6
+          ]
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 19.237,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 90.459,
+          "time_ms": 3.868,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 539.721,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1050.109,
+          "time_ms": 914.168,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            7
+          ]
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            5
+          ],
+          "time_ms": 19.852,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1029.758,
+          "time_ms": 914.469,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            5
+          ]
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            4
+          ],
+          "time_ms": 445.659,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1024.579,
+          "time_ms": 915.396,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            8,
+            3
+          ]
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            5
+          ],
+          "time_ms": 22.422,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1114.478,
+          "time_ms": 916.047,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            10,
+            7
+          ]
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            4
+          ],
+          "time_ms": 763.348,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1089.882,
+          "time_ms": 915.189,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            8
+          ]
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            6
+          ],
+          "time_ms": 735.963,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1069.059,
+          "time_ms": 919.244,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            11,
+            6
+          ]
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            9
+          ],
+          "time_ms": 838.568,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 834.941,
+          "time_ms": 604.408,
+          "memory": 67108864,
+          "code": 0,
+          "move": [
+            12,
+            5
+          ]
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            13,
+            4
+          ],
+          "time_ms": 18.253,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 790.903,
+          "time_ms": 552.8,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            11,
+            7
+          ]
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 18.838,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 411.742,
+          "time_ms": 307.081,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            11,
+            4
+          ]
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 19.266,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 100.184,
+          "time_ms": 4.097,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            8,
+            10
+          ]
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            5
+          ],
+          "time_ms": 43.523,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 285.611,
+          "time_ms": 149.533,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            12,
+            7
+          ]
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            13,
+            7
+          ],
+          "time_ms": 18.963,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 221.429,
+          "time_ms": 140.449,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            12,
+            6
+          ]
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            12,
+            8
+          ],
+          "time_ms": 26.927,
+          "stderr": ""
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 251.851,
+          "time_ms": 145.994,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            13,
+            6
+          ]
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            3
+          ],
+          "time_ms": 21.604,
+          "stderr": ""
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 238.171,
+          "time_ms": 133.459,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            8
+          ]
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            9
+          ],
+          "time_ms": 18.63,
+          "stderr": ""
+        },
+        {
+          "ply": 33,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 241.677,
+          "time_ms": 131.14,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            6
+          ]
+        },
+        {
+          "ply": 34,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            14,
+            6
+          ],
+          "time_ms": 18.22,
+          "stderr": ""
+        },
+        {
+          "ply": 35,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 260.486,
+          "time_ms": 134.841,
+          "memory": 68550656,
+          "code": 0,
+          "move": [
+            10,
+            9
+          ]
+        },
+        {
+          "ply": 36,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            8
+          ],
+          "time_ms": 19.693,
+          "stderr": ""
+        },
+        {
+          "ply": 37,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 249.811,
+          "time_ms": 3.618,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            10,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "uid:2025201726",
+      "white": "src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 132.673,
+          "time_ms": 3.73,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            7
+          ]
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 18.67,
+          "stderr": ""
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 277.793,
+          "time_ms": 3.877,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            8
+          ]
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 682.802,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 197.356,
+          "time_ms": 4.099,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            9
+          ]
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            10
+          ],
+          "time_ms": 460.857,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 231.054,
+          "time_ms": 4.135,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            8
+          ]
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            6
+          ],
+          "time_ms": 831.218,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 166.369,
+          "time_ms": 4.066,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            5,
+            8
+          ]
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 23.533,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 397.077,
+          "time_ms": 198.032,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            9
+          ]
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            9
+          ],
+          "time_ms": 139.531,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 589.26,
+          "time_ms": 4.082,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            8,
+            7
+          ]
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            3
+          ],
+          "time_ms": 49.828,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 280.334,
+          "time_ms": 133.273,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            4,
+            8
+          ]
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            8
+          ],
+          "time_ms": 18.45,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 231.832,
+          "time_ms": 136.025,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            11
+          ]
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            10
+          ],
+          "time_ms": 18.238,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 380.866,
+          "time_ms": 130.49,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            10
+          ]
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            7
+          ],
+          "time_ms": 18.579,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 141.399,
+          "time_ms": 3.584,
+          "memory": 10616832,
+          "code": 0,
+          "move": [
+            8,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "winner": 1,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "src.cpp",
+      "white": "uid:2025201726",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            7
+          ],
+          "time_ms": 18.38,
+          "stderr": ""
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 351.899,
+          "time_ms": 3.825,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            6
+          ]
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 18.685,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 150.705,
+          "time_ms": 3.744,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 546.928,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1153.333,
+          "time_ms": 918.001,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            7
+          ]
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            5
+          ],
+          "time_ms": 18.561,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1101.254,
+          "time_ms": 917.921,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            5
+          ]
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            4
+          ],
+          "time_ms": 832.683,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1165.584,
+          "time_ms": 919.099,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            8,
+            3
+          ]
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            5
+          ],
+          "time_ms": 19.312,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1121.174,
+          "time_ms": 915.584,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            7
+          ]
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            4
+          ],
+          "time_ms": 757.369,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1053.356,
+          "time_ms": 921.879,
+          "memory": 67239936,
+          "code": 0,
+          "move": [
+            9,
+            8
+          ]
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            6
+          ],
+          "time_ms": 737.932,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1030.741,
+          "time_ms": 914.463,
+          "memory": 73269248,
+          "code": 0,
+          "move": [
+            11,
+            6
+          ]
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            9
+          ],
+          "time_ms": 837.278,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 742.008,
+          "time_ms": 613.83,
+          "memory": 67960832,
+          "code": 0,
+          "move": [
+            12,
+            5
+          ]
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            13,
+            4
+          ],
+          "time_ms": 19.912,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 670.772,
+          "time_ms": 546.497,
+          "memory": 66125824,
+          "code": 0,
+          "move": [
+            11,
+            7
+          ]
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 20.137,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 419.232,
+          "time_ms": 305.667,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            11,
+            4
+          ]
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 19.462,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 109.644,
+          "time_ms": 3.864,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            8,
+            10
+          ]
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            5
+          ],
+          "time_ms": 43.672,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 236.237,
+          "time_ms": 150.71,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            12,
+            7
+          ]
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            13,
+            7
+          ],
+          "time_ms": 18.016,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 252.43,
+          "time_ms": 140.309,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            12,
+            6
+          ]
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            12,
+            8
+          ],
+          "time_ms": 31.434,
+          "stderr": ""
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 257.509,
+          "time_ms": 144.609,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            13,
+            6
+          ]
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            3
+          ],
+          "time_ms": 22.038,
+          "stderr": ""
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 271.85,
+          "time_ms": 133.592,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            8
+          ]
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            9
+          ],
+          "time_ms": 19.227,
+          "stderr": ""
+        },
+        {
+          "ply": 33,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 265.869,
+          "time_ms": 132.521,
+          "memory": 67829760,
+          "code": 0,
+          "move": [
+            10,
+            6
+          ]
+        },
+        {
+          "ply": 34,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            14,
+            6
+          ],
+          "time_ms": 19.976,
+          "stderr": ""
+        },
+        {
+          "ply": 35,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 259.486,
+          "time_ms": 133.915,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            9
+          ]
+        },
+        {
+          "ply": 36,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            8
+          ],
+          "time_ms": 17.943,
+          "stderr": ""
+        },
+        {
+          "ply": 37,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 82.194,
+          "time_ms": 3.546,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            10,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "uid:2025201726",
+      "white": "src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 70.099,
+          "time_ms": 3.978,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            7
+          ]
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            6
+          ],
+          "time_ms": 20.896,
+          "stderr": ""
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 128.987,
+          "time_ms": 3.536,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            6
+          ]
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 672.437,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 116.469,
+          "time_ms": 3.886,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            5,
+            7
+          ]
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            8
+          ],
+          "time_ms": 511.968,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 107.609,
+          "time_ms": 3.774,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            7
+          ]
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            7
+          ],
+          "time_ms": 834.615,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 105.795,
+          "time_ms": 3.754,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            5
+          ]
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 23.015,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 317.205,
+          "time_ms": 186.966,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            5
+          ]
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            8
+          ],
+          "time_ms": 141.256,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 97.878,
+          "time_ms": 4.645,
+          "memory": 12713984,
+          "code": 0,
+          "move": [
+            7,
+            8
+          ]
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            10
+          ],
+          "time_ms": 44.429,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 285.339,
+          "time_ms": 132.602,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            4
+          ]
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            3
+          ],
+          "time_ms": 18.926,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 220.752,
+          "time_ms": 130.561,
+          "memory": 64946176,
+          "code": 0,
+          "move": [
+            3,
+            7
+          ]
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            7
+          ],
+          "time_ms": 18.48,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 231.289,
+          "time_ms": 130.16,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            4,
+            6
+          ]
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            2,
+            8
+          ],
+          "time_ms": 17.856,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 102.037,
+          "time_ms": 3.91,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            3
+          ]
+        }
+      ]
+    }
+  ]
+}

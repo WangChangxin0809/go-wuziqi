@@ -1,0 +1,1142 @@
+{
+  "schema": 1,
+  "created_at": "2026-09-04T23:05:31+0800",
+  "timeout_seconds": 1.0,
+  "max_plies": 225,
+  "sources": [
+    "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+    "uid:2025201726"
+  ],
+  "score": {
+    "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp": 1,
+    "uid:2025201726": 1,
+    "draw": 0
+  },
+  "games": [
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+      "white": "uid:2025201726",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            7
+          ],
+          "time_ms": 19.166,
+          "stderr": ""
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 128.082,
+          "time_ms": 3.758,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            6
+          ]
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 18.13,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 121.964,
+          "time_ms": 4.258,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 18.244,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1011.537,
+          "time_ms": 912.656,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            6
+          ]
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            6
+          ],
+          "time_ms": 18.817,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1021.177,
+          "time_ms": 919.677,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            5
+          ]
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 17.933,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1041.501,
+          "time_ms": 916.649,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            7
+          ]
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            4
+          ],
+          "time_ms": 23.197,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1066.641,
+          "time_ms": 915.348,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            9
+          ]
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 19.345,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1070.323,
+          "time_ms": 917.713,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            8
+          ]
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            9
+          ],
+          "time_ms": 18.146,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1089.149,
+          "time_ms": 913.959,
+          "memory": 68812800,
+          "code": 0,
+          "move": [
+            10,
+            7
+          ]
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            10
+          ],
+          "time_ms": 19.513,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1072.651,
+          "time_ms": 914.659,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            12,
+            5
+          ]
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            11,
+            6
+          ],
+          "time_ms": 19.351,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1030.75,
+          "time_ms": 914.795,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            4,
+            5
+          ]
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            10
+          ],
+          "time_ms": 816.102,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 912.716,
+          "time_ms": 782.54,
+          "memory": 67174400,
+          "code": 0,
+          "move": [
+            11,
+            7
+          ]
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            9
+          ],
+          "time_ms": 58.654,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 270.716,
+          "time_ms": 148.772,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            7
+          ]
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            12,
+            7
+          ],
+          "time_ms": 18.121,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 322.093,
+          "time_ms": 181.746,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            10
+          ]
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            11
+          ],
+          "time_ms": 18.941,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 610.673,
+          "time_ms": 3.851,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            8
+          ]
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            11
+          ],
+          "time_ms": 18.972,
+          "stderr": ""
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 150.057,
+          "time_ms": 3.665,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            4,
+            12
+          ]
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            12
+          ],
+          "time_ms": 18.728,
+          "stderr": ""
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 143.672,
+          "time_ms": 3.684,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            13
+          ]
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            11
+          ],
+          "time_ms": 18.355,
+          "stderr": ""
+        },
+        {
+          "ply": 33,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 234.422,
+          "time_ms": 138.862,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            11
+          ]
+        },
+        {
+          "ply": 34,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            10
+          ],
+          "time_ms": 21.64,
+          "stderr": ""
+        },
+        {
+          "ply": 35,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 93.266,
+          "time_ms": 3.695,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            13
+          ]
+        },
+        {
+          "ply": 36,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            13
+          ],
+          "time_ms": 18.671,
+          "stderr": ""
+        },
+        {
+          "ply": 37,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 281.762,
+          "time_ms": 136.243,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            12
+          ]
+        },
+        {
+          "ply": 38,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            12
+          ],
+          "time_ms": 19.369,
+          "stderr": ""
+        },
+        {
+          "ply": 39,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 228.216,
+          "time_ms": 134.136,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            11
+          ]
+        },
+        {
+          "ply": 40,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            9
+          ],
+          "time_ms": 21.188,
+          "stderr": ""
+        },
+        {
+          "ply": 41,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 268.288,
+          "time_ms": 135.02,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            13
+          ]
+        },
+        {
+          "ply": 42,
+          "side": 0,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            8
+          ],
+          "time_ms": 20.875,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "uid:2025201726",
+      "white": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 578.782,
+          "time_ms": 3.981,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            7
+          ]
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 17.934,
+          "stderr": ""
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 182.708,
+          "time_ms": 3.67,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            7
+          ],
+          "time_ms": 728.607,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 140.499,
+          "time_ms": 4.209,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            4,
+            6
+          ]
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            8
+          ],
+          "time_ms": 564.385,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 345.294,
+          "time_ms": 3.964,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            6
+          ]
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 840.446,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 100.62,
+          "time_ms": 4.031,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            5,
+            5
+          ]
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 423.073,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1055.742,
+          "time_ms": 911.282,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            8
+          ]
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            5
+          ],
+          "time_ms": 835.643,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1103.382,
+          "time_ms": 911.846,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            7
+          ]
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            5
+          ],
+          "time_ms": 827.706,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 932.661,
+          "time_ms": 754.921,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            4
+          ]
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            3
+          ],
+          "time_ms": 53.197,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 977.532,
+          "time_ms": 812.962,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            3,
+            6
+          ]
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            4
+          ],
+          "time_ms": 833.071,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 456.177,
+          "time_ms": 303.724,
+          "memory": 67174400,
+          "code": 0,
+          "move": [
+            4,
+            9
+          ]
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            10
+          ],
+          "time_ms": 22.379,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 277.099,
+          "time_ms": 168.463,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            4,
+            7
+          ]
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            9
+          ],
+          "time_ms": 141.833,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 367.226,
+          "time_ms": 144.756,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            3,
+            7
+          ]
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            2,
+            8
+          ],
+          "time_ms": 18.122,
+          "stderr": ""
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 582.13,
+          "time_ms": 145.348,
+          "memory": 67174400,
+          "code": 0,
+          "move": [
+            2,
+            5
+          ]
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            1,
+            4
+          ],
+          "time_ms": 17.92,
+          "stderr": ""
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 401.151,
+          "time_ms": 152.036,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            4,
+            8
+          ]
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            10
+          ],
+          "time_ms": 19.26,
+          "stderr": ""
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 291.685,
+          "time_ms": 142.264,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            3,
+            4
+          ]
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            8
+          ],
+          "time_ms": 19.784,
+          "stderr": ""
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 278.264,
+          "time_ms": 139.291,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            2,
+            6
+          ]
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            8
+          ],
+          "time_ms": 18.166,
+          "stderr": ""
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 101.058,
+          "time_ms": 3.671,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            10,
+            8
+          ]
+        },
+        {
+          "ply": 33,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            9
+          ],
+          "time_ms": 18.254,
+          "stderr": ""
+        },
+        {
+          "ply": 34,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 292.606,
+          "time_ms": 134.146,
+          "memory": 65077248,
+          "code": 0,
+          "move": [
+            1,
+            6
+          ]
+        },
+        {
+          "ply": 35,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            0,
+            6
+          ],
+          "time_ms": 18.206,
+          "stderr": ""
+        },
+        {
+          "ply": 36,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 221.47,
+          "time_ms": 131.016,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            4,
+            3
+          ]
+        },
+        {
+          "ply": 37,
+          "side": 1,
+          "engine": "/tmp/claude-1000/-home-fulu4477-mathmodel-gogogo/ac7f6f31-6508-4c02-bf7c-c383937ae502/scratchpad/bookline/src.cpp",
+          "ok": true,
+          "move": [
+            0,
+            7
+          ],
+          "time_ms": 18.332,
+          "stderr": ""
+        },
+        {
+          "ply": 38,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 129.231,
+          "time_ms": 3.418,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            5,
+            2
+          ]
+        }
+      ]
+    }
+  ]
+}

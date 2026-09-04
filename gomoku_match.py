@@ -19,7 +19,8 @@ from pathlib import Path
 from typing import Any
 
 from arena_server import black_forbidden, encode_input, in_board, winner
-from gomoku_site_api import DEFAULT_STATE, STATUS_NAMES, SiteClient
+from gomoku_site_api import (DEFAULT_COOKIE_FILE, DEFAULT_STATE, STATUS_NAMES,
+                            SiteClient, resolve_cookie)
 
 
 ROOT = Path(__file__).resolve().parent
@@ -99,12 +100,14 @@ def compile_source(path: Path) -> Path:
     return binary
 
 
-def engine_from_spec(value: str, state_path: Path) -> Engine:
+def engine_from_spec(value: str, auth: argparse.Namespace) -> Engine:
     if value.startswith("uid:"):
         uid = value.removeprefix("uid:")
         if not uid:
             raise ValueError("remote engine must be written as uid:STUDENT_ID")
-        return Engine(label=f"uid:{uid}", uid=uid, site=SiteClient(state_path))
+        # Credentials are only resolved for remote engines, so local runs need none.
+        cookie = resolve_cookie(auth.cookie, auth.cookie_file, auth.state)
+        return Engine(label=f"uid:{uid}", uid=uid, site=SiteClient(cookie))
     path = source_path(value)
     try:
         label = str(path.relative_to(ROOT))
@@ -355,6 +358,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", type=Path, default=DEFAULT_STATE,
                         help="Playwright auth state used by uid: remote engines")
+    parser.add_argument("--cookie", help="raw Cookie header for uid: remote engines")
+    parser.add_argument("--cookie-file", type=Path, default=DEFAULT_COOKIE_FILE,
+                        help="file holding a pasted Cookie header")
     sub = parser.add_subparsers(dest="command", required=True)
     pair = sub.add_parser("pair", help="run an even number of games with colors swapped")
     pair.add_argument("source_a")
@@ -382,18 +388,18 @@ def main() -> int:
 
     args = parser.parse_args()
     if args.command == "probe":
-        report, passed = probe(engine_from_spec(args.engine, args.state), args.position,
+        report, passed = probe(engine_from_spec(args.engine, args), args.position,
                                args.timeout, args.expect)
         write_report(report, args.json_path)
         return 0 if passed else 1
 
     openings = load_openings(args.openings)
     if args.command == "pair":
-        report = match_pair(engine_from_spec(args.source_a, args.state),
-                            engine_from_spec(args.source_b, args.state), args.games,
+        report = match_pair(engine_from_spec(args.source_a, args),
+                            engine_from_spec(args.source_b, args), args.games,
                             args.timeout, args.max_plies, openings)
     else:
-        engines = [engine_from_spec(value, args.state) for value in args.sources]
+        engines = [engine_from_spec(value, args) for value in args.sources]
         pair_reports = []
         for a, b in itertools.combinations(engines, 2):
             pair_reports.append(match_pair(a, b, args.games, args.timeout, args.max_plies, openings))

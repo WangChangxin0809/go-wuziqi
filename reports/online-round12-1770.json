@@ -1,0 +1,129 @@
+{
+  "schema": 1,
+  "created_at": "2026-09-04T22:57:16+0800",
+  "timeout_seconds": 1.0,
+  "max_plies": 225,
+  "sources": [
+    "src.cpp",
+    "uid:2025201770"
+  ],
+  "score": {
+    "src.cpp": 4,
+    "uid:2025201770": 0,
+    "draw": 0
+  },
+  "games": [
+    {
+      "winner": 0,
+      "reason": "Invalid Output",
+      "opening": "empty",
+      "black": "src.cpp",
+      "white": "uid:2025201770",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            7
+          ],
+          "time_ms": 19.478,
+          "stderr": ""
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "uid:2025201770",
+          "ok": false,
+          "remote": true,
+          "request_ms": 1009.419,
+          "time_ms": 2.907,
+          "memory": 6422528,
+          "code": 0,
+          "reason": "Invalid Output",
+          "output": "helloworld\n"
+        }
+      ]
+    },
+    {
+      "winner": 1,
+      "reason": "Invalid Output",
+      "opening": "empty",
+      "black": "uid:2025201770",
+      "white": "src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "uid:2025201770",
+          "ok": false,
+          "remote": true,
+          "request_ms": 462.878,
+          "time_ms": 2.874,
+          "memory": 2293760,
+          "code": 0,
+          "reason": "Invalid Output",
+          "output": "helloworld\n"
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Invalid Output",
+      "opening": "empty",
+      "black": "src.cpp",
+      "white": "uid:2025201770",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            7
+          ],
+          "time_ms": 20.551,
+          "stderr": ""
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "uid:2025201770",
+          "ok": false,
+          "remote": true,
+          "request_ms": 398.545,
+          "time_ms": 2.613,
+          "memory": 2293760,
+          "code": 0,
+          "reason": "Invalid Output",
+          "output": "helloworld\n"
+        }
+      ]
+    },
+    {
+      "winner": 1,
+      "reason": "Invalid Output",
+      "opening": "empty",
+      "black": "uid:2025201770",
+      "white": "src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "uid:2025201770",
+          "ok": false,
+          "remote": true,
+          "request_ms": 789.776,
+          "time_ms": 2.799,
+          "memory": 2424832,
+          "code": 0,
+          "reason": "Invalid Output",
+          "output": "helloworld\n"
+        }
+      ]
+    }
+  ]
+}

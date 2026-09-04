@@ -1,0 +1,1142 @@
+{
+  "schema": 1,
+  "created_at": "2026-09-04T23:02:17+0800",
+  "timeout_seconds": 25.0,
+  "max_plies": 120,
+  "sources": [
+    "src.cpp",
+    "uid:2025201726"
+  ],
+  "score": {
+    "src.cpp": 1,
+    "uid:2025201726": 1,
+    "draw": 0
+  },
+  "games": [
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "src.cpp",
+      "white": "uid:2025201726",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            7
+          ],
+          "time_ms": 19.825,
+          "stderr": ""
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1008.985,
+          "time_ms": 4.996,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            6
+          ]
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 19.54,
+          "stderr": ""
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 444.154,
+          "time_ms": 3.819,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 11731.956,
+          "stderr": ""
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1477.226,
+          "time_ms": 918.913,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            6
+          ]
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            6
+          ],
+          "time_ms": 11084.673,
+          "stderr": ""
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1734.136,
+          "time_ms": 917.903,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            5
+          ]
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            7
+          ],
+          "time_ms": 7599.183,
+          "stderr": ""
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1420.961,
+          "time_ms": 923.802,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            8,
+            7
+          ]
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            4
+          ],
+          "time_ms": 10304.23,
+          "stderr": ""
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1638.076,
+          "time_ms": 914.224,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            9
+          ]
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            8
+          ],
+          "time_ms": 15018.0,
+          "stderr": ""
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1830.793,
+          "time_ms": 916.882,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            9,
+            8
+          ]
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            9
+          ],
+          "time_ms": 19.24,
+          "stderr": ""
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1912.227,
+          "time_ms": 917.507,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            7
+          ]
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            10
+          ],
+          "time_ms": 13865.124,
+          "stderr": ""
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1212.319,
+          "time_ms": 914.338,
+          "memory": 67108864,
+          "code": 0,
+          "move": [
+            11,
+            6
+          ]
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            12,
+            5
+          ],
+          "time_ms": 21.702,
+          "stderr": ""
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1378.308,
+          "time_ms": 916.064,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            5,
+            7
+          ]
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            10
+          ],
+          "time_ms": 7901.656,
+          "stderr": ""
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1099.417,
+          "time_ms": 918.672,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            11
+          ]
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            5
+          ],
+          "time_ms": 14245.29,
+          "stderr": ""
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1842.693,
+          "time_ms": 914.031,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            3,
+            4
+          ]
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            3
+          ],
+          "time_ms": 14911.016,
+          "stderr": ""
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1937.692,
+          "time_ms": 914.112,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            2
+          ]
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            10
+          ],
+          "time_ms": 14996.074,
+          "stderr": ""
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1204.201,
+          "time_ms": 915.384,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            10
+          ]
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            9
+          ],
+          "time_ms": 15015.726,
+          "stderr": ""
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1124.77,
+          "time_ms": 921.287,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            12
+          ]
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            13
+          ],
+          "time_ms": 19.698,
+          "stderr": ""
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1229.704,
+          "time_ms": 917.622,
+          "memory": 69206016,
+          "code": 0,
+          "move": [
+            5,
+            11
+          ]
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            11
+          ],
+          "time_ms": 9152.375,
+          "stderr": " 18    O    O    X    X    X    X    O    O    4    7\nMESSAGE     9   16    O   31   21    X    O    X    O    X    X    X  125    O    7\nMESSAGE    11   12   20   35   24   26    O    O    X    O    O    O    O    X    6\nMESSAGE     8   16   22   22   26   19    X   42    O   19    X    X   50   24   15\nMESSAGE     .    .   19   21   20   25   40    O   17    X    O   17   18   12    9\nMESSAGE     .    .    .   20   21   26    O   24   23   20   18   17   18   11    6\nMESSAGE     .    .   17   18   19    X   18   30   18   18   16   15   16   12    6\nMESSAGE     .    .    .   14   12   17   21   16   17   17   14    .   11   13    .\nMESSAGE     .    .    .    6   10   12   12   12    .   12    .    .    .    .    .\nMESSAGE ---Pattern4--Black------\nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . . . . E . . . I . . . . \nMESSAGE . . . . . I E . . . I . . . . \nMESSAGE . . . H . . . I G H . . H H . \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . I G . I . . . . . . . . . \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . G . . . . . . . . . . . \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . . . . . E . . . . G H . \nMESSAGE . . . . . . E . . . . . . . . \nMESSAGE . . . . . I . . . . . . . . . \nMESSAGE . . . . . . . I . . . . . . . \nMESSAGE . . . . . . I . . . . . . . . \nMESSAGE . . . . . . . . . . . . . . .\nMESSAGE ---Pattern4--White------\nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . . . . E . . . . . . . . \nMESSAGE . . . . I . . . . I . . . . . \nMESSAGE . . . I . . . . A . . . H . . \nMESSAGE . . . . . . . . . . . . E . . \nMESSAGE . . . . . . . . . . . . . . E \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . . . . . . . . . . B . . \nMESSAGE . . . I . . . . . . . . . . . \nMESSAGE . . . . . . . . . . . . E . . \nMESSAGE . . . . . I . . . . . . . . . \nMESSAGE . . . . . . . I . . . . . . . \nMESSAGE . . . . . . . I . . . . . . . \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . . . . . . . . . . . . .\nMESSAGE ===============================\n"
+        },
+        {
+          "ply": 33,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1986.966,
+          "time_ms": 912.608,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            12
+          ]
+        },
+        {
+          "ply": 34,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            8
+          ],
+          "time_ms": 10889.501,
+          "stderr": " 18    O    O    X    O    X    X    X    X    O    9\nMESSAGE     9   16    O   31   21    X    O    X   25    X    X   31    O    8    7\nMESSAGE    11   12   20   35   24   26    O    O    X    O    O    O    O    X    6\nMESSAGE     8   16   22   22   26   19    X   42    O   22    X   20   21   15    9\nMESSAGE     .    .   19   21   20   25   40    O   22    X   28   23   24   15    8\nMESSAGE     .    .    .   20   21   26    O   26   23   24   19   26   22   16    6\nMESSAGE     .    .   17   18   19    X   18   30   20   18   17   16    .   12    .\nMESSAGE     .    .    .   14   12   17   21   17   17   17   15    .   11    .    .\nMESSAGE     .    .    .    6   10   12   11   12    .   12    .    .    .    .    .\nMESSAGE ---Pattern4--Black------\nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . . . I . . . . I . . . . \nMESSAGE . . . . . I . . . . . . . . . \nMESSAGE . . . H . . . I I . . . . . . \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . I G . I . . . . . . . . . \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . G . . . . E . . E . . . \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . . . . . E . . . . . . . \nMESSAGE . . . . . . E . . . I . . . . \nMESSAGE . . . . . I . . . . . . . . . \nMESSAGE . . . . . . . I . . . . . . . \nMESSAGE . . . . . . I . . . . . . . . \nMESSAGE . . . . . . . . . . . . . . .\nMESSAGE ---Pattern4--White------\nMESSAGE . . . . . E . . . . . . . . . \nMESSAGE . . . . I . . . . I . . . . . \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . I . . . . A . . . . . . \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . . . . . . . . . . . . E \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . I . . . . . . . . . . . \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . . . I . . . . . . . . . \nMESSAGE . . . . . . . I . . . . . . . \nMESSAGE . . . . . . . I . . . . . . . \nMESSAGE . . . . . . . . . . . . . . . \nMESSAGE . . . . . . . . . . . . . . .\nMESSAGE ===============================\n"
+        },
+        {
+          "ply": 35,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 526.377,
+          "time_ms": 356.532,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            5,
+            8
+          ]
+        },
+        {
+          "ply": 36,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            10
+          ],
+          "time_ms": 62.072,
+          "stderr": ""
+        },
+        {
+          "ply": 37,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 479.919,
+          "time_ms": 163.855,
+          "memory": 66977792,
+          "code": 0,
+          "move": [
+            3,
+            5
+          ]
+        },
+        {
+          "ply": 38,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            6
+          ],
+          "time_ms": 20.289,
+          "stderr": ""
+        },
+        {
+          "ply": 39,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 779.22,
+          "time_ms": 4.128,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            2,
+            7
+          ]
+        },
+        {
+          "ply": 40,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            4,
+            10
+          ],
+          "time_ms": 21.258,
+          "stderr": ""
+        },
+        {
+          "ply": 41,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 210.241,
+          "time_ms": 4.229,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            3,
+            10
+          ]
+        },
+        {
+          "ply": 42,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 20.508,
+          "stderr": ""
+        },
+        {
+          "ply": 43,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 567.89,
+          "time_ms": 3.61,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            9
+          ]
+        },
+        {
+          "ply": 44,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            9
+          ],
+          "time_ms": 19.324,
+          "stderr": ""
+        },
+        {
+          "ply": 45,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 820.909,
+          "time_ms": 3.697,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            3,
+            11
+          ]
+        },
+        {
+          "ply": 46,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            3,
+            7
+          ],
+          "time_ms": 18.546,
+          "stderr": ""
+        },
+        {
+          "ply": 47,
+          "side": 1,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 322.226,
+          "time_ms": 140.076,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            2,
+            6
+          ]
+        },
+        {
+          "ply": 48,
+          "side": 0,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            11
+          ],
+          "time_ms": 18.501,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "winner": 0,
+      "reason": "Five",
+      "opening": "empty",
+      "black": "uid:2025201726",
+      "white": "src.cpp",
+      "moves": [
+        {
+          "ply": 0,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 488.809,
+          "time_ms": 3.348,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            7,
+            7
+          ]
+        },
+        {
+          "ply": 1,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            8
+          ],
+          "time_ms": 19.589,
+          "stderr": ""
+        },
+        {
+          "ply": 2,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 599.737,
+          "time_ms": 4.702,
+          "memory": 10616832,
+          "code": 0,
+          "move": [
+            7,
+            6
+          ]
+        },
+        {
+          "ply": 3,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            5
+          ],
+          "time_ms": 12249.606,
+          "stderr": ""
+        },
+        {
+          "ply": 4,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 650.271,
+          "time_ms": 4.282,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            6,
+            5
+          ]
+        },
+        {
+          "ply": 5,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            4
+          ],
+          "time_ms": 11771.617,
+          "stderr": ""
+        },
+        {
+          "ply": 6,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1008.95,
+          "time_ms": 3.864,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            8,
+            7
+          ]
+        },
+        {
+          "ply": 7,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            7
+          ],
+          "time_ms": 15011.732,
+          "stderr": ""
+        },
+        {
+          "ply": 8,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 1160.517,
+          "time_ms": 916.322,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            8
+          ]
+        },
+        {
+          "ply": 9,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            8,
+            6
+          ],
+          "time_ms": 12975.002,
+          "stderr": ""
+        },
+        {
+          "ply": 10,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 992.107,
+          "time_ms": 654.712,
+          "memory": 67239936,
+          "code": 0,
+          "move": [
+            10,
+            8
+          ]
+        },
+        {
+          "ply": 11,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            9
+          ],
+          "time_ms": 9085.73,
+          "stderr": ""
+        },
+        {
+          "ply": 12,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 913.645,
+          "time_ms": 537.966,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            9
+          ]
+        },
+        {
+          "ply": 13,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            10,
+            10
+          ],
+          "time_ms": 15033.006,
+          "stderr": ""
+        },
+        {
+          "ply": 14,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 968.503,
+          "time_ms": 534.936,
+          "memory": 69140480,
+          "code": 0,
+          "move": [
+            8,
+            10
+          ]
+        },
+        {
+          "ply": 15,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            11
+          ],
+          "time_ms": 11931.463,
+          "stderr": ""
+        },
+        {
+          "ply": 16,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 698.412,
+          "time_ms": 331.122,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            7,
+            8
+          ]
+        },
+        {
+          "ply": 17,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            10
+          ],
+          "time_ms": 15016.662,
+          "stderr": ""
+        },
+        {
+          "ply": 18,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 871.181,
+          "time_ms": 237.148,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            6,
+            7
+          ]
+        },
+        {
+          "ply": 19,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            6
+          ],
+          "time_ms": 2854.619,
+          "stderr": ""
+        },
+        {
+          "ply": 20,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 394.987,
+          "time_ms": 144.34,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            11,
+            8
+          ]
+        },
+        {
+          "ply": 21,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            9,
+            8
+          ],
+          "time_ms": 18.231,
+          "stderr": ""
+        },
+        {
+          "ply": 22,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 641.426,
+          "time_ms": 140.038,
+          "memory": 69664768,
+          "code": 0,
+          "move": [
+            5,
+            5
+          ]
+        },
+        {
+          "ply": 23,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            6
+          ],
+          "time_ms": 18.142,
+          "stderr": ""
+        },
+        {
+          "ply": 24,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 962.138,
+          "time_ms": 144.513,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            9,
+            6
+          ]
+        },
+        {
+          "ply": 25,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            9
+          ],
+          "time_ms": 36.492,
+          "stderr": ""
+        },
+        {
+          "ply": 26,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 495.547,
+          "time_ms": 137.916,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            8,
+            5
+          ]
+        },
+        {
+          "ply": 27,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            6,
+            4
+          ],
+          "time_ms": 18.577,
+          "stderr": ""
+        },
+        {
+          "ply": 28,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 410.434,
+          "time_ms": 3.458,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            5,
+            3
+          ]
+        },
+        {
+          "ply": 29,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            5,
+            8
+          ],
+          "time_ms": 18.634,
+          "stderr": ""
+        },
+        {
+          "ply": 30,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 439.696,
+          "time_ms": 130.74,
+          "memory": 67043328,
+          "code": 0,
+          "move": [
+            10,
+            7
+          ]
+        },
+        {
+          "ply": 31,
+          "side": 1,
+          "engine": "src.cpp",
+          "ok": true,
+          "move": [
+            7,
+            4
+          ],
+          "time_ms": 18.858,
+          "stderr": ""
+        },
+        {
+          "ply": 32,
+          "side": 0,
+          "engine": "uid:2025201726",
+          "ok": true,
+          "remote": true,
+          "request_ms": 500.258,
+          "time_ms": 3.458,
+          "memory": 10682368,
+          "code": 0,
+          "move": [
+            12,
+            9
+          ]
+        }
+      ]
+    }
+  ]
+}

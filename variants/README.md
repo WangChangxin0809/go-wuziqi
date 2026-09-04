@@ -15,7 +15,10 @@
 - `mcts-hybrid/src.cpp`：固定种子的 Monte-Carlo 根层抽样；
 - `beam-search/src.cpp`：有限宽度的确定性多层搜索；
 - `proof-number/src.cpp`：AND-OR/证明数式强制威胁求解。
-- `rapfi-deadline-fusion/src.cpp`：原 Rapfi 棋力与硬墙钟融合。
+- `rapfi-deadline-fusion/src.cpp`：原 Rapfi 棋力与硬墙钟融合。当前最强候选：绝对
+  每手预算 + SIGALRM 看门狗兜底，2026-09-04 以 18:6 胜自身的旧时间管理版本。
+  额外提供两个只在离线分析时生效的环境变量：`GOMOKU_DEADLINE_MS` 放宽搜索预算，
+  `GOMOKU_EXCLUDE`（`行,列;行,列`）排除根着法以取次优解，供 `book_build.py` 造开局库。
 - `rapfi-aggressive/src.cpp`：更高搜索预算边界实验。
 - `rapfi-adaptive-time/src.cpp`：固定总预算下的自适应迭代控制。
 - `rapfi-book-hybrid/src.cpp`：移植 figrid-board Standard 开局库。

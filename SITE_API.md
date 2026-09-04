@@ -43,7 +43,27 @@
 
 ## 保存登录态
 
-登录 `gomoku-lab` Playwright 会话后：
+整站在 RUC 统一身份 OAuth2 之后：`GET /` 会 302 到 `/users/login`，唯一入口是
+「微人大认证」，命令行无法自行完成登录。所以必须先在浏览器里登录一次，再把会话
+Cookie 交给脚本。`gomoku_site_api.py` 按下面的顺序取凭据，用上第一个存在的：
+
+1. `--cookie 'connect.sid=...'`
+2. 环境变量 `GOMOKU_COOKIE`
+3. `.playwright/gomoku-cookie.txt`
+4. `.playwright/gomoku-auth.json`（Playwright storage state）
+
+方式 A —— 手工粘贴 Cookie（浏览器登录后，DevTools → Network → 任意请求 →
+Request Headers → 复制 `Cookie:` 整行）：
+
+```powershell
+mkdir .playwright -Force
+'connect.sid=s%3A...' | Out-File -Encoding utf8 .playwright\gomoku-cookie.txt
+```
+
+文件里可以直接留 `Cookie: a=1; b=2` 这一整行，也可以只写 `name=value`；`#` 开头的
+行会被忽略。
+
+方式 B —— Playwright 会话，登录 `gomoku-lab` 之后：
 
 ```powershell
 playwright-cli -s=gomoku-lab state-save .playwright\gomoku-auth.json
@@ -54,10 +74,14 @@ playwright-cli -s=gomoku-lab state-save .playwright\gomoku-auth.json
 ## 命令行调用
 
 ```powershell
+py -3.11 .\gomoku_site_api.py check
 py -3.11 .\gomoku_site_api.py players
 py -3.11 .\gomoku_site_api.py exec 2025201726 .\position.txt
 py -3.11 .\gomoku_site_api.py submit .\src.cpp
 ```
+
+`check` 只做一次最轻的已登录探测。Cookie 失效时，脚本不会返回登录页 HTML，而是
+报错退出（exit code 2），提示重新取 Cookie。
 
 本地裁判的 `judge`、`judgeLongBan`、`judgeFourFourBan` 已按页面 JavaScript 逐句移植。
 网页是在落子写入棋盘前执行禁手检查；Python 版本在写入后调用，但扫描从相邻格开始，
