@@ -391,6 +391,39 @@ def _build_sharded(binary: Path, options: dict, args: argparse.Namespace) -> int
     return 0
 
 
+def cmd_line(args: argparse.Namespace) -> int:
+    """Turn one played game into book entries for our side of it.
+
+    A line generated against the real opponent is worth more than one guessed
+    from our own replies: it is the tree we will actually meet.  The moves come
+    from a search given seconds per move, so replaying them costs a table lookup
+    and buys back that depth.
+    """
+    text = Path(args.moves).read_text(encoding="utf-8")
+    moves = []
+    for chunk in text.split("\n"):
+        nums = [int(v) for v in chunk.replace(",", " ").split() if v.lstrip("-").isdigit()]
+        if len(nums) >= 2:
+            moves.append((nums[-2], nums[-1]))
+
+    our_side = BLACK if args.side == "black" else WHITE
+    board = empty_board()
+    book: dict[str, list[int]] = {}
+    for ply, (r, c) in enumerate(moves):
+        side = ply & 1
+        if side == our_side:
+            key, index = canonical(board)
+            cr, cc = TRANSFORMS[index](r, c)
+            book[key] = [cr, cc]
+        board[r][c] = side
+
+    payload = {"engine": "played line", "side": args.side, "source": args.moves,
+               "stats": {"plies": len(moves), "stored": len(book)}, "book": book}
+    Path(args.out).write_text(json.dumps(payload, indent=1), encoding="utf-8")
+    print(f"{len(moves)} plies -> {len(book)} entries for {args.side}, wrote {args.out}")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -419,6 +452,12 @@ def main() -> int:
                             "runs its own engine process, so keep it below the core count")
     build.add_argument("--out", default="book.json")
     build.set_defaults(func=cmd_build)
+
+    line = sub.add_parser("line", help="convert one played game into book entries")
+    line.add_argument("moves", help="file with the move sequence, one 'row col' per line")
+    line.add_argument("--side", choices=("black", "white"), required=True)
+    line.add_argument("--out", default="book-line.json")
+    line.set_defaults(func=cmd_line)
 
     emit = sub.add_parser("emit", help="embed generated books into the engine source")
     emit.add_argument("source", help="engine .cpp carrying the BOOK-BEGIN/BOOK-END markers")

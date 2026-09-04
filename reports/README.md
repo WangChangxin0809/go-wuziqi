@@ -20,6 +20,11 @@
 - `round9-forbidden-fix.json`：四四禁手判定对齐网页裁判后的 58 局回归，30:27:1。
 - `round10-overline-fix.json`：长连不计五连修复后的 58 局回归，29:28:1。
 - `round11-budget-half.json`、`round11-budget-third.json`：棋力对预算的敏感度，58% / 67%。
+- `round12-forbid-prefilter.json`：禁手检查前置过滤的 58 局对照，31:26:1。
+- `online-round12-1726-before-book.json`：对 1726 的首次线上实测，0:4。
+- `online-round12-1726-deep15s.json`：我方 15 秒/手，执黑胜、执白负。
+- `online-round12-1726-with-book.json`：加入对手特化开局库后 1 秒预算复测，1:1。
+- `online-round12-1770.json`：1770 当前提交输出 `helloworld`，四局非法输出。
 
 JSON 保留每一步的选手、坐标、墙钟耗时、终局原因和远端状态，方便后续脚本重新统计，
 不只依赖 README 中的结论。

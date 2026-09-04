@@ -285,14 +285,17 @@ static const ContestBookEntry CONTEST_BOOK[] = {
 	{155075007725977348ull, 125},
 	{244459415681846240ull, 145},
 	{270288769295963212ull, 141},
+	{291441968897777859ull, 140},
 	{472522793932075537ull, 127},
 	{578828477200917452ull, 94},
 	{585355502992913896ull, 129},
+	{607469691932018989ull, 109},
 	{794954091736609172ull, 110},
 	{814229270163483290ull, 143},
 	{831506863838267259ull, 159},
 	{856267815196294961ull, 66},
 	{938809129822981162ull, 142},
+	{1098916733502333799ull, 139},
 	{1162965746810963002ull, 81},
 	{1171569356945566706ull, 84},
 	{1273410702916178188ull, 157},
@@ -302,24 +305,31 @@ static const ContestBookEntry CONTEST_BOOK[] = {
 	{1450960246397437906ull, 69},
 	{1531761003600154926ull, 154},
 	{1738539680693823502ull, 97},
+	{1764865594543103185ull, 110},
+	{1790615249282420862ull, 53},
 	{2014942935636039867ull, 111},
 	{2204426660194354804ull, 159},
 	{2296770630526993064ull, 155},
 	{2499867430927436912ull, 69},
+	{2576108008822723355ull, 53},
 	{2729232781046406742ull, 82},
 	{3006453112047185290ull, 155},
 	{3119223309062398081ull, 142},
 	{3141687293862521892ull, 125},
 	{3270274571439125984ull, 84},
+	{3299566117633650225ull, 112},
 	{3309864790411829353ull, 109},
 	{3384372374210444029ull, 82},
 	{3578347126636653518ull, 127},
+	{3587814620640917712ull, 172},
 	{3623172059533187559ull, 95},
+	{3767321938806917690ull, 69},
 	{3798024370608596635ull, 130},
 	{3997787440687074979ull, 130},
 	{4027030714714727482ull, 141},
 	{4096143896979018760ull, 99},
 	{4264490368042224342ull, 98},
+	{4298072642671422273ull, 113},
 	{4404837856064721053ull, 140},
 	{4495254606419232509ull, 144},
 	{4547393408656045356ull, 158},
@@ -341,8 +351,10 @@ static const ContestBookEntry CONTEST_BOOK[] = {
 	{6851818516163393180ull, 111},
 	{6856128424025385120ull, 158},
 	{6923292006151795646ull, 84},
+	{7403041861433522893ull, 93},
 	{7507679342375161100ull, 155},
 	{7774234538829876610ull, 139},
+	{7938481996401810169ull, 79},
 	{8151722485012787272ull, 99},
 	{8310322032992541944ull, 130},
 	{8348887967035475632ull, 174},
@@ -350,14 +362,18 @@ static const ContestBookEntry CONTEST_BOOK[] = {
 	{8406718149365111690ull, 94},
 	{8544152777556706256ull, 114},
 	{8628722313892958578ull, 96},
+	{8706368968943965070ull, 121},
 	{8835850785849034619ull, 145},
+	{8893587380797456807ull, 154},
 	{8912985201160313632ull, 124},
 	{8930817629954057509ull, 83},
 	{8998782232872514234ull, 172},
 	{9008082481175298360ull, 145},
+	{9019373303830839768ull, 125},
 	{9318125225923670176ull, 130},
 	{9346411331797609429ull, 82},
 	{9508379580731954546ull, 115},
+	{9645641625170286573ull, 96},
 	{9803630106753202908ull, 143},
 	{9885904725519324954ull, 171},
 	{9955821253719382899ull, 155},
@@ -380,6 +396,8 @@ static const ContestBookEntry CONTEST_BOOK[] = {
 	{12243446553510203219ull, 115},
 	{12264716189294849619ull, 110},
 	{12368250543610409402ull, 114},
+	{12436993072919958368ull, 189},
+	{12466544160905376152ull, 155},
 	{12593529832626500987ull, 155},
 	{12663575443540092246ull, 157},
 	{13006700459009227428ull, 145},
@@ -394,10 +412,13 @@ static const ContestBookEntry CONTEST_BOOK[] = {
 	{13689783417385623110ull, 98},
 	{14107883947512476622ull, 155},
 	{14280837240968947668ull, 155},
+	{14354858358642271104ull, 66},
 	{14511227165574234409ull, 129},
+	{14556987318473674006ull, 94},
 	{14592046235987181520ull, 144},
 	{14688593780829692501ull, 82},
 	{14882269207463631837ull, 82},
+	{15074663354974703320ull, 155},
 	{15252191417141825832ull, 101},
 	{15392980598294909600ull, 100},
 	{15888254911385447986ull, 143},
@@ -405,6 +426,9 @@ static const ContestBookEntry CONTEST_BOOK[] = {
 	{16426542252868945110ull, 97},
 	{16471038341541501916ull, 125},
 	{16581639009516568137ull, 113},
+	{16863775629951365502ull, 126},
+	{16894694673467278143ull, 108},
+	{17587868615005650127ull, 129},
 	{17669003234996236814ull, 140},
 	{17674497544075264176ull, 141},
 	{18194190516208731678ull, 156},
@@ -2163,7 +2187,13 @@ void Evaluator::makeMove(Pos pos) {
 				c->updatePattern4(pCodeBlack, pCodeWhite);
 				if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
 					c->pattern4[White] = NONE;
-				if (contestForbiddenBlack(*board, p)) c->pattern4[Black] = FORBID;
+				// Both bans need either two fours in different directions or a run of five
+				// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
+				// weaker cannot be forbidden.  This scan is the most expensive work in the
+				// incremental update and it used to run on every empty cell touched by every
+				// move; gating it on the pattern raises search throughput about 4x.
+				if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
+					c->pattern4[Black] = FORBID;
 				p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
 			}
 			p += D[i];
@@ -2191,7 +2221,13 @@ void Evaluator::makeMove(Pos pos) {
 				c->updatePattern4(pCodeBlack, pCodeWhite);
 				if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
 					c->pattern4[White] = NONE;
-				if (contestForbiddenBlack(*board, p)) c->pattern4[Black] = FORBID;
+				// Both bans need either two fours in different directions or a run of five
+				// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
+				// weaker cannot be forbidden.  This scan is the most expensive work in the
+				// incremental update and it used to run on every empty cell touched by every
+				// move; gating it on the pattern raises search throughput about 4x.
+				if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
+					c->pattern4[Black] = FORBID;
 				p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
 			}
 		}
@@ -2210,7 +2246,13 @@ void Evaluator::makeMove(Pos pos) {
 		c->updatePattern4(pCodeBlack, pCodeWhite);
 		if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
 			c->pattern4[White] = NONE;
-		if (contestForbiddenBlack(*board, p)) c->pattern4[Black] = FORBID;
+		// Both bans need either two fours in different directions or a run of five
+		// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
+		// weaker cannot be forbidden.  This scan is the most expensive work in the
+		// incremental update and it used to run on every empty cell touched by every
+		// move; gating it on the pattern raises search throughput about 4x.
+		if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
+			c->pattern4[Black] = FORBID;
 		p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
 	}
 
@@ -2287,7 +2329,13 @@ void Evaluator::undoMove() {
 				c->updatePattern4(pCodeBlack, pCodeWhite);
 				if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
 					c->pattern4[White] = NONE;
-				if (contestForbiddenBlack(*board, p)) c->pattern4[Black] = FORBID;
+				// Both bans need either two fours in different directions or a run of five
+				// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
+				// weaker cannot be forbidden.  This scan is the most expensive work in the
+				// incremental update and it used to run on every empty cell touched by every
+				// move; gating it on the pattern raises search throughput about 4x.
+				if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
+					c->pattern4[Black] = FORBID;
 				p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
 			}
 			p += D[i];
@@ -2315,7 +2363,13 @@ void Evaluator::undoMove() {
 				c->updatePattern4(pCodeBlack, pCodeWhite);
 				if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
 					c->pattern4[White] = NONE;
-				if (contestForbiddenBlack(*board, p)) c->pattern4[Black] = FORBID;
+				// Both bans need either two fours in different directions or a run of five
+				// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
+				// weaker cannot be forbidden.  This scan is the most expensive work in the
+				// incremental update and it used to run on every empty cell touched by every
+				// move; gating it on the pattern raises search throughput about 4x.
+				if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
+					c->pattern4[Black] = FORBID;
 				p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
 			}
 		}
@@ -2331,7 +2385,13 @@ void Evaluator::undoMove() {
 		c->updatePattern4(pCodeBlack, pCodeWhite);
 		if (c->pattern4[White] == A_FIVE && !contestMakesExactFive(*board, p, White))
 			c->pattern4[White] = NONE;
-		if (contestForbiddenBlack(*board, p)) c->pattern4[Black] = FORBID;
+		// Both bans need either two fours in different directions or a run of five
+		// and over, and every one of those lands on B_FLEX4 or A_FIVE, so anything
+		// weaker cannot be forbidden.  This scan is the most expensive work in the
+		// incremental update and it used to run on every empty cell touched by every
+		// move; gating it on the pattern raises search throughput about 4x.
+		if (c->pattern4[Black] >= B_FLEX4 && contestForbiddenBlack(*board, p))
+			c->pattern4[Black] = FORBID;
 		p4Count[Black][c->pattern4[Black]]++; p4Count[White][c->pattern4[White]]++;
 	}
 	assert(checkP4Count());
@@ -4004,12 +4064,19 @@ bool AI::moveNext(MoveList & moveList, Pos & pos) {
 }
 
 // ����ȫ���ŷ�
+// The incremental update already stamps FORBID onto every forbidden black point
+// and keeps it current, so inside move generation the ban is a field read rather
+// than a rescan of the four directions.  turnMove and the root keep calling
+// contestLegalMove directly: that happens once per move and doubles as a check
+// on the cache before the answer leaves the process.
+#define CONTEST_LEGAL_CACHED(p, side) ((side) != Black || cell(p).pattern4[Black] != FORBID)
+
 void AI::genMoves(MoveList & moveList) {
 	Piece self = SELF;
 	int score;
 
 	FOR_EVERY_CAND_POS(p) {
-		if (!contestLegalMove(*board, p, self)) continue;
+		if (!CONTEST_LEGAL_CACHED(p, self)) continue;
 		score = cell(p).getScore(self);
 		moveList.addMove(p, score);
 	}
@@ -4022,7 +4089,7 @@ void AI::genMoves_defence(MoveList & moveList) {
 	assert(p4Count[OPPO][B_FLEX4] > 0);
 
 	FOR_EVERY_CAND_POS(p) {
-		if (!contestLegalMove(*board, p, self)) continue;
+		if (!CONTEST_LEGAL_CACHED(p, self)) continue;
 		if (cell(p).pattern4[oppo] == B_FLEX4) {
 			getAllCostPosAgainstF3(p, oppo, defence);
 		} else if (cell(p).pattern4[self] >= E_BLOCK4) {
@@ -4032,7 +4099,7 @@ void AI::genMoves_defence(MoveList & moveList) {
 
 	set<Pos>::iterator it2 = defence.end();
 	for (set<Pos>::iterator it1 = defence.begin(); it1 != it2; it1++) {
-		if (!contestLegalMove(*board, *it1, self)) continue;
+		if (!CONTEST_LEGAL_CACHED(*it1, self)) continue;
 		moveList.addMove(*it1, cell(*it1).getScore(oppo) + 10000);
 	}
 	assert(moveList.moveCount() > 0);
@@ -4042,7 +4109,7 @@ void AI::genMoves_VCF(MoveList & moveList) {
 	Piece self = SELF;
 
 	FOR_EVERY_CAND_POS(p) {
-		if (contestLegalMove(*board, p, self) && cell(p).pattern4[self] >= E_BLOCK4) {
+		if (CONTEST_LEGAL_CACHED(p, self) && cell(p).pattern4[self] >= E_BLOCK4) {
 			moveList.addMove(p, cell(p).getScore_VC(self));
 		}
 	}
@@ -4057,7 +4124,7 @@ void AI::genContinueMoves_VCF(MoveList & moveList, const short * range, int n) {
 	for (int i = 0; i < n; i++) {
 		p = last + range[i];
 
-		if (board->isEmpty(p) && contestLegalMove(*board, p, self)) {
+		if (board->isEmpty(p) && CONTEST_LEGAL_CACHED(p, self)) {
 			if (cell(p).pattern4[self] >= E_BLOCK4) {
 				moveList.addMove(p, cell(p).getScore_VC(self));
 			}
