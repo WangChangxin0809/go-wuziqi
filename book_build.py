@@ -89,6 +89,13 @@ def board_input(board: list[list[int]], side: int) -> str:
     return f"{side}\n" + "\n".join(rows) + "\n"
 
 
+def resolve_engine(path: Path) -> Path:
+    """Accept either a source file or an already-built binary."""
+    if path.suffix.lower() in (".out", ".exe", ".bin") or path.suffix == "":
+        return path
+    return compile_engine(path)
+
+
 def compile_engine(source: Path) -> Path:
     BUILD_DIR.mkdir(exist_ok=True)
     digest = hashlib.sha256(source.read_bytes()).hexdigest()[:12]
@@ -144,7 +151,7 @@ def top_moves(binary: Path, board: list[list[int]], deadline_ms: int, count: int
 
 
 def cmd_probe(args: argparse.Namespace) -> int:
-    binary = compile_engine(Path(args.engine))
+    binary = resolve_engine(Path(args.engine))
     board = empty_board()
     disagreements = []
     for ply in range(args.plies):
@@ -226,7 +233,7 @@ def _walk_shard(payload: dict) -> dict:
 
 
 def cmd_build(args: argparse.Namespace) -> int:
-    binary = compile_engine(Path(args.engine))
+    binary = resolve_engine(Path(args.engine))
     our_side = BLACK if args.side == "black" else WHITE
     book: dict[str, list[int]] = {}
     seen: set[str] = set()
